@@ -24,6 +24,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import AppNavigator from "./AppNavigator";
 import AppNavigator1 from "./AppNavigator1";
 import AppNavigator2 from "./AppNavigator2";
+import AppNavigator3 from "./AppNavigator3";
 import AppNavigator4 from "./AppNavigator4";
 import Setting from "../Pages/Setting";
 import Login from "../Pages/Login";
@@ -39,6 +40,10 @@ import {
 } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { createStackNavigator } from "@react-navigation/stack";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator();
@@ -116,24 +121,24 @@ export default function AdminDrawermenu() {
         initialRouteName="MappingFe"
         drawerContent={(props) => {
           return (
-            <View>
+            <View style={{ flex: 1 }}>
               <ImageBackground
                 source={require("../assets/images/menu-bg9.png")}
-                style={{ padding: 20 }}
+                style={{ padding: wp("1") }}
               >
-                <TouchableOpacity>
+                {/* <TouchableOpacity>
                   <View style={{ alignSelf: "flex-end" }}>
                     <FeatherIcon name="bell" size={22} color="white" />
                   </View>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <View style={{ flexDirection: "row" }}>
                   <Image
                     source={require("../assets/images/eqc_logo3.png")}
                     style={{
-                      height: 200,
-                      width: 200,
-                      borderRadius: 40,
-
+                      height: hp("24%"),
+                      width: wp("14%"),
+                      left: wp("2%"),
+                      borderRadius: wp("10%"),
                       alignSelf: "center",
                     }}
                   />
@@ -141,9 +146,10 @@ export default function AdminDrawermenu() {
                 <Text
                   style={{
                     color: "#fff",
-                    fontSize: 28,
+                    fontSize: wp("2%"),
                     fontFamily: "poppins-regular",
-                    marginBottom: 5,
+                    marginBottom: hp("1%"),
+                    left: wp("1.5%"),
                   }}
                 >
                   EquipCheck
@@ -153,38 +159,50 @@ export default function AdminDrawermenu() {
                   <Text
                     style={{
                       textAlign: "center",
-                      fontSize: 16,
+                      fontSize: wp("1.5%"),
                       color: "#fff",
                       fontFamily: "poppins-regular",
-                      marginRight: 5,
+                      marginRight: wp("1%"),
+                      left: wp("1.5%"),
                     }}
                   >
                     Head Admin
                   </Text>
                 </View>
               </ImageBackground>
+              <DrawerContentScrollView
+                {...props}
+                contentContainerStyle={{
+                  flexGrow: 1,
+                  top: 0,
+                  paddingTop: hp("-20%"),
+                }}
+              >
+                <DrawerItemList {...props} />
+              </DrawerContentScrollView>
 
-              <DrawerItemList {...props} />
               <TouchableOpacity
                 onPress={handleLogout}
                 style={{
                   flexDirection: "row",
                   alignItems: "flex-end",
-                  paddingVertical: 70,
-                  paddingHorizontal: 20,
+                  paddingVertical: hp("5%"),
+                  paddingHorizontal: wp("1%"),
+                  // left: wp("2%"),
                   borderTopColor: "#f4f4f4",
                   borderTopWidth: 1,
                 }}
               >
                 <FeatherIcon
                   name="log-out"
-                  size={20}
+                  left={wp("1%")}
+                  size={wp("1.5%")}
                   color="rgba(255,89,79,1)"
                 />
                 <Text
                   style={{
-                    marginLeft: 29,
-                    fontSize: 16,
+                    left: wp("3%"),
+                    fontSize: wp("1.3%"),
                     color: "rgba(255,89,79,1)",
                   }}
                 >
@@ -198,7 +216,7 @@ export default function AdminDrawermenu() {
           headerTransparent: true,
           drawerStyle: {
             backgroundColor: "#fff",
-            width: 280,
+            width: wp("25%"),
           },
           headerStyle: {
             backgroundColor: "red",
@@ -220,15 +238,23 @@ export default function AdminDrawermenu() {
             drawerIcon: () => (
               <FeatherIcon
                 name="map-pin"
-                size={20}
+                size={wp("1.5%")}
                 color="#808080"
               ></FeatherIcon>
             ),
+            drawerLabelStyle: {
+              color: "#454545",
+              fontSize: wp("1.3%"), // Adjust the font size as per your requirement
+            },
           }}
           component={AppNavigator4}
         />
         <Drawer.Screen
-          style={{ position: "absolute", bottom: 16, right: 16 }}
+          style={{
+            position: "absolute",
+            bottom: 16,
+            right: 16,
+          }}
           name="ViewEquipment"
           options={{
             drawerLabel: "View",
@@ -236,10 +262,14 @@ export default function AdminDrawermenu() {
             drawerIcon: () => (
               <FeatherIcon
                 name="search"
-                size={20}
+                size={wp("1.5%")}
                 color="#808080"
               ></FeatherIcon>
             ),
+            drawerLabelStyle: {
+              color: "#454545",
+              fontSize: wp("1.3%"), // Adjust the font size as per your requirement
+            },
           }}
           component={AppNavigator}
         />
@@ -252,10 +282,14 @@ export default function AdminDrawermenu() {
             drawerIcon: () => (
               <FeatherIcon
                 name="refresh-cw"
-                size={20}
+                size={wp("1.5%")}
                 color="#808080"
               ></FeatherIcon>
             ),
+            drawerLabelStyle: {
+              color: "#454545",
+              fontSize: wp("1.3%"), // Adjust the font size as per your requirement
+            },
           }}
           component={AppNavigator1}
         />
@@ -265,19 +299,35 @@ export default function AdminDrawermenu() {
             drawerLabel: "History",
             title: null,
             drawerIcon: () => (
-              <FeatherIcon name="clock" size={20} color="#808080"></FeatherIcon>
+              <FeatherIcon
+                name="clock"
+                size={wp("1.5%")}
+                color="#808080"
+              ></FeatherIcon>
             ),
+            drawerLabelStyle: {
+              color: "#454545",
+              fontSize: wp("1.3%"), // Adjust the font size as per your requirement
+            },
           }}
           component={AppNavigator2}
         />
         <Drawer.Screen
-          name="Update Role"
+          name="Add Users"
           options={{
-            drawerLabel: "Update Role",
+            drawerLabel: "Add Users",
             title: null,
             drawerIcon: () => (
-              <FeatherIcon name="users" size={20} color="#808080"></FeatherIcon>
+              <FeatherIcon
+                name="users"
+                size={wp("1.5%")}
+                color="#808080"
+              ></FeatherIcon>
             ),
+            drawerLabelStyle: {
+              color: "#454545",
+              fontSize: wp("1.3%"), // Adjust the font size as per your requirement
+            },
           }}
           component={UpdateRole}
         />
@@ -289,12 +339,16 @@ export default function AdminDrawermenu() {
             drawerIcon: () => (
               <FeatherIcon
                 name="file-text"
-                size={20}
+                size={wp("1.5%")}
                 color="#808080"
               ></FeatherIcon>
             ),
+            drawerLabelStyle: {
+              color: "#454545",
+              fontSize: wp("1.3%"), // Adjust the font size as per your requirement
+            },
           }}
-          component={AppNavigator2}
+          component={AppNavigator3}
         />
         <Drawer.Screen
           name="Settings"
@@ -304,10 +358,14 @@ export default function AdminDrawermenu() {
             drawerIcon: () => (
               <FeatherIcon
                 name="settings"
-                size={20}
+                size={wp("1.5%")}
                 color="#808080"
               ></FeatherIcon>
             ),
+            drawerLabelStyle: {
+              color: "#454545",
+              fontSize: wp("1.3%"), // Adjust the font size as per your requirement
+            },
           }}
           component={Setting}
         />

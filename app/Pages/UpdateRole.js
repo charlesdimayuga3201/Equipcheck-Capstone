@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   Modal,
+  Alert,
 } from "react-native";
 import {
   widthPercentageToDP as wp,
@@ -18,8 +19,12 @@ import { Dropdown } from "react-native-element-dropdown";
 import { Picker } from "@react-native-picker/picker";
 import { Table, TableWrapper, Row, Cell } from "react-native-table-component";
 import { StatusBar } from "expo-status-bar";
+import { RFValue } from "react-native-responsive-fontsize";
+import { SpeedDial } from "@rneui/themed";
+import { ButtonGroup } from "@rneui/themed";
 import {
   QuerySnapshot,
+  userDoc,
   doc,
   getDocs,
   collection,
@@ -30,9 +35,13 @@ import {
   where,
   addDoc,
   getDoc,
+  updateDoc,
+  docRef,
+  deleteDoc,
 } from "firebase/firestore";
 import { firebase, auth } from "../../firebaseConfig";
 import Icon from "react-native-vector-icons/Ionicons";
+
 import {
   // getAuth,
   reauthenticateWithCredential,
@@ -40,7 +49,8 @@ import {
   signInWithEmailAndPassword,
   updatePassword,
   sendEmailVerification,
-  updateEmail,
+  deleteUser,
+  getUserByEmail,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { ScrollView } from "react-native-gesture-handler";
@@ -72,6 +82,33 @@ export default function UpdateRole() {
 
     fetchUsers();
   }, []);
+
+  const refreshData = async () => {
+    const fetchUsers = async () => {
+      const usersCollection = collection(firebase, "users"); // 'users' is the name of your collection
+      const q = query(usersCollection, orderBy("role", "asc"));
+      const usersSnapshot = await getDocs(usersCollection);
+      const usersList = [];
+      usersSnapshot.forEach((doc) => {
+        usersList.push({ id: doc.id, ...doc.data() });
+      });
+      // Sort users by role (HeadAdmin first, then other roles)
+      usersList.sort((a, b) => {
+        if (a.role === "Head Admin" && b.role !== "Head Admin") {
+          return -1;
+        } else if (a.role !== "Head Admin" && b.role === "Head Admin") {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+      setUsers(usersList);
+      console.log(usersList);
+    };
+
+    fetchUsers();
+  };
+
   const scrollViewRef = useRef(null);
   const [scrollViewHeight, setScrollViewHeight] = useState(0);
   useEffect(() => {
@@ -81,6 +118,164 @@ export default function UpdateRole() {
       });
     }
   }, [users]);
+
+  const [newUserEmail, setNewUserEmail] = useState(""); // State to hold the new user's email
+  const [newPassword, setPassword] = useState("");
+  const [firstname, setFirstName] = useState(""); // State to hold the new user's email
+  const [lastname, setLastName] = useState(""); // State to hold the new
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  // Function to add a user
+  const [getemail, setEmail] = useState();
+  const [getrole, setRole] = useState();
+  const [getuid, setUid] = useState();
+  const [isModalVisible1, setIsModalVisible1] = useState(false);
+  const [isModalVisible2, setIsModalVisible2] = useState(false);
+
+  const showModal2 = (userEmail, userRole, userID) => {
+    setIsModalVisible2(true);
+    setEmail(userEmail);
+    setRole(userRole);
+    setUid(userID);
+    console.log(userEmail);
+    console.log(userRole);
+    console.log(userID);
+  };
+
+  const hideModal2 = () => {
+    setIsModalVisible2(false);
+  };
+
+  const showModal1 = (userEmail, userRole) => {
+    setIsModalVisible1(true);
+    setEmail(userEmail);
+    setRole(userRole);
+
+    console.log(userEmail);
+    console.log(userRole);
+  };
+
+  const hideModal1 = () => {
+    setIsModalVisible1(false);
+  };
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+    setButtonOpacity(0.5); // Change opacity when modal is shown
+  };
+
+  const hideModal = () => {
+    setIsModalVisible(false);
+    setButtonOpacity(1); // Restore opacity when modal is hidden
+    setNewUserEmail("");
+    setPassword("");
+    setFirstName("");
+    setLastName("");
+    setSelectedIndex(0);
+  };
+
+  const [buttonOpacity, setButtonOpacity] = useState(1);
+  const addUser = async () => {
+    // Create user in Firebase Authentication
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        newUserEmail,
+        newPassword
+      );
+      const { user } = userCredential;
+
+      // Add user data to Firestore
+      const usersCollection = collection(firebase, "users");
+      await addDoc(usersCollection, {
+        FirstName: firstname,
+        LastName: lastname,
+        userEmail: newUserEmail,
+        role: selectedIndex === 0 ? "Staff" : "Head Admin",
+        uid: user.uid,
+        userID: user.uid,
+        // Add additional fields if needed
+      });
+      Alert.alert("Success", "Successfully Add User.");
+      refreshData();
+      hideModal();
+      // Fetch updated user list from Firestore
+      // fetchUsers();
+    } catch (error) {
+      console.error("Error creating user:", error);
+      Alert.alert("Failed", "Failed to Add User.");
+      // Handle error state or display an error message
+    }
+  };
+
+  const editRole = async () => {
+    try {
+      const usersCollection = collection(firebase, "users");
+      const querySnapshot = await getDocs(
+        query(usersCollection, where("userEmail", "==", getemail))
+      );
+
+      if (!querySnapshot.empty) {
+        querySnapshot.forEach((userDoc) => {
+          const userId = userDoc.id;
+          console.log(userId);
+          const userRef = doc(firebase, "users", userId); // Initialize the reference
+          updateDoc(userRef, {
+            role: "Head Admin",
+          });
+        });
+        Alert.alert("Success", "Successfully updated role.");
+        refreshData();
+        hideModal1();
+      } else {
+        alert("User not found.");
+      }
+    } catch (error) {
+      console.error("Error updating role:", error);
+      Alert.alert("Failed", "Failed to update role.");
+      // Handle error state or display an error message
+    }
+  };
+
+  const deleteUserFromBothServices = async (email) => {
+    try {
+      // Query Firestore to find the user by email
+      const usersCollection = collection(firebase, "users");
+      const querySnapshot = await getDocs(
+        query(usersCollection, where("userEmail", "==", getemail))
+      );
+
+      if (!querySnapshot.empty) {
+        querySnapshot.forEach(async (userDoc) => {
+          const userId = userDoc.id;
+          const userRef = doc(firebase, "users", userId); // Initialize the reference
+
+          try {
+            // Delete user's data from Firestore
+            await deleteDoc(userRef);
+            Alert.alert("Success", "Successfully Delete User.");
+            console.log(
+              `User data with email ${email} has been deleted from Firestore.`
+            );
+
+            // Optionally, perform additional actions or handle success
+            refreshData();
+            hideModal2();
+          } catch (error) {
+            console.error("Error deleting user:", error);
+            // Handle errors for Firebase Auth deletion
+          }
+        });
+      } else {
+        console.log("User not found in Firestore.");
+        // Handle the case where user data is not found in Firestore
+      }
+    } catch (error) {
+      Alert.alert("Failed", "Failed to Delete User.");
+      console.error("Error deleting user:", error);
+      // Handle errors for Firestore deletion or querying
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.group}>
@@ -90,78 +285,275 @@ export default function UpdateRole() {
           style={styles.image}
         ></Image>
       </View>
-      <View style={styles.rect}>
-        <View style={styles.textcr}>
-          <Text
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible}
+        onRequestClose={hideModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContentA}>
+            <View style={styles.closeicon}>
+              <TouchableOpacity onPress={hideModal}>
+                <Icon name="close-circle-outline" style={styles.close}></Icon>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.container2}>
+              <View style={styles.column}>
+                <Text style={styles.datafont}>First Name</Text>
+              </View>
+
+              <View style={styles.column}>
+                <Text style={styles.datafont}>Last Name</Text>
+              </View>
+
+              <View style={styles.column}>
+                <Text style={styles.datafont}>Email</Text>
+              </View>
+
+              <View style={styles.column}>
+                <Text style={styles.datafont}>Password</Text>
+              </View>
+
+              <View style={styles.column}>
+                <Text style={styles.datafont}>Role</Text>
+              </View>
+            </View>
+
+            <View style={styles.containerA}>
+              <View style={styles.columnA}>
+                <TextInput
+                  placeholder="Enter First Name"
+                  value={firstname}
+                  onChangeText={(text) => setFirstName(text)}
+                />
+              </View>
+              <View style={styles.columnA}>
+                <TextInput
+                  placeholder="Enter Last Name"
+                  value={lastname}
+                  onChangeText={(text) => setLastName(text)}
+                />
+              </View>
+              <View style={styles.columnA}>
+                <TextInput
+                  placeholder="New User Email"
+                  value={newUserEmail}
+                  onChangeText={(text) => setNewUserEmail(text)}
+                />
+              </View>
+              <View style={styles.columnA}>
+                <TextInput
+                  secureTextEntry={true}
+                  placeholder="Enter Password"
+                  value={newPassword}
+                  onChangeText={(text) => setPassword(text)}
+                />
+                <View style={styles.line}></View>
+              </View>
+              <View style={styles.column}>
+                <ButtonGroup
+                  buttons={["Staff", "Head Admin"]}
+                  selectedIndex={selectedIndex}
+                  onPress={(value) => {
+                    setSelectedIndex(value);
+                  }}
+                  // containerStyle={{ marginBottom: 20 }}
+                  containerStyle={{ width: hp("24%"), marginBottom: 20 }}
+                  textStyle={{
+                    color: "black",
+                    fontSize: RFValue(8),
+                  }}
+                />
+              </View>
+            </View>
+
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                style={styles.modalButtonA}
+                onPress={() => {
+                  // Handle "Yes" button press here
+                  addUser();
+                  // Add your update logic here
+                }}
+              >
+                <Text style={styles.buttonTextA}>Add User</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Modal for edit user */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible1}
+        onRequestClose={hideModal1}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContentB}>
+            <View style={styles.closeiconB}>
+              <TouchableOpacity onPress={hideModal1}>
+                <Icon name="close-circle-outline" style={styles.closeB}></Icon>
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.modalText}>Confirm Update?</Text>
+            <Text style={styles.modalText1}>
+              Do you really want to change role of this user?
+            </Text>
+
+            <View style={styles.containerB}>
+              <View style={styles.column}>
+                <Text style={styles.datafont}>Role</Text>
+              </View>
+            </View>
+
+            <View style={styles.containerA1}>
+              <View style={styles.column1}>
+                <Text style={styles.datafont1}>Head Admin</Text>
+              </View>
+            </View>
+            <View style={styles.line}></View>
+            <View style={styles.buttonContainerB}>
+              <TouchableOpacity
+                style={styles.modalButtonB}
+                onPress={() => {
+                  // Handle "Yes" button press here
+                  editRole();
+                  // Add your update logic here
+                }}
+              >
+                <Text style={styles.buttonTextB}>Change Role</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* delete modal */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible2}
+        onRequestClose={hideModal2}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContentC}>
+            <View style={styles.closeiconC}>
+              <TouchableOpacity onPress={hideModal2}>
+                <Icon name="close-circle-outline" style={styles.closeB}></Icon>
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.modalText2}>Confirm Delete?</Text>
+            <Text style={styles.modalText2}>
+              Do you really want to delete this user?
+            </Text>
+
+            <View style={styles.line}></View>
+            <View style={styles.buttonContainerB}>
+              <TouchableOpacity
+                style={styles.modalButtonC}
+                onPress={() => {
+                  // Handle "Yes" button press here
+                  deleteUserFromBothServices();
+                  // Add your update logic here
+                }}
+              >
+                <Text style={styles.buttonTextB}>Delete User</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      <ScrollView
+        ref={scrollViewRef}
+        style={{ height: scrollViewHeight }}
+        contentContainerStyle={styles.scrollViewContent}
+      >
+        <View style={styles.rect}>
+          <View style={styles.textcr}>
+            <Text
+              style={{
+                color: "white",
+                fontSize: 28,
+                fontFamily: "poppins-regular",
+                marginBottom: 5,
+                fontWeight: "700",
+                marginLeft: 40,
+                marginTop: 30,
+              }}
+            >
+              {" "}
+              ALL USERS AND ROLES
+            </Text>
+          </View>
+          <View
             style={{
-              color: "white",
-              fontSize: 28,
-              fontFamily: "poppins-regular",
-              marginBottom: 5,
-              fontWeight: "700",
-              marginLeft: 40,
-              marginTop: 30,
+              alignItems: "center",
+              marginTop: 20,
+              paddingBottom: 50,
+              // paddingLeft: 50,
+              flexDirection: "row",
+              justifyContent: "space-evenly",
             }}
           >
-            {" "}
-            ALL USERS AND ROLES
-          </Text>
-        </View>
-        <View
-          style={{
-            alignItems: "center",
-            marginTop: 20,
-            paddingBottom: 50,
-            // flexDirection: "row",
-            // justifyContent: "space-between",
-          }}
-        >
-          <TouchableOpacity
+            {/* <TouchableOpacity
             style={{
               backgroundColor: "#ED474A",
               padding: 10,
               borderRadius: 5,
             }}
+            onPress={refreshData}
           >
-            <Text style={{ color: "white", fontSize: 16 }}>Refresh</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.container2}>
-          <View style={styles.column}>
-            <Text style={styles.datafont}>Email</Text>
+            <Text style={{ color: "white", fontSize: 16 }}>Refresh </Text>
+          </TouchableOpacity> */}
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#87C4FF",
+                padding: 10,
+                borderRadius: 5,
+              }}
+              onPress={
+                // Handle "Yes" button press here
+                showModal
+                // Add your update logic here
+              }
+            >
+              <Icon
+                name="person-add-outline"
+                style={{ color: "white", fontSize: 20 }}
+              >
+                <Text style={{ color: "white", fontSize: 20 }}> Add User</Text>
+              </Icon>
+            </TouchableOpacity>
           </View>
 
-          <View style={styles.column}>
-            <Text style={styles.datafont}>Role</Text>
-          </View>
+          <View style={styles.container2}>
+            <View style={styles.column}>
+              <Text style={styles.datafont}>First Name</Text>
+            </View>
 
-          <View style={styles.column}>
-            <Text style={styles.datafont}>Mapping</Text>
-          </View>
+            <View style={styles.column}>
+              <Text style={styles.datafont}>Last Name</Text>
+            </View>
 
-          <View style={styles.column}>
-            <Text style={styles.datafont}>View</Text>
-          </View>
+            <View style={styles.column}>
+              <Text style={styles.datafont}>Email</Text>
+            </View>
 
-          <View style={styles.column}>
-            <Text style={styles.datafont}>Update</Text>
-          </View>
+            <View style={styles.column}>
+              <Text style={styles.datafont}>Role</Text>
+            </View>
 
-          <View style={styles.column}>
-            <Text style={styles.datafont}>History</Text>
+            <View style={styles.column}>
+              <Text style={styles.datafont}>Action</Text>
+            </View>
           </View>
+          {/* show all user */}
 
-          <View style={styles.column}>
-            <Text style={styles.datafont}>Action </Text>
-          </View>
-        </View>
-        {/* show all user */}
-        <ScrollView
-          ref={scrollViewRef}
-          style={{ height: scrollViewHeight }}
-          contentContainerStyle={styles.scrollViewContent}
-        >
           {users.map((user, index) => (
             <View
               key={index}
@@ -171,6 +563,14 @@ export default function UpdateRole() {
               ]}
             >
               <View style={styles.column1}>
+                <Text style={styles.datafont1}>{user.FirstName}</Text>
+              </View>
+
+              <View style={styles.column1}>
+                <Text style={styles.datafont1}>{user.LastName}</Text>
+              </View>
+
+              <View style={styles.column1}>
                 <Text style={styles.datafont1}>{user.userEmail}</Text>
               </View>
 
@@ -179,53 +579,209 @@ export default function UpdateRole() {
               </View>
 
               <View style={styles.column1}>
-                {user.Mapping === "true" ? (
-                  <Icon name="checkmark-outline" size={24} color="green" />
-                ) : (
-                  <Icon name="close-outline" size={24} color="red" />
-                )}
-              </View>
-
-              <View style={styles.column1}>
-                {user.View === "true" ? (
-                  <Icon name="checkmark-outline" size={24} color="green" />
-                ) : (
-                  <Icon name="close-outline" size={24} color="red" />
-                )}
-              </View>
-
-              <View style={styles.column1}>
-                {user.Update === "true" ? (
-                  <Icon name="checkmark-outline" size={24} color="green" />
-                ) : (
-                  <Icon name="close-outline" size={24} color="red" />
-                )}
-              </View>
-
-              <View style={styles.column1}>
-                {user.History === "true" ? (
-                  <Icon name="checkmark-outline" size={24} color="green" />
-                ) : (
-                  <Icon name="close-outline" size={24} color="red" />
-                )}
-              </View>
-
-              <View style={styles.column1}>
-                <TouchableOpacity>
-                  <Text style={styles.datafont1}>Edit</Text>
-                </TouchableOpacity>
+                <View style={styles.action}>
+                  {user.role === "Head Admin" ? (
+                    <TouchableOpacity>
+                      <Text
+                        style={styles.datafont2}
+                        onPress={() =>
+                          showModal2(user.userEmail, user.role, user.userID)
+                        }
+                      >
+                        Delete
+                      </Text>
+                    </TouchableOpacity>
+                  ) : user.role === "Staff" ? (
+                    <>
+                      <TouchableOpacity
+                        onPress={() => showModal1(user.userEmail, user.role)}
+                      >
+                        <Text style={styles.datafont2}>Edit Role</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() =>
+                          showModal2(user.userEmail, user.role, user.userID)
+                        }
+                      >
+                        <Text style={styles.datafont2}>Delete</Text>
+                      </TouchableOpacity>
+                    </>
+                  ) : null}
+                </View>
               </View>
             </View>
           ))}
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     </View>
   );
 }
 const styles = StyleSheet.create({
   scrollViewContent: {
     flexGrow: 1,
+
+    height: hp("165%"),
+    // Additional styling for the content inside ScrollView
+  },
+  buttonTextB: {
+    fontWeight: "600",
+    color: "white",
+    fontSize: RFValue(12),
+  },
+  buttonTextA: {
+    fontWeight: "400",
+    color: "white",
+    fontSize: RFValue(12),
+  },
+  action: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  closeiconC: {
+    // top: 2,
+    marginLeft: wp("33%"),
+    zIndex: 5,
+  },
+  closeiconB: {
+    // top: 2,
+    marginLeft: wp("55%"),
+    zIndex: 5,
+  },
+  closeB: {
+    // color: "#45474B",
+    color: "#FF6464",
+    fontSize: RFValue(26),
+  },
+  closeicon: {
+    // top: 2,
+
+    marginLeft: wp("70%"),
+  },
+  close: {
+    // color: "#45474B",
+    color: "#FF6464",
+    fontSize: 50,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
+  },
+  modalContentC: {
+    backgroundColor: "#FFFFFF",
+    elevation: 8,
+    borderRadius: 10,
+    top: -20,
+    width: wp("40%"), // Adjust the width as needed
+    height: wp("28%"), // Adjust the height as needed
+  },
+  modalContentB: {
+    backgroundColor: "#FFFFFF",
+    elevation: 8,
+    borderRadius: 10,
+
+    width: wp("60%"), // Adjust the width as needed
+    height: wp("33%"), // Adjust the height as needed
+  },
+
+  modalContentA: {
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    elevation: 8,
+    borderRadius: 10,
+
+    width: wp("80%"), // Adjust the width as needed
+    height: wp("40%"), // Adjust the height as needed
+  },
+  modalContent: {
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    elevation: 8,
+    borderRadius: 10,
+
+    width: "80%", // Adjust the width as needed
+    height: "45%", // Adjust the height as needed
+  },
+  modalText2: {
+    color: "#7D7C7C",
+    fontSize: RFValue(13),
+
+    textAlign: "center",
+  },
+  modalText1: {
+    color: "#7D7C7C",
+    fontSize: RFValue(11),
+
+    textAlign: "center",
+  },
+  modalText: {
+    textAlign: "center",
+    color: "#454545",
+    fontWeight: "500",
+    fontSize: RFValue(11),
+  },
+  buttonContainerB: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  modalButtonA: {
+    width: wp("30%"),
+
+    // elevation: 4,
+    backgroundColor: "#7FCD91",
+    padding: 6,
+    borderRadius: 5,
+    top: hp("10%"),
+    // marginHorizontal: 20,
+    alignItems: "center",
+  },
+  modalButtonC: {
+    width: hp("40%"),
+    top: hp("10%"),
+    // elevation: 4,
+    backgroundColor: "#7FCD91",
+    padding: 20,
+    borderRadius: 5,
+
+    alignItems: "center",
+  },
+  modalButtonB: {
+    width: hp("40%"),
+    // elevation: 4,
+    backgroundColor: "#7FCD91",
+    padding: 20,
+    borderRadius: 5,
+
+    alignItems: "center",
+  },
+  modalButtonY: {
+    width: "35%",
+    // elevation: 4,
+    backgroundColor: "#7FCD91",
+    padding: 20,
+    borderRadius: 5,
+    marginHorizontal: 20,
+    alignItems: "center",
+  },
+  modalButtonN: {
+    width: "35%",
+    // elevation: 4,
+    backgroundColor: "#FF6464",
+    padding: 20,
+    borderRadius: 5,
+    marginHorizontal: 20,
+    alignItems: "center",
+  },
+  scrollViewContent1: {
+    flexGrow: 1,
     paddingVertical: 10,
+    height: "120%",
     // Additional styling for the content inside ScrollView
   },
   rowEven: {
@@ -240,19 +796,72 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: "center",
   },
+  datafont2: {
+    fontSize: RFValue(9),
+    fontFamily: "poppins-regular",
+    marginBottom: 5,
+    marginLeft: 15,
+    fontWeight: "100",
+    textAlign: "center",
+  },
   datafont1: {
-    fontSize: 17,
+    fontSize: RFValue(9),
     fontFamily: "poppins-regular",
     marginBottom: 5,
     fontWeight: "100",
     textAlign: "center",
   },
+  containerB: {
+    backgroundColor: "#F1EFEF",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    top: "1%",
+    height: hp("8%"), // Set the desired height of the row
+  },
+
+  columnB: {
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+    borderBottomWidth: 2,
+    borderColor: "#7D7C7C",
+
+    marginHorizontal: 20, // Adjust the horizontal margin as needed
+    height: "100%", // T
+  },
+  containerA1: {
+    backgroundColor: "white",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    height: hp("15%"), // Set the desired height of the row
+  },
+  containerA: {
+    backgroundColor: "white",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    height: "17%", // Set the desired height of the row
+    paddingHorizontal: 10, // A
+  },
+  columnA: {
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+    borderBottomWidth: 2,
+    borderColor: "#7D7C7C",
+
+    marginHorizontal: 15, // Adjust the horizontal margin as needed
+    // T
+  },
+
   column1: {
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
     // backgroundColor: "blue", // You can change the background color
-    marginHorizontal: 5, // Adjust the horizontal margin as needed
+    marginHorizontal: 1, // Adjust the horizontal margin as needed
     height: "100%", // T
   },
   container3: {
@@ -267,10 +876,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   datafont: {
-    fontSize: 14,
+    fontSize: RFValue(9),
     fontFamily: "poppins-regular",
     marginBottom: 5,
-    fontWeight: "400",
+    fontWeight: "900",
     textAlign: "center",
   },
   container2: {
@@ -278,7 +887,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    height: 50, // Set the desired height of the row
+    height: 70, // Set the desired height of the row
     paddingHorizontal: 10, // Adjust horizontal padding as needed
   },
   column: {
@@ -290,16 +899,16 @@ const styles = StyleSheet.create({
     height: "100%", // This makes each column take up the full height of the row
   },
   image: {
-    width: 1280,
-    height: 121,
-    borderBottomRightRadius: 100,
-    borderBottomLeftRadius: 100,
+    width: wp("100%"),
+    height: hp("13%"),
+    borderBottomRightRadius: wp("15%"),
+    borderBottomLeftRadius: wp("15%"),
   },
   textcr: {
     backgroundColor: "#ED474A",
     // borderBottomRightRadius: 50,
     borderRadius: 10,
-    width: "100%",
+    width: wp("90%"),
     height: 92,
     shadowColor: "rgba(68,61,61,1)",
     shadowOffset: {
@@ -313,35 +922,29 @@ const styles = StyleSheet.create({
     height: 92,
   },
   group: {
-    width: 1280,
-    height: 121,
-    borderBottomRightRadius: 100,
-    borderBottomLeftRadius: 100,
-    shadowColor: "rgba(0,0,0,1)",
-    shadowOffset: {
-      width: 3,
-      height: 3,
-    },
-    elevation: 9,
-    shadowOpacity: 0.13,
-    shadowRadius: 3,
-    marginTop: -2,
+    width: wp("100%"),
+    height: hp("13.4%"),
+    borderBottomRightRadius: wp("15%"),
+    borderBottomLeftRadius: wp("15%"),
+    elevation: wp(2),
+
+    alignSelf: "center",
   },
   rect: {
-    width: "95%",
     height: "100%",
+    width: wp("90%"), // Responsive width
+    marginTop: hp("3%"), // Responsive margin top
     alignSelf: "center",
-    backgroundColor: "white",
+    backgroundColor: "rgba(255,255,255,1)",
     borderRadius: 10,
     shadowColor: "gray",
     shadowOffset: {
-      width: 3,
-      height: 3,
+      width: wp("1%"), // Responsive shadow offset
+      height: wp("1%"), // Responsive shadow offset
     },
     elevation: 9,
     shadowOpacity: 0.07,
-    shadowRadius: 3,
-    marginTop: 30,
-    marginLeft: 21,
+    shadowRadius: wp("1%"), // Responsive shadow radius
+    marginTop: hp("3%"),
   },
 });

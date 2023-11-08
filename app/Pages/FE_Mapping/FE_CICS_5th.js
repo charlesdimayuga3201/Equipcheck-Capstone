@@ -13,6 +13,11 @@ import {
   ImageBackground,
 } from "react-native";
 import { firebase } from "../../../firebaseConfig";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+import { RFValue } from "react-native-responsive-fontsize";
 import { Dropdown } from "react-native-element-dropdown";
 import { Picker } from "@react-native-picker/picker";
 import { Table, TableWrapper, Row, Cell } from "react-native-table-component";
@@ -51,32 +56,32 @@ export default function FE_CICS_5th({
   const formattedToday = format(today, "MM/d/yyyy");
   console.log(formattedToday);
 
-  const [FE37, setFE37] = useState([]);
+  const [FE44, setFE44] = useState([]);
   useEffect(() => {
-    const Fe37Data = [];
-    const FE37Collections = collection(firebase, "FE37");
-    const fetchFe37Data = async () => {
+    const Fe44Data = [];
+    const FE44Collections = collection(firebase, "FE44");
+    const fetchFe44Data = async () => {
       try {
-        const q37 = query(
-          FE37Collections,
+        const q44 = query(
+          FE44Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot37 = await getDocs(q37);
-        querySnapshot37.forEach((doc) => {
-          const data37 = doc.data();
-          Fe37Data.push(data37);
+        const querySnapshot44 = await getDocs(q44);
+        querySnapshot44.forEach((doc) => {
+          const data44 = doc.data();
+          Fe44Data.push(data44);
           // Use the data as needed
-          console.log("Fetched FE37 data:", data37);
+          console.log("Fetched FE44 data:", data44);
         });
-        console.log(Fe37Data);
-        setFE37(Fe37Data);
+        console.log(Fe44Data);
+        setFE44(Fe44Data);
       } catch (error) {
-        console.error("Error fetching FE37:", error);
+        console.error("Error fetching FE44:", error);
       }
     };
-    fetchFe37Data();
+    fetchFe44Data();
   }, []);
 
   const [FE38, setFE38] = useState([]);
@@ -247,30 +252,30 @@ export default function FE_CICS_5th({
     fetchFe43Data();
   }, []);
   const refreshData = async () => {
-    const Fe37Data = [];
-    const FE37Collections = collection(firebase, "FE37");
-    const fetchFe37Data = async () => {
+    const Fe44Data = [];
+    const FE44Collections = collection(firebase, "FE44");
+    const fetchFe44Data = async () => {
       try {
-        const q37 = query(
-          FE37Collections,
+        const q44 = query(
+          FE44Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot37 = await getDocs(q37);
-        querySnapshot37.forEach((doc) => {
-          const data37 = doc.data();
-          Fe37Data.push(data37);
+        const querySnapshot44 = await getDocs(q44);
+        querySnapshot44.forEach((doc) => {
+          const data44 = doc.data();
+          Fe44Data.push(data44);
           // Use the data as needed
-          console.log("Fetched FE37 data:", data37);
+          console.log("Fetched FE44 data:", data44);
         });
-        console.log(Fe37Data);
-        setFE37(Fe37Data);
+        console.log(Fe44Data);
+        setFE44(Fe44Data);
       } catch (error) {
-        console.error("Error fetching FE37:", error);
+        console.error("Error fetching FE44:", error);
       }
     };
-    fetchFe37Data();
+    fetchFe44Data();
 
     const Fe38Data = [];
     const FE38Collections = collection(firebase, "FE38");
@@ -428,14 +433,20 @@ export default function FE_CICS_5th({
         <TouchableOpacity
           onPress={refreshData}
           style={{
-            backgroundColor: "#ED474A",
+            backgroundColor: "#7FCD91",
             padding: 10,
-            // bottom: "-350%",
-            left: 70,
             borderRadius: 5,
+            justifyContent: "center",
+            alignSelf: "center",
+            left: 70,
           }}
         >
-          <Text style={{ color: "white", fontSize: 16 }}>Refresh</Text>
+          <Icon
+            name="refresh-circle-outline"
+            style={{ color: "white", fontSize: 20 }}
+          >
+            <Text style={{ color: "white", fontSize: 20 }}>Refresh </Text>
+          </Icon>
         </TouchableOpacity>
       </View>
       <ScrollView horizontal>
@@ -534,11 +545,11 @@ export default function FE_CICS_5th({
               </View>
             </View>
           </Modal>
-          {FE43.map((item, index) => (
+          {FE44.map((item, index) => (
             <TouchableOpacity
               key={index}
               style={styles.fE11}
-              onPress={() => showModal("43")}
+              onPress={() => showModal("44")}
             >
               <View style={styles.fE11circleStackStack}>
                 <View style={styles.fE11circleStack}>
@@ -573,11 +584,11 @@ export default function FE_CICS_5th({
             </TouchableOpacity>
           ))}
           <View style={styles.fE1Row}>
-            {FE37.map((item, index) => (
+            {FE38.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.fE1}
-                onPress={() => showModal("37")}
+                onPress={() => showModal("38")}
               >
                 <View style={styles.fE1_circleStackStack}>
                   <View style={styles.fE1_circleStack}>
@@ -612,11 +623,11 @@ export default function FE_CICS_5th({
               </TouchableOpacity>
             ))}
 
-            {FE38.map((item, index) => (
+            {FE39.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.fE2}
-                onPress={() => showModal("38")}
+                onPress={() => showModal("39")}
               >
                 <View style={styles.fE2_circleStackStack}>
                   <View style={styles.fE2_circleStack}>
@@ -651,11 +662,11 @@ export default function FE_CICS_5th({
               </TouchableOpacity>
             ))}
 
-            {FE39.map((item, index) => (
+            {FE40.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.fE3}
-                onPress={() => showModal("39")}
+                onPress={() => showModal("40")}
               >
                 <View style={styles.fE3_circleStackStack}>
                   <View style={styles.fE3_circleStack}>
@@ -690,11 +701,11 @@ export default function FE_CICS_5th({
               </TouchableOpacity>
             ))}
 
-            {FE40.map((item, index) => (
+            {FE41.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.fE4}
-                onPress={() => showModal("40")}
+                onPress={() => showModal("41")}
               >
                 <View style={styles.fE4_circleStackStack}>
                   <View style={styles.fE4_circleStack}>
@@ -729,11 +740,11 @@ export default function FE_CICS_5th({
               </TouchableOpacity>
             ))}
 
-            {FE41.map((item, index) => (
+            {FE42.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.fE5}
-                onPress={() => showModal("41")}
+                onPress={() => showModal("42")}
               >
                 <View style={styles.fE5_circleStackStack}>
                   <View style={styles.fE5_circleStack}>
@@ -768,11 +779,11 @@ export default function FE_CICS_5th({
               </TouchableOpacity>
             ))}
 
-            {FE42.map((item, index) => (
+            {FE43.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.fE10}
-                onPress={() => showModal("42")}
+                onPress={() => showModal("43")}
               >
                 <View style={styles.fE10circleStackStack}>
                   <View style={styles.fE10circleStack}>
@@ -846,7 +857,7 @@ const styles = StyleSheet.create({
   },
   check: {
     color: "white",
-    fontSize: 150,
+    fontSize: wp("6%"),
     alignSelf: "center",
     // backgroundColor: "#7FCD91",
   },
@@ -855,8 +866,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     top: 0,
-    height: "45%",
-    width: "100%",
+    height: wp("14%"),
+    width: wp("40%"),
     zIndex: 1,
     backgroundColor: "#7FCD91",
     // backgroundColor: "#3085C3",
@@ -868,7 +879,7 @@ const styles = StyleSheet.create({
   },
 
   line: {
-    top: 50,
+    top: hp("6%"),
     height: 2,
     width: "100%",
     backgroundColor: "#B4B4B3",
@@ -887,20 +898,21 @@ const styles = StyleSheet.create({
     elevation: 8,
     borderRadius: 10,
     alignItems: "center",
-    width: "35%", // Adjust the width as needed
-    height: "65%", // Adjust the height as needed
+    top: wp("-2%"),
+    width: wp("40%"), // Adjust the width as needed
+    height: wp("40%"), // Adjust the height as needed
   },
   inspected: {
     color: "white",
     // fontWeight: "500",
     height: 50,
-    fontSize: 25,
+    fontSize: RFValue(14),
     // top: 20,
     // marginBottom: 15,
   },
   modalText1: {
     color: "#454545",
-    fontSize: 25,
+    fontSize: RFValue(15),
     marginBottom: 20,
     textAlign: "center",
     top: 20,
@@ -909,24 +921,24 @@ const styles = StyleSheet.create({
   modalText: {
     color: "#454545",
     fontWeight: "500",
-    fontSize: 25,
+    fontSize: RFValue(15),
     marginBottom: 40,
     top: 40,
     textAlign: "center",
   },
   buttonContainer: {
-    marginTop: 35,
+    top: wp("-2%"),
     flexDirection: "row",
     justifyContent: "center",
   },
   modalButtonY: {
-    width: "70%",
+    width: wp("25%"),
     elevation: 2,
     backgroundColor: "#F5F5F5",
 
-    padding: 20,
+    padding: 13,
     borderRadius: 10,
-    top: 40,
+    top: hp("13%"),
     alignItems: "center",
   },
   modalButtonN: {

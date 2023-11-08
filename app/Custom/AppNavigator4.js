@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import Mapping from "../Pages/Mapping";
-import Bottomtabs from "./Bottomtabs";
+
 import MappingS from "../Pages/MappingS";
 import MappingFe from "../Pages/MappingFe";
 import MappingSd from "../Pages/MappingSd";
@@ -66,7 +66,7 @@ const AppNavigator = () => {
             title: null,
             tabBarLabel: "Fire Extinguisher", // Tab label
             tabBarIcon: ({ color, size }) => (
-              <Icon name="flame-outline" color={color} size={wp("2.6%")} /> // Icon for the tab
+              <Icon name="flame-outline" color={color} size={wp("2%")} /> // Icon for the tab
             ),
           }}
         />
@@ -77,7 +77,7 @@ const AppNavigator = () => {
             title: null,
             tabBarLabel: "Sprinkler",
             tabBarIcon: ({ color, size }) => (
-              <Icon name="water-outline" color={color} size={wp("2.6%")} />
+              <Icon name="water-outline" color={color} size={wp("2%")} />
             ),
           }}
         />
@@ -88,7 +88,7 @@ const AppNavigator = () => {
             title: null,
             tabBarLabel: "Smoke Detector",
             tabBarIcon: ({ color, size }) => (
-              <Icon name="disc-outline" color={color} size={wp("2.6%")} />
+              <Icon name="disc-outline" color={color} size={wp("2%")} />
             ),
           }}
         />

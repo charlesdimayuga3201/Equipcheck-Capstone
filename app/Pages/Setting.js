@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useEffect, useRef } from "react";
 import {
   StyleSheet,
   View,
@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   Modal,
+  ScrollView,
 } from "react-native";
 import {
   widthPercentageToDP as wp,
@@ -32,6 +33,7 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { firebase, auth } from "../../firebaseConfig";
+import { RFValue } from "react-native-responsive-fontsize";
 import Icon from "react-native-vector-icons/Ionicons";
 import {
   // getAuth,
@@ -44,6 +46,15 @@ import {
 } from "firebase/auth";
 
 function Setting(props) {
+  const scrollViewRef = useRef(null);
+  const [scrollViewHeight, setScrollViewHeight] = useState();
+  useEffect(() => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.measure((x, y, width, height) => {
+        setScrollViewHeight(height);
+      });
+    }
+  }, []);
   const [userData, setUserData] = useState(null);
   const [userEmail, setUserEmail] = useState("");
 
@@ -203,41 +214,46 @@ function Setting(props) {
           style={styles.image}
         ></Image>
       </View>
-      <View style={styles.rect}>
-        <View style={styles.textcr}>
-          <Text
+      <ScrollView
+        ref={scrollViewRef}
+        style={{ height: scrollViewHeight }}
+        contentContainerStyle={styles.scrollViewContent}
+      >
+        <View style={styles.rect}>
+          <View style={styles.textcr}>
+            <Text
+              style={{
+                color: "white",
+                fontSize: 28,
+                fontFamily: "poppins-regular",
+                marginBottom: 5,
+                fontWeight: "700",
+                marginLeft: 40,
+                marginTop: 30,
+              }}
+            >
+              ACCOUNT SETTINGS
+            </Text>
+          </View>
+          {/* <View style={styles.line} /> */}
+          <View
             style={{
-              color: "white",
-              fontSize: 28,
-              fontFamily: "poppins-regular",
-              marginBottom: 5,
-              fontWeight: "700",
-              marginLeft: 40,
-              marginTop: 30,
+              flexDirection: "row",
+              justifyContent: "space-evenly",
             }}
           >
-            ACCOUNT SETTINGS
-          </Text>
-        </View>
-        {/* <View style={styles.line} /> */}
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-          }}
-        >
-          {/* <View style={styles.container1}>
+            {/* <View style={styles.container1}>
             <Text style={styles.font}>Edit Session</Text>
           </View> */}
-        </View>
-        <View style={styles.header}>
-          <View style={styles.remarks}>
-            <Image
-              source={require("../assets/images/phrase.png")}
-              resizeMode="contain"
-              style={styles.image1}
-            ></Image>
-            {/* <Text
+          </View>
+          <View style={styles.header}>
+            <View style={styles.remarks}>
+              <Image
+                source={require("../assets/images/phrase.png")}
+                resizeMode="contain"
+                style={styles.image1}
+              ></Image>
+              {/* <Text
               style={{
                 fontSize: 22,
                 fontFamily: "poppins-regular",
@@ -248,23 +264,23 @@ function Setting(props) {
             >
               EquipCheck
             </Text> */}
+            </View>
           </View>
-        </View>
-        {/* <View style={styles.container2}>
+          {/* <View style={styles.container2}>
           <View style={styles.column}>
             <Text style={styles.datafont}>Edit My Account </Text>
           </View>
         </View> */}
 
-        <View style={styles.container3}>
-          {/* <View style={styles.column1}>
+          <View style={styles.container3}>
+            {/* <View style={styles.column1}>
 
 
             <Text style={styles.datafont1}> Email: {userEmail}</Text>
            
           </View> */}
 
-          {/* <View style={styles.column1}>
+            {/* <View style={styles.column1}>
             <TouchableOpacity style={styles.modalButtonY} onPress={showModal1}>
               <View style={styles.buttonContainer}>
                 <Text style={styles.buttonText}>Update Email</Text>
@@ -272,20 +288,20 @@ function Setting(props) {
             </TouchableOpacity>
           </View> */}
 
-          <View style={styles.column1}>
-            <TouchableOpacity style={styles.modalButtonY} onPress={showModal}>
-              <View style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>Update Password</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          {/* <View style={styles.column1}>
+            <View style={styles.column1}>
+              <TouchableOpacity style={styles.modalButtonY} onPress={showModal}>
+                <View style={styles.buttonContainer}>
+                  <Text style={styles.buttonText}>Update Password</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            {/* <View style={styles.column1}>
             <Text style={styles.datafont1}> Password</Text>
           </View> */}
+          </View>
         </View>
-      </View>
-      {/* Email Modal */}
-      {/* <Modal
+        {/* Email Modal */}
+        {/* <Modal
         animationType="slide"
         transparent={true}
         visible={isModalVisible1}
@@ -353,84 +369,92 @@ function Setting(props) {
           </View>
         </View>
       </Modal> */}
-      {/* modal for change password */}
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={isModalVisible}
-        onRequestClose={hideModal}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            {/* <View style={styles.lineG}></View> */}
-            <View style={styles.closeicon}>
-              <TouchableOpacity onPress={hideModal}>
-                <Icon name="close-circle-outline" style={styles.close}></Icon>
-              </TouchableOpacity>
-            </View>
-            <Text style={styles.modalText}>Change Password</Text>
-            <Text style={styles.modalText1}>Current Password</Text>
-            <View style={styles.username_input}>
-              <View style={styles.rect2}>
-                <View style={styles.rec}>
-                  <TextInput
-                    placeholder="Enter Your Current Password"
-                    style={styles.username}
-                    value={password}
-                    onChangeText={(text) => setPassword(text)}
-                  ></TextInput>
+        {/* modal for change password */}
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={isModalVisible}
+          onRequestClose={hideModal}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              {/* <View style={styles.lineG}></View> */}
+              <View style={styles.closeicon}>
+                <TouchableOpacity onPress={hideModal}>
+                  <Icon name="close-circle-outline" style={styles.close}></Icon>
+                </TouchableOpacity>
+              </View>
+              <Text style={styles.modalText}>Change Password</Text>
+              {/* <Text style={styles.modalText1}>Current Password</Text> */}
+              <View style={styles.username_input}>
+                <View style={styles.rect2}>
+                  <View style={styles.rec}>
+                    <TextInput
+                      secureTextEntry={true}
+                      placeholder="Enter Your Current Password"
+                      style={styles.username}
+                      value={password}
+                      onChangeText={(text) => setPassword(text)}
+                    ></TextInput>
+                  </View>
                 </View>
               </View>
-            </View>
-            <Text style={styles.modalText2}>New Password</Text>
-            <View style={styles.username_input}>
-              <View style={styles.rect2}>
-                <View style={styles.rec}>
-                  <TextInput
-                    placeholder="Enter Your New Password"
-                    secureTextEntry={true}
-                    style={styles.username}
-                    value={newpassword}
-                    onChangeText={(text) => setNewPassword(text)}
-                  ></TextInput>
+              {/* <Text style={styles.modalText2}>New Password</Text> */}
+              <View style={styles.username_input}>
+                <View style={styles.rect2}>
+                  <View style={styles.rec}>
+                    <TextInput
+                      placeholder="Enter Your New Password"
+                      secureTextEntry={true}
+                      style={styles.username}
+                      value={newpassword}
+                      onChangeText={(text) => setNewPassword(text)}
+                    ></TextInput>
+                  </View>
                 </View>
               </View>
-            </View>
-            <Text style={styles.modalText2}>Confirm Password</Text>
-            <View style={styles.username_input}>
-              <View style={styles.rect2}>
-                <View style={styles.rec}>
-                  <TextInput
-                    placeholder="Enter Your Confirm Password"
-                    secureTextEntry={true}
-                    style={styles.username}
-                    value={confirmpassword}
-                    onChangeText={(text) => setConfirmPassword(text)}
-                  ></TextInput>
+              {/* <Text style={styles.modalText2}>Confirm Password</Text> */}
+              <View style={styles.username_input}>
+                <View style={styles.rect2}>
+                  <View style={styles.rec}>
+                    <TextInput
+                      placeholder="Enter Your Confirm Password"
+                      secureTextEntry={true}
+                      style={styles.username}
+                      value={confirmpassword}
+                      onChangeText={(text) => setConfirmPassword(text)}
+                    ></TextInput>
+                  </View>
                 </View>
               </View>
-            </View>
 
-            <View style={styles.line}></View>
-            <View style={styles.buttonContainer1}>
-              <TouchableOpacity
-                style={styles.modalButtonY1}
-                onPress={() => {
-                  handleUpdate();
-                  // Handle "Yes" button press here
-                }}
-              >
-                <Text style={styles.buttonTextU}>Update</Text>
-              </TouchableOpacity>
+              <View style={styles.line}></View>
+              <View style={styles.buttonContainer1}>
+                <TouchableOpacity
+                  style={styles.modalButtonY1}
+                  onPress={() => {
+                    handleUpdate();
+                    // Handle "Yes" button press here
+                  }}
+                >
+                  <Text style={styles.buttonTextU}>Update</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  scrollViewContent: {
+    flexGrow: 1,
+
+    height: hp("125%"),
+    // Additional styling for the content inside ScrollView
+  },
   rect2: {
     width: wp("60%"),
     height: hp("6%"),
@@ -460,25 +484,26 @@ const styles = StyleSheet.create({
     fontSize: wp("1.5%"),
   },
   username_input: {
+    top: hp("10%"),
     width: wp("50%"),
-    height: hp("5%"),
-    marginTop: hp("4%"),
+    height: hp("10%"),
+    marginTop: hp("2%"),
     marginLeft: wp("15%"),
     alignSelf: "center",
   },
   closeicon: {
     // top: 2,
-    marginLeft: 380,
+    position: "absolute",
+    top: hp("1%"),
+    right: wp("1%"),
     zIndex: 5,
   },
   close: {
     // color: "#45474B",
     color: "#FF6464",
-    fontSize: 40,
-    top: 15,
+    fontSize: wp("3%"),
   },
   buttonContainer1: {
-    top: 60,
     flexDirection: "row",
     justifyContent: "center",
   },
@@ -503,17 +528,18 @@ const styles = StyleSheet.create({
   modalText: {
     color: "#454545",
     fontWeight: "500",
-    fontSize: 28,
-    // top: 40,
+    fontSize: RFValue(14),
+    top: hp("10%"),
     marginBottom: 10,
   },
   modalButtonY1: {
-    width: "80%",
+    top: hp("14%"),
+    width: wp("30%"),
     elevation: 4,
     backgroundColor: "#7FCD91",
-    padding: 20,
-    borderRadius: 5,
-    marginHorizontal: 20,
+    padding: 10,
+    borderRadius: 2,
+    marginHorizontal: 30,
     alignItems: "center",
     borderRadius: 40,
   },
@@ -528,8 +554,9 @@ const styles = StyleSheet.create({
     elevation: 8,
     borderRadius: 10,
     alignItems: "center",
-    width: "35%", // Adjust the width as needed
-    height: "72%", // Adjust the height as needed
+    top: hp("2%"),
+    width: wp("40%"), // Adjust the width as needed
+    height: hp("80%"), // Adjust the height as needed
   },
   modalButtonN: {
     width: "35%",
@@ -558,7 +585,7 @@ const styles = StyleSheet.create({
     // fontFamily: "poppins-bold",
     alignSelf: "center",
     justifyContent: "center",
-    fontSize: 17,
+    fontSize: RFValue(10),
   },
   buttonContainer: {
     flexDirection: "row",
@@ -668,7 +695,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ED474A",
     // borderBottomRightRadius: 50,
     borderRadius: 10,
-    width: "100%",
+    width: wp("90%"),
     height: 92,
     shadowColor: "rgba(68,61,61,1)",
     shadowOffset: {
@@ -705,19 +732,13 @@ const styles = StyleSheet.create({
     marginLeft: 21,
   },
   group: {
-    width: 1280,
-    height: 121,
-    borderBottomRightRadius: 100,
-    borderBottomLeftRadius: 100,
-    shadowColor: "rgba(0,0,0,1)",
-    shadowOffset: {
-      width: 3,
-      height: 3,
-    },
-    elevation: 9,
-    shadowOpacity: 0.13,
-    shadowRadius: 3,
-    marginTop: -2,
+    width: wp("100%"),
+    height: hp("13%"),
+    borderBottomRightRadius: wp("15%"),
+    borderBottomLeftRadius: wp("15%"),
+    elevation: wp(2),
+
+    alignSelf: "center",
   },
   image1: {
     justifyContent: "center",
@@ -729,10 +750,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   image: {
-    width: "1280",
-    height: 121,
-    borderBottomRightRadius: 100,
-    borderBottomLeftRadius: 100,
+    width: wp("100%"),
+    height: hp("13%"),
+    borderBottomRightRadius: wp("15%"),
+    borderBottomLeftRadius: wp("15%"),
   },
   container1: {
     top: 0,

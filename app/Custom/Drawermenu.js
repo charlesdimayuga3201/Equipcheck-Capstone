@@ -21,7 +21,7 @@ import {
 import { SvgUri } from "react-native-svg";
 import { NavigationContainer } from "@react-navigation/native";
 import Mapping from "../Pages/Mapping";
-import Bottomtabs from "./Bottomtabs";
+
 import AppNavigator from "./AppNavigator";
 import AppNavigator1 from "./AppNavigator1";
 import AppNavigator2 from "./AppNavigator2";
@@ -122,11 +122,11 @@ export default function Drawermenu({ sessionToken }) {
                 source={require("../assets/images/menu-bg10.jpg")}
                 style={{ padding: wp("1") }}
               >
-                <TouchableOpacity>
+                {/* <TouchableOpacity>
                   <View style={{ alignSelf: "flex-end", top: hp("6%") }}>
                     <FeatherIcon name="bell" size={wp("2%")} color="white" />
                   </View>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <View style={{ flexDirection: "row" }}>
                   <Image
                     source={require("../assets/images/eqc_logo3.png")}

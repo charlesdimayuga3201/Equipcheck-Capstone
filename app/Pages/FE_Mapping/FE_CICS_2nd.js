@@ -13,6 +13,11 @@ import {
   ImageBackground,
 } from "react-native";
 import { firebase } from "../../../firebaseConfig";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+import { RFValue } from "react-native-responsive-fontsize";
 import { Dropdown } from "react-native-element-dropdown";
 import { Picker } from "@react-native-picker/picker";
 import { Table, TableWrapper, Row, Cell } from "react-native-table-component";
@@ -458,14 +463,20 @@ export default function FE_CICS_2nd({
         <TouchableOpacity
           onPress={refreshData}
           style={{
-            backgroundColor: "#ED474A",
+            backgroundColor: "#7FCD91",
             padding: 10,
-            // bottom: "-350%",
-            left: 70,
             borderRadius: 5,
+            justifyContent: "center",
+            alignSelf: "center",
+            left: 70,
           }}
         >
-          <Text style={{ color: "white", fontSize: 16 }}>Refresh</Text>
+          <Icon
+            name="refresh-circle-outline"
+            style={{ color: "white", fontSize: 20 }}
+          >
+            <Text style={{ color: "white", fontSize: 20 }}>Refresh </Text>
+          </Icon>
         </TouchableOpacity>
       </View>
       <ScrollView horizontal>
@@ -941,7 +952,7 @@ const styles = StyleSheet.create({
   },
   check: {
     color: "white",
-    fontSize: 150,
+    fontSize: wp("6%"),
     alignSelf: "center",
     // backgroundColor: "#7FCD91",
   },
@@ -950,8 +961,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     top: 0,
-    height: "45%",
-    width: "100%",
+    height: wp("14%"),
+    width: wp("40%"),
     zIndex: 1,
     backgroundColor: "#7FCD91",
     // backgroundColor: "#3085C3",
@@ -963,7 +974,7 @@ const styles = StyleSheet.create({
   },
 
   line: {
-    top: 50,
+    top: hp("6%"),
     height: 2,
     width: "100%",
     backgroundColor: "#B4B4B3",
@@ -982,20 +993,21 @@ const styles = StyleSheet.create({
     elevation: 8,
     borderRadius: 10,
     alignItems: "center",
-    width: "35%", // Adjust the width as needed
-    height: "65%", // Adjust the height as needed
+    top: wp("-2%"),
+    width: wp("40%"), // Adjust the width as needed
+    height: wp("40%"), // Adjust the height as needed
   },
   inspected: {
     color: "white",
     // fontWeight: "500",
     height: 50,
-    fontSize: 25,
+    fontSize: RFValue(14),
     // top: 20,
     // marginBottom: 15,
   },
   modalText1: {
     color: "#454545",
-    fontSize: 25,
+    fontSize: RFValue(15),
     marginBottom: 20,
     textAlign: "center",
     top: 20,
@@ -1004,24 +1016,24 @@ const styles = StyleSheet.create({
   modalText: {
     color: "#454545",
     fontWeight: "500",
-    fontSize: 25,
+    fontSize: RFValue(15),
     marginBottom: 40,
     top: 40,
     textAlign: "center",
   },
   buttonContainer: {
-    marginTop: 35,
+    top: wp("-2%"),
     flexDirection: "row",
     justifyContent: "center",
   },
   modalButtonY: {
-    width: "70%",
+    width: wp("25%"),
     elevation: 2,
     backgroundColor: "#F5F5F5",
 
-    padding: 20,
+    padding: 13,
     borderRadius: 10,
-    top: 40,
+    top: hp("13%"),
     alignItems: "center",
   },
   modalButtonN: {
@@ -1040,6 +1052,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+
+    height: wp("160%"),
     // bottom: "20%",
     // backgroundColor: "rgba(255,255,255,1)",
   },

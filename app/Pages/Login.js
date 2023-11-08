@@ -26,11 +26,17 @@ import {
   query,
   orderBy,
   limit,
+  deleteUser,
   where,
 } from "firebase/firestore";
 import { signInWithEmailAndPassword } from "firebase/auth"; // Modified import
 
-import { firebaseAuth, firebaseApp, firebase } from "../../firebaseConfig"; // Modified import
+import {
+  firebaseAuth,
+  firebaseApp,
+  firebase,
+  auth,
+} from "../../firebaseConfig"; // Modified import
 
 import {
   initializeAuth,
@@ -45,60 +51,48 @@ function Login(props) {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    // Sign in the user
-    const userCredential = await signInWithEmailAndPassword(
-      firebaseAuth,
-      email,
-      password
-    );
-    let userData;
-    if (userCredential && userCredential.user && userCredential.user.email) {
-      const userEmail = userCredential.user.email;
-      const usersCollection = collection(firebase, "users"); // Replace 'users' with your collection name
-      const q = query(usersCollection, where("userEmail", "==", userEmail));
-      const querySnapshot = await getDocs(q);
-      // let userData;
-      querySnapshot.forEach((doc) => {
-        // Retrieve user data
-        userData = doc.data();
-        // userRole = userData.role;
-        console.log(userData); // Assuming 'role' is the field containing the role in your Firestore
-      });
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        firebaseAuth,
+        email,
+        password
+      );
 
-      // Navigate based on the user's role
+      if (userCredential && userCredential.user && userCredential.user.email) {
+        const currentUser = firebaseAuth.currentUser;
+        const userEmail = userCredential.user.email;
+        const usersCollection = collection(firebase, "users");
+        const q = query(usersCollection, where("userEmail", "==", userEmail));
+        const querySnapshot = await getDocs(q);
+        let userData;
 
-      // Navigate based on the user's role
-      // Move the navigation logic inside the asynchronous function
-      if (userData && userData.role) {
-        if (userData.role === "Staff") {
-          navigation.navigate("Drawermenu");
-        } else if (userData.role === "Head Admin") {
-          navigation.navigate("AdminDrawermenu");
+        querySnapshot.forEach((doc) => {
+          userData = doc.data();
+          console.log(userData);
+        });
+
+        if (userData && userData.role) {
+          if (userData.role === "Staff") {
+            navigation.navigate("Drawermenu");
+          } else if (userData.role === "Head Admin") {
+            navigation.navigate("AdminDrawermenu");
+          } else {
+            Alert.alert("Invalid Email or Password");
+            await currentUser.delete();
+            console.log("User deleted successfully");
+          }
         } else {
-          Alert.alert("Error", "Role not defined");
+          Alert.alert("Invalid Email or Password");
         }
       } else {
-        Alert.alert("Error", "User data not found");
+        console.error("Error: User email not found in userCredential");
+        Alert.alert("Invalid Email or Password");
       }
-    } else {
-      // Handle the case where userCredential doesn't contain the expected email information
-      console.error("Error: User email not found in userCredential");
+    } catch (error) {
+      console.error("Error occurred:", error);
+      Alert.alert("Invalid Email or Password");
     }
   };
-
-  // useEffect(() => {
-  //   const initializeFirebaseAuth = async () => {
-  //     try {
-  //       initializeAuth(firebaseAuth, {
-  //         persistence: getReactNativePersistence(AsyncStorage),
-  //       });
-  //     } catch (error) {
-  //       console.error("Firebase initialization error:", error);
-  //     }
-  //   };
-
-  //   initializeFirebaseAuth();
-  // }, []); // Empty dependency array ensures this runs only once after the component mounts
 
   return (
     <View style={styles.container}>

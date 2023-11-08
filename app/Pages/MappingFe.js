@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useEffect, useRef } from "react";
 import {
   StyleSheet,
   View,
@@ -41,11 +41,13 @@ import FE_CICS_2nd from "./FE_Mapping/FE_CICS_2nd";
 import FE_CICS_3rd from "./FE_Mapping/FE_CICS_3rd";
 import FE_CICS_4th from "./FE_Mapping/FE_CICS_4th";
 import FE_CICS_5th from "./FE_Mapping/FE_CICS_5th";
+import FE_CEAFA_1st from "./FE_Mapping/FE_CEAFA_1st";
+import FE_CEAFA_2nd from "./FE_Mapping/FE_CEAFA_2nd";
 
 function MappingFe({ navigation }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [buttonOpacity, setButtonOpacity] = useState(1);
-
+  const [isModalVisible1, setIsModalVisible1] = useState(false);
   const [currentDate, setCurrentDate] = useState("");
   const [currentTime, setCurrentTime] = useState("");
   const [MselectedBuilding, MsetSelectedBuilding] = useState(null);
@@ -58,6 +60,17 @@ function MappingFe({ navigation }) {
   const [selectedFireExtinguisherId, setSelectedFireExtinguisherId] = useState(
     []
   );
+
+  const scrollViewRef = useRef(null);
+  const [scrollViewHeight, setScrollViewHeight] = useState();
+  useEffect(() => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.measure((x, y, width, height) => {
+        setScrollViewHeight(height);
+      });
+    }
+  }, []);
+
   const [selectedIcon, setSelectedIcon] = useState([]);
   useEffect(() => {
     // Fetch building options from Firebase
@@ -125,6 +138,14 @@ function MappingFe({ navigation }) {
     setButtonOpacity(0.5);
   };
 
+  const hideModal1 = () => {
+    setIsModalVisible1(false);
+  };
+
+  const showModal1 = () => {
+    setIsModalVisible1(true);
+  };
+
   // all firestore
   useEffect(() => {
     const IconData = [];
@@ -163,6 +184,27 @@ function MappingFe({ navigation }) {
   // const navigation = useNavigation();
   return (
     <View style={styles.container}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible1}
+        onRequestClose={hideModal1}
+      >
+        <View style={styles.modalContainerA}>
+          <View style={styles.modalContentA}>
+            <View style={styles.closeiconB}>
+              <TouchableOpacity onPress={hideModal1}>
+                <Icon name="close-circle-outline" style={styles.closeB}></Icon>
+              </TouchableOpacity>
+            </View>
+            <Image
+              source={require("../assets/images/FE-LG3.png")}
+              resizeMode="contain"
+              style={styles.image1}
+            />
+          </View>
+        </View>
+      </Modal>
       <ScrollView>
         <View style={styles.group}>
           <Image
@@ -171,6 +213,37 @@ function MappingFe({ navigation }) {
             style={styles.image}
           ></Image>
         </View>
+
+        <View
+          style={{
+            alignItems: "center",
+            // marginTop: 20,
+            right: "1%",
+            // left: "45%",
+            // paddingLeft: 50,
+            flexDirection: "row",
+            justifyContent: "space-evenly",
+          }}
+        >
+          <TouchableOpacity
+            style={{
+              borderRadius: 5,
+              padding: 10,
+            }}
+            onPress={
+              // Handle "Yes" button press here
+              showModal1
+              // Add your update logic here
+            }
+          >
+            <Icon
+              name="caret-down-outline"
+              style={{ color: "#7FCD91", fontSize: 27, left: "30%" }}
+            ></Icon>
+            <Text style={{ color: "black", fontSize: 20 }}> Legends</Text>
+          </TouchableOpacity>
+        </View>
+
         <View
           style={{
             flexDirection: "row",
@@ -192,7 +265,7 @@ function MappingFe({ navigation }) {
               valueField="value"
               placeholder="Select item"
               searchPlaceholder="Search..."
-              value={MselectedBuilding}
+              value={buildingOptions}
               onChange={(item) => {
                 MsetSelectedBuilding(item.value);
                 MsetSelectedFloor(null);
@@ -225,10 +298,12 @@ function MappingFe({ navigation }) {
         <View style={styles.group1}>
           {!MselectedFloor && (
             <Image
-              source={require("../assets/images/mapping_bg4.png")}
+              source={require("../assets/images/mapping_bgmain.png")}
+              resizeMode="cover"
               style={{
                 height: hp("80%"),
-                width: wp("100%"),
+                width: wp("80%"),
+
                 top: 20,
                 borderRadius: wp("2%"),
                 // marginBottom: 10,
@@ -301,6 +376,31 @@ function MappingFe({ navigation }) {
               MselectedFloor={MselectedFloor}
             />
           )}
+
+          {MselectedFloor === "5th Floor" && MselectedBuilding === "CICS" && (
+            //Mapping Content//
+
+            <FE_CICS_5th
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+          {MselectedFloor === "2nd Floor" && MselectedBuilding === "CEAFA" && (
+            //Mapping Content//
+
+            <FE_CEAFA_2nd
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
         </View>
       </ScrollView>
     </View>
@@ -308,8 +408,41 @@ function MappingFe({ navigation }) {
 }
 export default MappingFe;
 const styles = StyleSheet.create({
+  scrollViewContent: {
+    flexGrow: 1,
+    paddingVertical: wp("10%"),
+    height: wp("200%"),
+    // Additional styling for the content inside ScrollView
+  },
+  modalContainerA: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
+  },
+  modalContentA: {
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    elevation: 8,
+    borderRadius: 10,
+
+    width: wp("80%"), // Adjust the width as needed
+    height: hp("70%"), // Adjust the height as needed
+  },
+  closeiconB: {
+    // top: 2,
+    top: hp("2%"),
+    marginLeft: wp("70%"),
+    zIndex: 5,
+  },
+  closeB: {
+    // color: "#45474B",
+    color: "#FF6464",
+    fontSize: 50,
+  },
   container: {
     flex: 1,
+    backgroundColor: "#FFFFFF",
   },
 
   container1: {
@@ -319,11 +452,11 @@ const styles = StyleSheet.create({
     width: wp("30%"),
   },
   dropdown: {
-    height: hp("7%"),
+    height: 60,
     borderColor: "#B0B5B3",
     borderWidth: 1,
-    borderRadius: wp("1%"),
-    paddingHorizontal: wp("2%"),
+    borderRadius: 10,
+    paddingHorizontal: 20,
   },
   icon: {
     marginRight: 5,
@@ -353,25 +486,30 @@ const styles = StyleSheet.create({
   },
   group: {
     width: wp("100%"),
-    aspectRatio: 25 / 2,
-    borderBottomRightRadius: wp(100),
-    borderBottomLeftRadius: wp(100),
-    shadowColor: "rgba(0,0,0,1)",
-    shadowOffset: { width: wp(3), height: wp(3) },
-    elevation: wp(9),
-    shadowOpacity: 0.13,
-    shadowRadius: wp(3),
+    height: hp("13%"),
+    borderBottomRightRadius: wp("15%"),
+    borderBottomLeftRadius: wp("15%"),
+    elevation: wp(2),
+
     alignSelf: "center",
   },
   image: {
     width: wp("100%"),
-    height: hp("15%"),
+    height: hp("13%"),
     borderBottomRightRadius: wp("15%"),
     borderBottomLeftRadius: wp("15%"),
   },
+
+  image1: {
+    alignSelf: "center",
+    justifyContent: "center",
+    width: wp("100%"),
+    height: hp("65%"),
+    bottom: hp("9%"),
+  },
   group1: {
     width: wp("100%"),
-    height: hp("100%"),
+    height: "100%",
     // marginLeft: wp(5),
   },
 });

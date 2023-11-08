@@ -1,13 +1,18 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useEffect, useRef } from "react";
 import {
   StyleSheet,
   View,
   Image,
   Text,
-  FlatList,
+  Switch,
+  TextInput,
   TouchableOpacity,
+  Modal,
+  ImageBackground,
+  ScrollView,
 } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
+
 import { Dropdown } from "react-native-element-dropdown";
 import { Picker } from "@react-native-picker/picker";
 import { Table, TableWrapper, Row, Cell } from "react-native-table-component";
@@ -31,6 +36,15 @@ import {
 } from "react-native-responsive-screen";
 import { useRoute } from "@react-navigation/native";
 function ViewFe(props) {
+  const scrollViewRef = useRef(null);
+  const [scrollViewHeight, setScrollViewHeight] = useState();
+  useEffect(() => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.measure((x, y, width, height) => {
+        setScrollViewHeight(height);
+      });
+    }
+  }, [safetyEquipmentOptions]);
   const route = useRoute();
   // const { MselectedBuilding, MselectedFloor } = route.params;
 
@@ -259,253 +273,273 @@ function ViewFe(props) {
       console.error("Error fetching data:", error);
     }
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.group}>
         <Image
-          source={require("../assets/images/felogo1.png")}
+          source={require("../assets/images/s_logo.png")}
           resizeMode="contain"
           style={styles.image}
         ></Image>
       </View>
-      <View style={styles.rect}>
-        <View style={styles.textcr}>
-          <Text
-            style={{
-              color: "white",
-              fontSize: 28,
-              fontFamily: "poppins-regular",
-              marginBottom: 5,
-              fontWeight: "700",
-              marginLeft: 40,
-              marginTop: 30,
-            }}
-          >
-            {" "}
-            VIEW EQUIPMENT INFORMATION
-          </Text>
-        </View>
-        <View style={{ alignItems: "center", marginTop: 20 }}>
-          <TouchableOpacity
-            onPress={refreshData}
-            style={{
-              backgroundColor: "#ED474A",
-              padding: 10,
-              borderRadius: 5,
-            }}
-          >
-            <Text style={{ color: "white", fontSize: 16 }}>Refresh</Text>
-          </TouchableOpacity>
-        </View>
-        {/* <View style={styles.line} /> */}
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-          }}
-        >
-          <View style={styles.container1}>
-            <Text style={styles.font}>Buildings</Text>
-            <Dropdown
-              style={[styles.dropdown, { backgroundColor: "white" }]}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              inputSearchStyle={styles.inputSearchStyle}
-              iconStyle={styles.iconStyle}
-              data={buildingOptions}
-              search
-              maxHeight={300}
-              labelField="label"
-              valueField="value"
-              placeholder="Select item"
-              searchPlaceholder="Search..."
-              value={selectedBuilding}
-              onChange={(item) => {
-                setSelectedBuilding(item.value);
-                setSelectedFloor(null);
-                setSelectedSafetyEquipment(null);
-              }}
-            />
-          </View>
-          <View style={styles.container1}>
-            <Text style={styles.font}>Floors</Text>
-            <Dropdown
-              style={[styles.dropdown, { backgroundColor: "white" }]}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              inputSearchStyle={styles.inputSearchStyle}
-              iconStyle={styles.iconStyle}
-              data={floorOptions}
-              search
-              maxHeight={300}
-              labelField="label"
-              valueField="value"
-              placeholder="Select item"
-              searchPlaceholder="Search..."
-              value={selectedFloor}
-              onChange={(item) => {
-                setSelectedFloor(item.value);
-                setSelectedSafetyEquipment(null);
-              }}
-            />
-          </View>
-          <View style={styles.container1}>
-            <Text style={styles.font}>Safety Equipment</Text>
-            <Dropdown
-              style={[styles.dropdown, { backgroundColor: "white" }]}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              inputSearchStyle={styles.inputSearchStyle}
-              iconStyle={styles.iconStyle}
-              data={safetyEquipmentOptions}
-              search
-              maxHeight={300}
-              labelField="label"
-              valueField="value"
-              placeholder="Select item"
-              searchPlaceholder="Search..."
-              value={selectedSafetyEquipment}
-              onChange={(item) => {
-                setSelectedSafetyEquipment(item.value);
-              }}
-            />
-          </View>
-        </View>
-        <View style={styles.header}>
-          <View style={styles.remarks}>
+      <ScrollView
+        ref={scrollViewRef}
+        style={{ height: scrollViewHeight }}
+        contentContainerStyle={styles.scrollViewContent}
+      >
+        <View style={styles.rect}>
+          <View style={styles.textcr}>
             <Text
               style={{
-                fontSize: 22,
+                color: "white",
+                fontSize: 28,
                 fontFamily: "poppins-regular",
                 marginBottom: 5,
                 fontWeight: "700",
-                textAlign: "center",
+                marginLeft: 40,
+                marginTop: 30,
               }}
             >
-              Remarks
+              {" "}
+              VIEW EQUIPMENT INFORMATION
             </Text>
           </View>
+          <View style={{ alignItems: "center", marginTop: 20 }}>
+            <TouchableOpacity
+              onPress={refreshData}
+              style={{
+                backgroundColor: "#7FCD91",
+                padding: 10,
+                borderRadius: 5,
+                justifyContent: "center",
+                alignSelf: "center",
+              }}
+            >
+              <Icon
+                name="refresh-circle-outline"
+                style={{ color: "white", fontSize: 20 }}
+              >
+                <Text style={{ color: "white", fontSize: 20 }}>Refresh </Text>
+              </Icon>
+            </TouchableOpacity>
+          </View>
+          {/* <View style={styles.line} /> */}
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-evenly",
+            }}
+          >
+            <View style={styles.container1}>
+              <Text style={styles.font}>Buildings</Text>
+              <Dropdown
+                style={[styles.dropdown, { backgroundColor: "white" }]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                inputSearchStyle={styles.inputSearchStyle}
+                iconStyle={styles.iconStyle}
+                data={buildingOptions}
+                search
+                maxHeight={300}
+                labelField="label"
+                valueField="value"
+                placeholder="Select item"
+                searchPlaceholder="Search..."
+                value={selectedBuilding}
+                onChange={(item) => {
+                  setSelectedBuilding(item.value);
+                  setSelectedFloor(null);
+                  setSelectedSafetyEquipment(null);
+                }}
+              />
+            </View>
+            <View style={styles.container1}>
+              <Text style={styles.font}>Floors</Text>
+              <Dropdown
+                style={[styles.dropdown, { backgroundColor: "white" }]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                inputSearchStyle={styles.inputSearchStyle}
+                iconStyle={styles.iconStyle}
+                data={floorOptions}
+                search
+                maxHeight={300}
+                labelField="label"
+                valueField="value"
+                placeholder="Select item"
+                searchPlaceholder="Search..."
+                value={selectedFloor}
+                onChange={(item) => {
+                  setSelectedFloor(item.value);
+                  setSelectedSafetyEquipment(null);
+                }}
+              />
+            </View>
+            <View style={styles.container1}>
+              <Text style={styles.font}>Safety Equipment</Text>
+              <Dropdown
+                style={[styles.dropdown, { backgroundColor: "white" }]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                inputSearchStyle={styles.inputSearchStyle}
+                iconStyle={styles.iconStyle}
+                data={safetyEquipmentOptions}
+                search
+                maxHeight={300}
+                labelField="label"
+                valueField="value"
+                placeholder="Select item"
+                searchPlaceholder="Search..."
+                value={selectedSafetyEquipment}
+                onChange={(item) => {
+                  setSelectedSafetyEquipment(item.value);
+                }}
+              />
+            </View>
+          </View>
+          <View style={styles.header}>
+            <View style={styles.remarks}>
+              <Text
+                style={{
+                  fontSize: 22,
+                  fontFamily: "poppins-regular",
+                  marginBottom: 5,
+                  fontWeight: "700",
+                  textAlign: "center",
+                }}
+              >
+                Remarks
+              </Text>
+            </View>
+          </View>
+          <View style={styles.container2}>
+            <View style={styles.column}>
+              <Text style={styles.datafont}>Date</Text>
+            </View>
+
+            <View style={styles.column}>
+              <Text style={styles.datafont}>Time</Text>
+            </View>
+
+            <View style={styles.column}>
+              <Text style={styles.datafont}>Nozzle</Text>
+            </View>
+
+            <View style={styles.column}>
+              <Text style={styles.datafont}>Gauge</Text>
+            </View>
+
+            <View style={styles.column}>
+              <Text style={styles.datafont}>Pin/Lock</Text>
+            </View>
+
+            <View style={styles.column}>
+              <Text style={styles.datafont}>Body</Text>
+            </View>
+
+            <View style={styles.column}>
+              <Text style={styles.datafont}>Inspected By</Text>
+            </View>
+          </View>
+
+          {/* Third container */}
+          <View style={styles.container3}>
+            {selectedSafetyEquipment ? (
+              <>
+                <View style={styles.column1}>
+                  {safetyEquipmentData.map((item, index) => (
+                    <Text key={index} style={styles.datafont1}>
+                      {item.date}
+                    </Text>
+                  ))}
+                </View>
+
+                <View style={styles.column1}>
+                  {safetyEquipmentData.map((item, index) => (
+                    <Text key={index} style={styles.datafont1}>
+                      {item.time}
+                    </Text>
+                  ))}
+                </View>
+                <View style={styles.column1}>
+                  {safetyEquipmentData.map((item, index) => (
+                    <Text key={index} style={styles.datafont1}>
+                      {item.nozzle === "check" ? (
+                        // Use Ionicons for the check icon
+                        <Icon name="checkmark-circle" size={24} color="green" />
+                      ) : (
+                        // Use Ionicons for the close icon
+                        <Icon name="close-circle" size={24} color="red" />
+                      )}
+                    </Text>
+                  ))}
+                </View>
+                <View style={styles.column1}>
+                  {safetyEquipmentData.map((item, index) => (
+                    <Text key={index} style={styles.datafont1}>
+                      {item.gauge === "check" ? (
+                        // Use Ionicons for the check icon
+                        <Icon name="checkmark-circle" size={24} color="green" />
+                      ) : (
+                        // Use Ionicons for the close icon
+                        <Icon name="close-circle" size={24} color="red" />
+                      )}
+                    </Text>
+                  ))}
+                </View>
+                <View style={styles.column1}>
+                  {safetyEquipmentData.map((item, index) => (
+                    <Text key={index} style={styles.datafont1}>
+                      {item.pinlock === "check" ? (
+                        // Use Ionicons for the check icon
+                        <Icon name="checkmark-circle" size={24} color="green" />
+                      ) : (
+                        // Use Ionicons for the close icon
+                        <Icon name="close-circle" size={24} color="red" />
+                      )}
+                    </Text>
+                  ))}
+                </View>
+                <View style={styles.column1}>
+                  {safetyEquipmentData.map((item, index) => (
+                    <Text key={index} style={styles.datafont1}>
+                      {item.body === "check" ? (
+                        // Use Ionicons for the check icon
+                        <Icon name="checkmark-circle" size={24} color="green" />
+                      ) : (
+                        // Use Ionicons for the close icon
+                        <Icon name="close-circle" size={24} color="red" />
+                      )}
+                    </Text>
+                  ))}
+                </View>
+                <View style={styles.column1}>
+                  {safetyEquipmentData.map((item, index) => (
+                    <Text key={index} style={styles.datafont1}>
+                      {item.inspected}
+                    </Text>
+                  ))}
+                </View>
+              </>
+            ) : (
+              <Text></Text>
+            )}
+          </View>
         </View>
-        <View style={styles.container2}>
-          <View style={styles.column}>
-            <Text style={styles.datafont}>Date</Text>
-          </View>
-
-          <View style={styles.column}>
-            <Text style={styles.datafont}>Time</Text>
-          </View>
-
-          <View style={styles.column}>
-            <Text style={styles.datafont}>Nozzle</Text>
-          </View>
-
-          <View style={styles.column}>
-            <Text style={styles.datafont}>Gauge</Text>
-          </View>
-
-          <View style={styles.column}>
-            <Text style={styles.datafont}>Pin/Lock</Text>
-          </View>
-
-          <View style={styles.column}>
-            <Text style={styles.datafont}>Body</Text>
-          </View>
-
-          <View style={styles.column}>
-            <Text style={styles.datafont}>Inspected By</Text>
-          </View>
-        </View>
-
-        {/* Third container */}
-        <View style={styles.container3}>
-          {selectedSafetyEquipment ? (
-            <>
-              <View style={styles.column1}>
-                {safetyEquipmentData.map((item, index) => (
-                  <Text key={index} style={styles.datafont1}>
-                    {item.date}
-                  </Text>
-                ))}
-              </View>
-
-              <View style={styles.column1}>
-                {safetyEquipmentData.map((item, index) => (
-                  <Text key={index} style={styles.datafont1}>
-                    {item.time}
-                  </Text>
-                ))}
-              </View>
-              <View style={styles.column1}>
-                {safetyEquipmentData.map((item, index) => (
-                  <Text key={index} style={styles.datafont1}>
-                    {item.nozzle === "check" ? (
-                      // Use Ionicons for the check icon
-                      <Icon name="checkmark-circle" size={24} color="green" />
-                    ) : (
-                      // Use Ionicons for the close icon
-                      <Icon name="close-circle" size={24} color="red" />
-                    )}
-                  </Text>
-                ))}
-              </View>
-              <View style={styles.column1}>
-                {safetyEquipmentData.map((item, index) => (
-                  <Text key={index} style={styles.datafont1}>
-                    {item.gauge === "check" ? (
-                      // Use Ionicons for the check icon
-                      <Icon name="checkmark-circle" size={24} color="green" />
-                    ) : (
-                      // Use Ionicons for the close icon
-                      <Icon name="close-circle" size={24} color="red" />
-                    )}
-                  </Text>
-                ))}
-              </View>
-              <View style={styles.column1}>
-                {safetyEquipmentData.map((item, index) => (
-                  <Text key={index} style={styles.datafont1}>
-                    {item.pinlock === "check" ? (
-                      // Use Ionicons for the check icon
-                      <Icon name="checkmark-circle" size={24} color="green" />
-                    ) : (
-                      // Use Ionicons for the close icon
-                      <Icon name="close-circle" size={24} color="red" />
-                    )}
-                  </Text>
-                ))}
-              </View>
-              <View style={styles.column1}>
-                {safetyEquipmentData.map((item, index) => (
-                  <Text key={index} style={styles.datafont1}>
-                    {item.body === "check" ? (
-                      // Use Ionicons for the check icon
-                      <Icon name="checkmark-circle" size={24} color="green" />
-                    ) : (
-                      // Use Ionicons for the close icon
-                      <Icon name="close-circle" size={24} color="red" />
-                    )}
-                  </Text>
-                ))}
-              </View>
-              <View style={styles.column1}>
-                {safetyEquipmentData.map((item, index) => (
-                  <Text key={index} style={styles.datafont1}>
-                    {item.inspected}
-                  </Text>
-                ))}
-              </View>
-            </>
-          ) : (
-            <Text></Text>
-          )}
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }
 export default ViewFe;
 
 const styles = StyleSheet.create({
+  scrollViewContent: {
+    flexGrow: 1,
+
+    height: "170%",
+    // Additional styling for the content inside ScrollView
+  },
   datafont1: {
     fontSize: 17,
     fontFamily: "poppins-regular",
@@ -549,7 +583,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
     // backgroundColor: "blue", // You can change the background color
-    marginHorizontal: 5, // Adjust the horizontal margin as needed
+    // marginHorizontal: 5, // Adjust the horizontal margin as needed
     height: "100%", // This makes each column take up the full height of the row
   },
   container2: {
@@ -579,7 +613,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ED474A",
     // borderBottomRightRadius: 50,
     borderRadius: 10,
-    width: "100%",
+    width: wp("90%"),
     height: 92,
     shadowColor: "rgba(68,61,61,1)",
     shadowOffset: {
@@ -589,7 +623,7 @@ const styles = StyleSheet.create({
     elevation: 9,
     shadowOpacity: 0.24,
     shadowRadius: 3,
-    width: "100%",
+
     height: 92,
   },
 
@@ -599,48 +633,42 @@ const styles = StyleSheet.create({
     borderBottomColor: "gray", // You can change the color of the line
   },
   rect: {
-    width: "95%",
     height: "100%",
+    width: wp("90%"), // Responsive width
+    marginTop: hp("3%"), // Responsive margin top
     alignSelf: "center",
     backgroundColor: "rgba(255,255,255,1)",
     borderRadius: 10,
     shadowColor: "gray",
     shadowOffset: {
-      width: 3,
-      height: 3,
+      width: wp("1%"), // Responsive shadow offset
+      height: wp("1%"), // Responsive shadow offset
     },
     elevation: 9,
     shadowOpacity: 0.07,
-    shadowRadius: 3,
-    marginTop: 30,
-    marginLeft: 21,
+    shadowRadius: wp("1%"), // Responsive shadow radius
+    marginTop: hp("3%"), // Responsive margin top
   },
   group: {
-    width: 1280,
-    height: 121,
-    borderBottomRightRadius: 100,
-    borderBottomLeftRadius: 100,
-    shadowColor: "rgba(0,0,0,1)",
-    shadowOffset: {
-      width: 3,
-      height: 3,
-    },
-    elevation: 9,
-    shadowOpacity: 0.13,
-    shadowRadius: 3,
-    marginTop: -2,
+    width: wp("100%"),
+    height: hp("13%"),
+    borderBottomRightRadius: wp("15%"),
+    borderBottomLeftRadius: wp("15%"),
+    elevation: wp(2),
+
+    alignSelf: "center",
   },
   image: {
-    width: 1280,
-    height: 121,
-    borderBottomRightRadius: 100,
-    borderBottomLeftRadius: 100,
+    width: wp("100%"),
+    height: hp("13%"),
+    borderBottomRightRadius: wp("15%"),
+    borderBottomLeftRadius: wp("15%"),
   },
   container1: {
     top: 0,
     backgroundColor: "transparent",
     padding: 30,
-    width: "30%",
+    width: wp("30%"),
   },
   dropdown: {
     height: 60,

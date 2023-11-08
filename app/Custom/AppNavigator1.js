@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import Mapping from "../Pages/Mapping";
-import Bottomtabs from "./Bottomtabs";
+
 import UpdateS from "../Pages/UpdateS";
 import UpdateFe from "../Pages/UpdateFe";
 import UpdateSd from "../Pages/UpdateSd";
@@ -12,6 +12,10 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { Icony } from "@iconify/react";
 // import { Icon } from "react-native-iconify";
 // Create a bottom tab navigator
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 const Tab = createBottomTabNavigator();
 
 // Import your screen components
@@ -29,7 +33,7 @@ const AppNavigator = () => {
           tabBarInactiveTintColor: "gray",
           backgroundColor: "transparent",
           tabBarLabelStyle: {
-            fontSize: 16,
+            fontSize: wp("1.4%"),
           },
           tabBarStyle: [
             {
@@ -54,7 +58,7 @@ const AppNavigator = () => {
             title: null,
             tabBarLabel: "Fire Extinguisher", // Tab label
             tabBarIcon: ({ color, size }) => (
-              <Icon name="flame-outline" color={color} size={size} /> // Icon for the tab
+              <Icon name="flame-outline" color={color} size={wp("2%")} /> // Icon for the tab
             ),
           }}
         />
@@ -65,7 +69,7 @@ const AppNavigator = () => {
             title: null,
             tabBarLabel: "Sprinkler",
             tabBarIcon: ({ color, size }) => (
-              <Icon name="water-outline" color={color} size={size} />
+              <Icon name="water-outline" color={color} size={wp("2%")} />
             ),
           }}
         />
@@ -76,7 +80,7 @@ const AppNavigator = () => {
             title: null,
             tabBarLabel: "Smoke Detector",
             tabBarIcon: ({ color, size }) => (
-              <Icon name="disc-outline" color={color} size={size} />
+              <Icon name="disc-outline" color={color} size={wp("2%")} />
             ),
           }}
         />
