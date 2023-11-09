@@ -277,7 +277,7 @@ function ViewSd(props) {
     <View style={styles.container}>
       <View style={styles.group}>
         <Image
-          source={require("../assets/images/s_logo.png")}
+          source={require("../assets/images/sdlogo1.png")}
           resizeMode="contain"
           style={styles.image}
         ></Image>
@@ -374,7 +374,7 @@ function ViewSd(props) {
                 searchPlaceholder="Search..."
                 value={selectedSafetyEquipment}
                 onChange={(item) => {
-                  setValue3(item.value);
+                  setSelectedSafetyEquipment(item.value);
                 }}
               />
             </View>
@@ -444,7 +444,7 @@ function ViewSd(props) {
                 <View style={styles.column1}>
                   {safetyEquipmentData.map((item, index) => (
                     <Text key={index} style={styles.datafont1}>
-                      {item.nozzle === "check" ? (
+                      {item.powersource === "check" ? (
                         // Use Ionicons for the check icon
                         <Icon name="checkmark-circle" size={24} color="green" />
                       ) : (
@@ -457,7 +457,7 @@ function ViewSd(props) {
                 <View style={styles.column1}>
                   {safetyEquipmentData.map((item, index) => (
                     <Text key={index} style={styles.datafont1}>
-                      {item.gauge === "check" ? (
+                      {item.smokesensor === "check" ? (
                         // Use Ionicons for the check icon
                         <Icon name="checkmark-circle" size={24} color="green" />
                       ) : (
@@ -470,7 +470,7 @@ function ViewSd(props) {
                 <View style={styles.column1}>
                   {safetyEquipmentData.map((item, index) => (
                     <Text key={index} style={styles.datafont1}>
-                      {item.pinlock === "check" ? (
+                      {item.sound === "check" ? (
                         // Use Ionicons for the check icon
                         <Icon name="checkmark-circle" size={24} color="green" />
                       ) : (
@@ -483,7 +483,7 @@ function ViewSd(props) {
                 <View style={styles.column1}>
                   {safetyEquipmentData.map((item, index) => (
                     <Text key={index} style={styles.datafont1}>
-                      {item.body === "check" ? (
+                      {item.battery === "check" ? (
                         // Use Ionicons for the check icon
                         <Icon name="checkmark-circle" size={24} color="green" />
                       ) : (

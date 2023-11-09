@@ -389,6 +389,20 @@ function MappingFe({ navigation }) {
               MselectedFloor={MselectedFloor}
             />
           )}
+
+          {MselectedFloor === "1st Floor" && MselectedBuilding === "CEAFA" && (
+            //Mapping Content//
+
+            <FE_CEAFA_1st
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
           {MselectedFloor === "2nd Floor" && MselectedBuilding === "CEAFA" && (
             //Mapping Content//
 

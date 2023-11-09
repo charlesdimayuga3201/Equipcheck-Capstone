@@ -279,7 +279,7 @@ function ViewS(props) {
     <View style={styles.container}>
       <View style={styles.group}>
         <Image
-          source={require("../assets/images/felogo1.png")}
+          source={require("../assets/images/slogo1.png")}
           resizeMode="contain"
           style={styles.image}
         ></Image>
@@ -445,10 +445,6 @@ function ViewS(props) {
 
             <View style={styles.column}>
               <Text style={styles.datafont}>BackFlow Preventer</Text>
-            </View>
-
-            <View style={styles.column}>
-              <Text style={styles.datafont}>Water Source</Text>
             </View>
 
             <View style={styles.column}>

@@ -102,7 +102,7 @@ export default function ViewAllS() {
     const fetchLatestDocuments = async () => {
       const allLatestDocuments = [];
 
-      for (let i = 1; i <= 30; i++) {
+      for (let i = 1; i <= 21; i++) {
         const feCollection = collection(firebase, `SD${i}`);
         const querySnapshot = await getDocs(
           query(

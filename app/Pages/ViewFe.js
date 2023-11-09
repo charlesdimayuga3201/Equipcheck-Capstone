@@ -278,7 +278,7 @@ function ViewFe(props) {
     <View style={styles.container}>
       <View style={styles.group}>
         <Image
-          source={require("../assets/images/s_logo.png")}
+          source={require("../assets/images/felogo1.png")}
           resizeMode="contain"
           style={styles.image}
         ></Image>
