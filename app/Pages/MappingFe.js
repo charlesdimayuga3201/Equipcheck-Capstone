@@ -43,6 +43,7 @@ import FE_CICS_4th from "./FE_Mapping/FE_CICS_4th";
 import FE_CICS_5th from "./FE_Mapping/FE_CICS_5th";
 import FE_CEAFA_1st from "./FE_Mapping/FE_CEAFA_1st";
 import FE_CEAFA_2nd from "./FE_Mapping/FE_CEAFA_2nd";
+import FE_CEAFA_3rd from "./FE_Mapping/FE_CEAFA_3rd";
 
 function MappingFe({ navigation }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -407,6 +408,19 @@ function MappingFe({ navigation }) {
             //Mapping Content//
 
             <FE_CEAFA_2nd
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "3rd Floor" && MselectedBuilding === "CEAFA" && (
+            //Mapping Content//
+
+            <FE_CEAFA_3rd
               isModalVisible={isModalVisible}
               hideModal={hideModal}
               selectedIcon={selectedIcon}

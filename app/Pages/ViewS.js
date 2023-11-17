@@ -372,7 +372,7 @@ function ViewS(props) {
                 searchPlaceholder="Search..."
                 value={selectedFloor}
                 onChange={(item) => {
-                  setSelectedFloor(item.value);
+                   setSelectedFloor(item.value);
                   setSelectedSafetyEquipment(null);
                 }}
               />
