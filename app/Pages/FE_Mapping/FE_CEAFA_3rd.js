@@ -624,161 +624,394 @@ export default function FE_CEAFA_3rd({
           imageStyle={styles.image_imageStyle}
         >
           <View style={styles.fE1Row}>
-            <TouchableOpacity
-              style={styles.fE1}
-              onPress={() => showModal("72")}
-            >
-              <View style={styles.fE1_circleStackStack}>
-                <View style={styles.fE1_circleStack}>
-                  <View style={styles.fE1_circle}></View>
-                  <MaterialIconsIcon
-                    name="location-on"
-                    style={styles.fE1_icon}
-                  ></MaterialIconsIcon>
+            {FE72.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.fE1}
+                onPress={() => showModal("72")}
+              >
+                <View style={styles.fE1_circleStackStack}>
+                  <View style={styles.fE1_circleStack}>
+                    <View
+                      style={[
+                        styles.fE1_circle,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.fE1_icon}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.fE1_downcircle,
+                      {
+                        backgroundColor:
+                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                      },
+                    ]}
+                  ></View>
                 </View>
-                <View style={styles.fE1_downcircle}></View>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.fE10}
-              onPress={() => showModal("73")}
-            >
-              <View style={styles.fE10circleStackStack}>
-                <View style={styles.fE10circleStack}>
-                  <View style={styles.fE10circle}></View>
-                  <MaterialIconsIcon
-                    name="location-on"
-                    style={styles.fE10icon}
-                  ></MaterialIconsIcon>
+              </TouchableOpacity>
+            ))}
+            {FE73.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.fE10}
+                onPress={() => showModal("73")}
+              >
+                <View style={styles.fE10circleStackStack}>
+                  <View style={styles.fE10circleStack}>
+                    <View
+                      style={[
+                        styles.fE10circle,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.fE10icon}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.fE10downcircle,
+                      {
+                        backgroundColor:
+                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                      },
+                    ]}
+                  ></View>
                 </View>
-                <View style={styles.fE10downcircle}></View>
-              </View>
-            </TouchableOpacity>
+              </TouchableOpacity>
+            ))}
           </View>
           <View style={styles.fE2Row}>
-            <TouchableOpacity
-              style={styles.fE2}
-              onPress={() => showModal("74")}
-            >
-              <View style={styles.fE2_circleStackStack}>
-                <View style={styles.fE2_circleStack}>
-                  <View style={styles.fE2_circle}></View>
-                  <MaterialIconsIcon
-                    name="location-on"
-                    style={styles.fE2_icon}
-                  ></MaterialIconsIcon>
+            {FE74.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.fE2}
+                onPress={() => showModal("74")}
+              >
+                <View style={styles.fE2_circleStackStack}>
+                  <View style={styles.fE2_circleStack}>
+                    <View
+                      style={[
+                        styles.fE2_circle,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.fE2_icon}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.fE2_downcircle,
+                      {
+                        backgroundColor:
+                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                      },
+                    ]}
+                  ></View>
                 </View>
-                <View style={styles.fE2_downcircle}></View>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.fE9}
-              onPress={() => showModal("75")}
-            >
-              <View style={styles.fE9circleStackStack}>
-                <View style={styles.fE9circleStack}>
-                  <View style={styles.fE9circle}></View>
-                  <MaterialIconsIcon
-                    name="location-on"
-                    style={styles.fE9icon}
-                  ></MaterialIconsIcon>
+              </TouchableOpacity>
+            ))}
+
+            {FE75.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.fE9}
+                onPress={() => showModal("75")}
+              >
+                <View style={styles.fE9circleStackStack}>
+                  <View style={styles.fE9circleStack}>
+                    <View
+                      style={[
+                        styles.fE9circle,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.fE9icon}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.fE9downcircle,
+                      {
+                        backgroundColor:
+                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                      },
+                    ]}
+                  ></View>
                 </View>
-                <View style={styles.fE9downcircle}></View>
-              </View>
-            </TouchableOpacity>
+              </TouchableOpacity>
+            ))}
           </View>
           <View style={styles.fE5Row}>
-            <TouchableOpacity
-              style={styles.fE5}
-              onPress={() => showModal("76")}
-            >
-              <View style={styles.fE5_circleStackStack}>
-                <View style={styles.fE5_circleStack}>
-                  <View style={styles.fE5_circle}></View>
-                  <MaterialIconsIcon
-                    name="location-on"
-                    style={styles.fE5_icon}
-                  ></MaterialIconsIcon>
+            {FE76.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.fE5}
+                onPress={() => showModal("76")}
+              >
+                <View style={styles.fE5_circleStackStack}>
+                  <View style={styles.fE5_circleStack}>
+                    <View
+                      style={[
+                        styles.fE5_circle,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.fE5_icon}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.fE5_downcircle,
+                      {
+                        backgroundColor:
+                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                      },
+                    ]}
+                  ></View>
                 </View>
-                <View style={styles.fE5_downcircle}></View>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.fE7}
-              onPress={() => showModal("77")}
-            >
-              <View style={styles.fE7circleStackStack}>
-                <View style={styles.fE7circleStack}>
-                  <View style={styles.fE7circle}></View>
-                  <MaterialIconsIcon
-                    name="location-on"
-                    style={styles.fE7icon}
-                  ></MaterialIconsIcon>
+              </TouchableOpacity>
+            ))}
+            {FE77.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.fE7}
+                onPress={() => showModal("77")}
+              >
+                <View style={styles.fE7circleStackStack}>
+                  <View style={styles.fE7circleStack}>
+                    <View
+                      style={[
+                        styles.fE7circle,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.fE7icon}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.fE7downcircle,
+                      {
+                        backgroundColor:
+                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                      },
+                    ]}
+                  ></View>
                 </View>
-                <View style={styles.fE7downcircle}></View>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.fE8}
-              onPress={() => showModal("78")}
-            >
-              <View style={styles.fE8circleStackStack}>
-                <View style={styles.fE8circleStack}>
-                  <View style={styles.fE8circle}></View>
-                  <MaterialIconsIcon
-                    name="location-on"
-                    style={styles.fE8icon}
-                  ></MaterialIconsIcon>
+              </TouchableOpacity>
+            ))}
+            {FE78.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.fE8}
+                onPress={() => showModal("78")}
+              >
+                <View style={styles.fE8circleStackStack}>
+                  <View style={styles.fE8circleStack}>
+                    <View
+                      style={[
+                        styles.fE8circle,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.fE8icon}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.fE8downcircle,
+                      {
+                        backgroundColor:
+                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                      },
+                    ]}
+                  ></View>
                 </View>
-                <View style={styles.fE8downcircle}></View>
-              </View>
-            </TouchableOpacity>
+              </TouchableOpacity>
+            ))}
           </View>
           <View style={styles.fE4Row}>
-            <TouchableOpacity
-              style={styles.fE4}
-              onPress={() => showModal("79")}
-            >
-              <View style={styles.fE4_circleStackStack}>
-                <View style={styles.fE4_circleStack}>
-                  <View style={styles.fE4_circle}></View>
-                  <MaterialIconsIcon
-                    name="location-on"
-                    style={styles.fE4_icon}
-                  ></MaterialIconsIcon>
+            {FE79.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.fE4}
+                onPress={() => showModal("79")}
+              >
+                <View style={styles.fE4_circleStackStack}>
+                  <View style={styles.fE4_circleStack}>
+                    <View
+                      style={[
+                        styles.fE4_circle,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.fE4_icon}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.fE4_downcircle,
+                      {
+                        backgroundColor:
+                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                      },
+                    ]}
+                  ></View>
                 </View>
-                <View style={styles.fE4_downcircle}></View>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.fE6}
-              onPress={() => showModal("80")}
-            >
-              <View style={styles.fE6circleStackStack}>
-                <View style={styles.fE6circleStack}>
-                  <View style={styles.fE6circle}></View>
-                  <MaterialIconsIcon
-                    name="location-on"
-                    style={styles.fE6icon}
-                  ></MaterialIconsIcon>
+              </TouchableOpacity>
+            ))}
+            {FE80.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.fE6}
+                onPress={() => showModal("80")}
+              >
+                <View style={styles.fE6circleStackStack}>
+                  <View style={styles.fE6circleStack}>
+                    <View
+                      style={[
+                        styles.fE6circle,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.fE6icon}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.fE6downcircle,
+                      {
+                        backgroundColor:
+                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                      },
+                    ]}
+                  ></View>
                 </View>
-                <View style={styles.fE6downcircle}></View>
-              </View>
-            </TouchableOpacity>
+              </TouchableOpacity>
+            ))}
           </View>
-          <TouchableOpacity style={styles.fE3} onPress={() => showModal("81")}>
-            <View style={styles.fE3_circleStackStack}>
-              <View style={styles.fE3_circleStack}>
-                <View style={styles.fE3_circle}></View>
-                <MaterialIconsIcon
-                  name="location-on"
-                  style={styles.fE3_icon}
-                ></MaterialIconsIcon>
+          {FE81.map((item, index) => (
+            <TouchableOpacity
+              key={index}
+              style={styles.fE3}
+              onPress={() => showModal("81")}
+            >
+              <View style={styles.fE3_circleStackStack}>
+                <View style={styles.fE3_circleStack}>
+                  <View
+                    style={[
+                      styles.fE3_circle,
+                      {
+                        backgroundColor:
+                          item.condition === "Good Condition"
+                            ? "#7FCD91"
+                            : item.condition === "Slightly Damage"
+                            ? "#FF9209"
+                            : "#FF6464",
+                      },
+                    ]}
+                  ></View>
+                  <MaterialIconsIcon
+                    name="location-on"
+                    style={styles.fE3_icon}
+                  ></MaterialIconsIcon>
+                </View>
+                <View
+                  style={[
+                    styles.fE3_downcircle,
+                    {
+                      backgroundColor:
+                        item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                    },
+                  ]}
+                ></View>
               </View>
-              <View style={styles.fE3_downcircle}></View>
-            </View>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          ))}
         </ImageBackground>
       </ScrollView>
     </View>

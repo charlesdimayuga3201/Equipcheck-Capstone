@@ -353,7 +353,7 @@ export default function UpdateRole() {
                 <View style={styles.line}></View>
               </View>
               <View style={styles.column}>
-                <ButtonGroup
+                {/* <ButtonGroup
                   buttons={["Staff", "Head Admin"]}
                   selectedIndex={selectedIndex}
                   onPress={(value) => {
@@ -365,7 +365,8 @@ export default function UpdateRole() {
                     color: "black",
                     fontSize: RFValue(8),
                   }}
-                />
+                /> */}
+                <Text>Staff</Text>
               </View>
             </View>
 
@@ -593,11 +594,6 @@ export default function UpdateRole() {
                     </TouchableOpacity>
                   ) : user.role === "Staff" ? (
                     <>
-                      <TouchableOpacity
-                        onPress={() => showModal1(user.userEmail, user.role)}
-                      >
-                        <Text style={styles.datafont2}>Edit Role</Text>
-                      </TouchableOpacity>
                       <TouchableOpacity
                         onPress={() =>
                           showModal2(user.userEmail, user.role, user.userID)
