@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Modal,
   Alert,
+  ActivityIndicator,
 } from "react-native";
 import {
   widthPercentageToDP as wp,
@@ -38,6 +39,7 @@ import {
   updateDoc,
   docRef,
   deleteDoc,
+  onSnapshot,
 } from "firebase/firestore";
 import { firebase, auth } from "../../firebaseConfig";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -56,6 +58,7 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 
 export default function UpdateRole() {
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const fetchUsers = async () => {
@@ -84,29 +87,35 @@ export default function UpdateRole() {
   }, []);
 
   const refreshData = async () => {
-    const fetchUsers = async () => {
-      const usersCollection = collection(firebase, "users"); // 'users' is the name of your collection
-      const q = query(usersCollection, orderBy("role", "asc"));
-      const usersSnapshot = await getDocs(usersCollection);
-      const usersList = [];
-      usersSnapshot.forEach((doc) => {
-        usersList.push({ id: doc.id, ...doc.data() });
-      });
-      // Sort users by role (HeadAdmin first, then other roles)
-      usersList.sort((a, b) => {
-        if (a.role === "Head Admin" && b.role !== "Head Admin") {
-          return -1;
-        } else if (a.role !== "Head Admin" && b.role === "Head Admin") {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-      setUsers(usersList);
-      console.log(usersList);
-    };
+    try {
+      setIsRefreshing(true);
+      const fetchUsers = async () => {
+        const usersCollection = collection(firebase, "users"); // 'users' is the name of your collection
+        const q = query(usersCollection, orderBy("role", "asc"));
+        const usersSnapshot = await getDocs(usersCollection);
+        const usersList = [];
+        usersSnapshot.forEach((doc) => {
+          usersList.push({ id: doc.id, ...doc.data() });
+        });
+        // Sort users by role (HeadAdmin first, then other roles)
+        usersList.sort((a, b) => {
+          if (a.role === "Head Admin" && b.role !== "Head Admin") {
+            return -1;
+          } else if (a.role !== "Head Admin" && b.role === "Head Admin") {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        setUsers(usersList);
+        console.log(usersList);
+      };
 
-    fetchUsers();
+      fetchUsers();
+    } catch (error) {
+      console.error("Error refreshing data:", error);
+      setIsRefreshing(false);
+    }
   };
 
   const scrollViewRef = useRef(null);
@@ -130,6 +139,7 @@ export default function UpdateRole() {
   const [getuid, setUid] = useState();
   const [isModalVisible1, setIsModalVisible1] = useState(false);
   const [isModalVisible2, setIsModalVisible2] = useState(false);
+  const [isModalVisible3, setIsModalVisible3] = useState(false);
 
   const showModal2 = (userEmail, userRole, userID) => {
     setIsModalVisible2(true);
@@ -143,6 +153,20 @@ export default function UpdateRole() {
 
   const hideModal2 = () => {
     setIsModalVisible2(false);
+  };
+
+  const showModal3 = (userEmail, userRole, userID) => {
+    setIsModalVisible3(true);
+    setEmail(userEmail);
+    setRole(userRole);
+    setUid(userID);
+    console.log(userEmail);
+    console.log(userRole);
+    console.log(userID);
+  };
+
+  const hideModal3 = () => {
+    setIsModalVisible3(false);
   };
 
   const showModal1 = (userEmail, userRole) => {
@@ -192,6 +216,7 @@ export default function UpdateRole() {
         userEmail: newUserEmail,
         role: selectedIndex === 0 ? "Staff" : "Head Admin",
         uid: user.uid,
+        status: "Active",
         userID: user.uid,
         // Add additional fields if needed
       });
@@ -232,6 +257,64 @@ export default function UpdateRole() {
     } catch (error) {
       console.error("Error updating role:", error);
       Alert.alert("Failed", "Failed to update role.");
+      // Handle error state or display an error message
+    }
+  };
+
+  const editStatus = async () => {
+    try {
+      const usersCollection = collection(firebase, "users");
+      const querySnapshot = await getDocs(
+        query(usersCollection, where("userEmail", "==", getemail))
+      );
+
+      if (!querySnapshot.empty) {
+        querySnapshot.forEach((userDoc) => {
+          const userId = userDoc.id;
+          console.log(userId);
+          const userRef = doc(firebase, "users", userId); // Initialize the reference
+          updateDoc(userRef, {
+            status: "Deactivated",
+          });
+        });
+        Alert.alert("Success", "Successfully updated status.");
+        refreshData();
+        hideModal2();
+      } else {
+        alert("User not found.");
+      }
+    } catch (error) {
+      console.error("Error updating status:", error);
+      Alert.alert("Failed", "Failed to update status.");
+      // Handle error state or display an error message
+    }
+  };
+
+  const editStatus1 = async () => {
+    try {
+      const usersCollection = collection(firebase, "users");
+      const querySnapshot = await getDocs(
+        query(usersCollection, where("userEmail", "==", getemail))
+      );
+
+      if (!querySnapshot.empty) {
+        querySnapshot.forEach((userDoc) => {
+          const userId = userDoc.id;
+          console.log(userId);
+          const userRef = doc(firebase, "users", userId); // Initialize the reference
+          updateDoc(userRef, {
+            status: "Activated",
+          });
+        });
+        Alert.alert("Success", "Successfully updated status.");
+        refreshData();
+        hideModal3();
+      } else {
+        alert("User not found.");
+      }
+    } catch (error) {
+      console.error("Error updating status:", error);
+      Alert.alert("Failed", "Failed to update status.");
       // Handle error state or display an error message
     }
   };
@@ -433,7 +516,6 @@ export default function UpdateRole() {
         </View>
       </Modal>
 
-      {/* delete modal */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -447,9 +529,9 @@ export default function UpdateRole() {
                 <Icon name="close-circle-outline" style={styles.closeB}></Icon>
               </TouchableOpacity>
             </View>
-            <Text style={styles.modalText2}>Confirm Delete?</Text>
+            <Text style={styles.modalText2}>Confirm Deactivate?</Text>
             <Text style={styles.modalText2}>
-              Do you really want to delete this user?
+              Do you really want to deactivate this user?
             </Text>
 
             <View style={styles.line}></View>
@@ -458,11 +540,50 @@ export default function UpdateRole() {
                 style={styles.modalButtonC}
                 onPress={() => {
                   // Handle "Yes" button press here
-                  deleteUserFromBothServices();
+                  editStatus();
+                  hideModal2();
+                  refreshData();
                   // Add your update logic here
                 }}
               >
-                <Text style={styles.buttonTextB}>Delete User</Text>
+                <Text style={styles.buttonTextB}>Deactivate User</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible3}
+        onRequestClose={hideModal3}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContentC}>
+            <View style={styles.closeiconC}>
+              <TouchableOpacity onPress={hideModal3}>
+                <Icon name="close-circle-outline" style={styles.closeB}></Icon>
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.modalText2}>Confirm Activate?</Text>
+            <Text style={styles.modalText2}>
+              Do you really want to activate this user?
+            </Text>
+
+            <View style={styles.line}></View>
+            <View style={styles.buttonContainerB}>
+              <TouchableOpacity
+                style={styles.modalButtonC}
+                onPress={() => {
+                  // Handle "Yes" button press here
+                  editStatus1();
+                  hideModal3();
+                  refreshData();
+                  // Add your update logic here
+                }}
+              >
+                <Text style={styles.buttonTextB}>Activate User</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -474,6 +595,14 @@ export default function UpdateRole() {
         style={{ height: scrollViewHeight }}
         contentContainerStyle={styles.scrollViewContent}
       >
+        {isRefreshing && (
+          <ActivityIndicator
+            size="large"
+            color="#0000ff"
+            style={styles.activityIndicator}
+          />
+        )}
+
         <View style={styles.rect}>
           <View style={styles.textcr}>
             <Text
@@ -548,6 +677,9 @@ export default function UpdateRole() {
             <View style={styles.column}>
               <Text style={styles.datafont}>Role</Text>
             </View>
+            <View style={styles.column}>
+              <Text style={styles.datafont}>Status</Text>
+            </View>
 
             <View style={styles.column}>
               <Text style={styles.datafont}>Action</Text>
@@ -580,6 +712,10 @@ export default function UpdateRole() {
               </View>
 
               <View style={styles.column1}>
+                <Text style={styles.datafont1}>{user.status}</Text>
+              </View>
+
+              <View style={styles.column1}>
                 <View style={styles.action}>
                   {user.role === "Head Admin" ? (
                     <TouchableOpacity>
@@ -589,17 +725,27 @@ export default function UpdateRole() {
                           showModal2(user.userEmail, user.role, user.userID)
                         }
                       >
-                        Delete
+                        --
                       </Text>
                     </TouchableOpacity>
-                  ) : user.role === "Staff" ? (
+                  ) : user.role === "Staff" && user.status === "Activated" ? (
                     <>
                       <TouchableOpacity
                         onPress={() =>
                           showModal2(user.userEmail, user.role, user.userID)
                         }
                       >
-                        <Text style={styles.datafont2}>Delete</Text>
+                        <Text style={styles.datafont2}>Change Status</Text>
+                      </TouchableOpacity>
+                    </>
+                  ) : user.role === "Staff" && user.status === "Deactivated" ? (
+                    <>
+                      <TouchableOpacity
+                        onPress={() =>
+                          showModal3(user.userEmail, user.role, user.userID)
+                        }
+                      >
+                        <Text style={styles.datafont2}>Change Status</Text>
                       </TouchableOpacity>
                     </>
                   ) : null}
@@ -613,6 +759,16 @@ export default function UpdateRole() {
   );
 }
 const styles = StyleSheet.create({
+  activityIndicator: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.5)", // Optional: add a semi-transparent background
+  },
   scrollViewContent: {
     flexGrow: 1,
 

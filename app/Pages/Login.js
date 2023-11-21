@@ -72,13 +72,16 @@ function Login(props) {
         });
 
         if (userData && userData.role) {
-          if (userData.role === "Staff") {
+          if (userData.role === "Staff" && userData.status === "Activated") {
             navigation.navigate("Drawermenu");
-          } else if (userData.role === "Head Admin") {
+          } else if (
+            userData.role === "Head Admin" &&
+            userData.status === "Activated"
+          ) {
             navigation.navigate("AdminDrawermenu");
           } else {
             Alert.alert("Invalid Email or Password");
-            await currentUser.delete();
+            // await currentUser.delete();
             console.log("User deleted successfully");
           }
         } else {
