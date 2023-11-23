@@ -40,7 +40,7 @@ import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
-import { format } from "date-fns";
+import { format, isSameMonth, isSameYear, parse } from "date-fns";
 import AppNavigator from "../../Custom/AppNavigator";
 
 export default function FDC_1st({
@@ -1068,14 +1068,30 @@ export default function FDC_1st({
                         styles.linetop,
                         {
                           backgroundColor:
-                            item.date === formattedToday
+                            item.date &&
+                            isSameMonth(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            ) &&
+                            isSameYear(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            )
                               ? "#7FCD91"
                               : "#FF6464",
                         },
                       ]}
                     >
                       <View style={styles.cont}>
-                        {item.date === formattedToday ? (
+                        {item.date &&
+                        isSameMonth(
+                          parse(item.date, "MM/d/yyyy", new Date()),
+                          today
+                        ) &&
+                        isSameYear(
+                          parse(item.date, "MM/d/yyyy", new Date()),
+                          today
+                        ) ? (
                           <>
                             <Icon
                               name="checkmark-circle-outline"
@@ -1174,7 +1190,17 @@ export default function FDC_1st({
                       styles.bb21,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1213,7 +1239,17 @@ export default function FDC_1st({
                       styles.bb10,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1252,7 +1288,17 @@ export default function FDC_1st({
                       styles.bb9,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1292,7 +1338,17 @@ export default function FDC_1st({
                       styles.bb20,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1330,7 +1386,17 @@ export default function FDC_1st({
                       styles.bb11,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1370,7 +1436,17 @@ export default function FDC_1st({
                       styles.bb12,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1408,7 +1484,17 @@ export default function FDC_1st({
                       styles.bb8,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1449,7 +1535,15 @@ export default function FDC_1st({
                         styles.bb19,
                         {
                           backgroundColor:
-                            item.date === formattedToday
+                            item.date &&
+                            isSameMonth(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            ) &&
+                            isSameYear(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            )
                               ? "#7FCD91"
                               : "#FF6464",
                         },
@@ -1489,7 +1583,15 @@ export default function FDC_1st({
                         styles.bb18,
                         {
                           backgroundColor:
-                            item.date === formattedToday
+                            item.date &&
+                            isSameMonth(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            ) &&
+                            isSameYear(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            )
                               ? "#7FCD91"
                               : "#FF6464",
                         },
@@ -1529,7 +1631,15 @@ export default function FDC_1st({
                         styles.bb17,
                         {
                           backgroundColor:
-                            item.date === formattedToday
+                            item.date &&
+                            isSameMonth(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            ) &&
+                            isSameYear(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            )
                               ? "#7FCD91"
                               : "#FF6464",
                         },
@@ -1571,7 +1681,15 @@ export default function FDC_1st({
                         styles.bb13,
                         {
                           backgroundColor:
-                            item.date === formattedToday
+                            item.date &&
+                            isSameMonth(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            ) &&
+                            isSameYear(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            )
                               ? "#7FCD91"
                               : "#FF6464",
                         },
@@ -1611,7 +1729,15 @@ export default function FDC_1st({
                         styles.bb14,
                         {
                           backgroundColor:
-                            item.date === formattedToday
+                            item.date &&
+                            isSameMonth(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            ) &&
+                            isSameYear(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            )
                               ? "#7FCD91"
                               : "#FF6464",
                         },
@@ -1653,7 +1779,15 @@ export default function FDC_1st({
                         styles.bb7,
                         {
                           backgroundColor:
-                            item.date === formattedToday
+                            item.date &&
+                            isSameMonth(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            ) &&
+                            isSameYear(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            )
                               ? "#7FCD91"
                               : "#FF6464",
                         },
@@ -1693,7 +1827,15 @@ export default function FDC_1st({
                         styles.bb6,
                         {
                           backgroundColor:
-                            item.date === formattedToday
+                            item.date &&
+                            isSameMonth(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            ) &&
+                            isSameYear(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            )
                               ? "#7FCD91"
                               : "#FF6464",
                         },
@@ -1736,7 +1878,17 @@ export default function FDC_1st({
                       styles.bb15,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1774,7 +1926,17 @@ export default function FDC_1st({
                       styles.bb5,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1813,7 +1975,17 @@ export default function FDC_1st({
                     styles.bb16,
                     {
                       backgroundColor:
-                        item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                        item.date &&
+                        isSameMonth(
+                          parse(item.date, "MM/d/yyyy", new Date()),
+                          today
+                        ) &&
+                        isSameYear(
+                          parse(item.date, "MM/d/yyyy", new Date()),
+                          today
+                        )
+                          ? "#7FCD91"
+                          : "#FF6464",
                     },
                   ]}
                 ></View>
@@ -1852,7 +2024,17 @@ export default function FDC_1st({
                       styles.bb1,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1890,7 +2072,17 @@ export default function FDC_1st({
                       styles.bb2,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1928,7 +2120,17 @@ export default function FDC_1st({
                       styles.bb3,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1966,7 +2168,17 @@ export default function FDC_1st({
                       styles.bb4,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2111,6 +2323,10 @@ const styles = StyleSheet.create({
     fontFamily: "poppins-bold",
   },
   container: {
+    alignContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    justifyContent: "center",
     flex: 1,
     paddingRight: wp("50%"),
 

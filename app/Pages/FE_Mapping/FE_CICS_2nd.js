@@ -41,7 +41,7 @@ import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
-import { format } from "date-fns";
+import { format, isSameMonth, isSameYear, parse } from "date-fns";
 import AppNavigator from "../../Custom/AppNavigator";
 
 export default function FE_CICS_2nd({
@@ -502,22 +502,36 @@ export default function FE_CICS_2nd({
                         styles.linetop,
                         {
                           backgroundColor:
-                            item.date === formattedToday
+                            item.date &&
+                            isSameMonth(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            ) &&
+                            isSameYear(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            )
                               ? "#7FCD91"
                               : "#FF6464",
                         },
                       ]}
                     >
                       <View style={styles.cont}>
-                        {item.date === formattedToday ? (
+                        {item.date &&
+                        isSameMonth(
+                          parse(item.date, "MM/d/yyyy", new Date()),
+                          today
+                        ) &&
+                        isSameYear(
+                          parse(item.date, "MM/d/yyyy", new Date()),
+                          today
+                        ) ? (
                           <>
                             <Icon
                               name="checkmark-circle-outline"
                               style={styles.check}
                             ></Icon>
-                            <Text style={styles.inspected}>
-                              INSPECTED TODAY
-                            </Text>
+                            <Text style={styles.inspected}>INSPECTED</Text>
                           </>
                         ) : (
                           <>
@@ -525,9 +539,7 @@ export default function FE_CICS_2nd({
                               name="close-circle-outline"
                               style={styles.check}
                             ></Icon>
-                            <Text style={styles.inspected}>
-                              NOT INSPECTED TODAY
-                            </Text>
+                            <Text style={styles.inspected}>NOT INSPECTED</Text>
                           </>
                         )}
                       </View>
@@ -628,7 +640,17 @@ export default function FE_CICS_2nd({
                       styles.fE1_downcircle,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -667,7 +689,17 @@ export default function FE_CICS_2nd({
                       styles.fE2_downcircle,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -706,7 +738,17 @@ export default function FE_CICS_2nd({
                       styles.fE3_downcircle,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -745,7 +787,17 @@ export default function FE_CICS_2nd({
                       styles.fE4_downcircle,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -784,7 +836,17 @@ export default function FE_CICS_2nd({
                       styles.fE5_downcircle,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -823,7 +885,17 @@ export default function FE_CICS_2nd({
                       styles.fE11,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -863,7 +935,15 @@ export default function FE_CICS_2nd({
                         styles.fE19,
                         {
                           backgroundColor:
-                            item.date === formattedToday
+                            item.date &&
+                            isSameMonth(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            ) &&
+                            isSameYear(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            )
                               ? "#7FCD91"
                               : "#FF6464",
                         },
@@ -903,7 +983,15 @@ export default function FE_CICS_2nd({
                         styles.fE15,
                         {
                           backgroundColor:
-                            item.date === formattedToday
+                            item.date &&
+                            isSameMonth(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            ) &&
+                            isSameYear(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            )
                               ? "#7FCD91"
                               : "#FF6464",
                         },
@@ -1051,6 +1139,10 @@ const styles = StyleSheet.create({
     fontFamily: "poppins-bold",
   },
   container: {
+    alignContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    justifyContent: "center",
     flex: 1,
 
     height: wp("160%"),

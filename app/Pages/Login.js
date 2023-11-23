@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
     left: wp("8%"),
     position: "absolute",
     fontFamily: "poppins-regular",
-    color: "#121212",
+
     height: hp("7%"),
     width: wp("50%"),
     fontSize: wp("1.5%"),
@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
     left: wp("8%"),
     position: "absolute",
     fontFamily: "poppins-regular",
-    color: "#121212",
+
     height: hp("7%"),
     width: wp("50%"),
     fontSize: wp("1.5%"),

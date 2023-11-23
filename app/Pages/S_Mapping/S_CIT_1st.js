@@ -41,7 +41,7 @@ import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
-import { format } from "date-fns";
+import { format, isSameMonth, isSameYear, parse } from "date-fns";
 export default function FE_CEAFA_1st({
   isModalVisible,
   hideModal,
@@ -1539,14 +1539,30 @@ export default function FE_CEAFA_1st({
                         styles.linetop,
                         {
                           backgroundColor:
-                            item.date === formattedToday
+                            item.date &&
+                            isSameMonth(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            ) &&
+                            isSameYear(
+                              parse(item.date, "MM/d/yyyy", new Date()),
+                              today
+                            )
                               ? "#7FCD91"
                               : "#FF6464",
                         },
                       ]}
                     >
                       <View style={styles.cont}>
-                        {item.date === formattedToday ? (
+                        {item.date &&
+                        isSameMonth(
+                          parse(item.date, "MM/d/yyyy", new Date()),
+                          today
+                        ) &&
+                        isSameYear(
+                          parse(item.date, "MM/d/yyyy", new Date()),
+                          today
+                        ) ? (
                           <>
                             <Icon
                               name="checkmark-circle-outline"
@@ -1645,7 +1661,17 @@ export default function FE_CEAFA_1st({
                       styles.bb5,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1665,7 +1691,7 @@ export default function FE_CEAFA_1st({
                         styles.b7,
                         {
                           backgroundColor:
-                            item.condition === "Good Condition"
+                            item.condition === "Good Condition  "
                               ? "#7FCD91"
                               : item.condition === "Slightly Damage"
                               ? "#FF9209"
@@ -1683,7 +1709,17 @@ export default function FE_CEAFA_1st({
                       styles.bb6,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1721,7 +1757,17 @@ export default function FE_CEAFA_1st({
                       styles.bb7,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1759,7 +1805,17 @@ export default function FE_CEAFA_1st({
                       styles.bb12,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1797,7 +1853,17 @@ export default function FE_CEAFA_1st({
                       styles.bb13,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1835,7 +1901,17 @@ export default function FE_CEAFA_1st({
                       styles.bb14,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1873,7 +1949,17 @@ export default function FE_CEAFA_1st({
                       styles.bb19,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1911,7 +1997,17 @@ export default function FE_CEAFA_1st({
                       styles.bb24,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1949,7 +2045,17 @@ export default function FE_CEAFA_1st({
                       styles.bb25,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -1987,7 +2093,17 @@ export default function FE_CEAFA_1st({
                       styles.bb30,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2027,7 +2143,17 @@ export default function FE_CEAFA_1st({
                       styles.bb4,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2065,7 +2191,17 @@ export default function FE_CEAFA_1st({
                       styles.bb3,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2103,7 +2239,17 @@ export default function FE_CEAFA_1st({
                       styles.bb8,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2141,7 +2287,17 @@ export default function FE_CEAFA_1st({
                       styles.bb11,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2179,7 +2335,17 @@ export default function FE_CEAFA_1st({
                       styles.bb16,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2218,7 +2384,17 @@ export default function FE_CEAFA_1st({
                       styles.bb15,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2256,7 +2432,17 @@ export default function FE_CEAFA_1st({
                       styles.bb20,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2294,7 +2480,17 @@ export default function FE_CEAFA_1st({
                       styles.bb23,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2332,7 +2528,17 @@ export default function FE_CEAFA_1st({
                       styles.bb26,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2370,7 +2576,17 @@ export default function FE_CEAFA_1st({
                       styles.bb29,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2410,7 +2626,17 @@ export default function FE_CEAFA_1st({
                       styles.bb1,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2448,7 +2674,17 @@ export default function FE_CEAFA_1st({
                       styles.bb2,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2486,7 +2722,17 @@ export default function FE_CEAFA_1st({
                       styles.bb9,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2524,7 +2770,17 @@ export default function FE_CEAFA_1st({
                       styles.bb10,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2562,7 +2818,17 @@ export default function FE_CEAFA_1st({
                       styles.bb17,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2600,7 +2866,17 @@ export default function FE_CEAFA_1st({
                       styles.bb18,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2638,7 +2914,17 @@ export default function FE_CEAFA_1st({
                       styles.bb21,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2676,7 +2962,17 @@ export default function FE_CEAFA_1st({
                       styles.bb22,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2714,7 +3010,17 @@ export default function FE_CEAFA_1st({
                       styles.bb27,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2752,7 +3058,17 @@ export default function FE_CEAFA_1st({
                       styles.bb28,
                       {
                         backgroundColor:
-                          item.date === formattedToday ? "#7FCD91" : "#FF6464",
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
                       },
                     ]}
                   ></View>
@@ -2898,6 +3214,10 @@ const styles = StyleSheet.create({
     fontFamily: "poppins-bold",
   },
   container: {
+    alignContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    justifyContent: "center",
     flex: 1,
     backgroundColor: "rgba(255,255,255,1)",
   },
