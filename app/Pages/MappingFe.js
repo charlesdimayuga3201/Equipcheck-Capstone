@@ -49,6 +49,11 @@ import FE_CEAFA_5th from "./FE_Mapping/FE_CEAFA_5th";
 import FE_CIT_1st from "./FE_Mapping/FE_CIT_1st";
 import FE_CIT_2nd from "./FE_Mapping/FE_CIT_2nd";
 import FE_CIT_3rd from "./FE_Mapping/FE_CIT_3rd";
+import FE_CIT_4th from "./FE_Mapping/FE_CIT_4th";
+import FE_CIT_5th from "./FE_Mapping/FE_CIT_5th";
+import FE_FDC_1st from "./FE_Mapping/FE_FDC_1st";
+import FE_RGR_1st from "./FE_Mapping/FE_RGR_1st";
+import FE_RGR_2nd from "./FE_Mapping/FE_RGR_2nd";
 
 function MappingFe({ navigation }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -491,6 +496,71 @@ function MappingFe({ navigation }) {
             //Mapping Content//
 
             <FE_CIT_3rd
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "4th Floor" && MselectedBuilding === "CIT" && (
+            //Mapping Content//
+
+            <FE_CIT_4th
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "5th Floor" && MselectedBuilding === "CIT" && (
+            //Mapping Content//
+
+            <FE_CIT_5th
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "1st Floor" && MselectedBuilding === "FDC" && (
+            //Mapping Content//
+
+            <FE_FDC_1st
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "1st Floor" && MselectedBuilding === "RGR" && (
+            //Mapping Content//
+
+            <FE_RGR_1st
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "2nd Floor" && MselectedBuilding === "RGR" && (
+            //Mapping Content//
+
+            <FE_RGR_2nd
               isModalVisible={isModalVisible}
               hideModal={hideModal}
               selectedIcon={selectedIcon}

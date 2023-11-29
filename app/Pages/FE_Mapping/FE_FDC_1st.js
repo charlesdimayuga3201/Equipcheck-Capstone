@@ -42,7 +42,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import { format, isSameMonth, isSameYear, parse } from "date-fns";
-export default function FE_CIT_4th({
+export default function FE_FDC_1st({
   isModalVisible,
   hideModal,
   selectedIcon,
@@ -52,280 +52,278 @@ export default function FE_CIT_4th({
 }) {
   const today = new Date();
   const formattedToday = format(today, "MM/d/yyyy");
-  const [FE119, setFE119] = useState([]);
+  const [FE130, setFE130] = useState([]);
   useEffect(() => {
-    const Fe119Data = [];
-    const FE119Collections = collection(firebase, "FE119");
-    const fetchFe119Data = async () => {
+    const Fe130Data = [];
+    const FE130Collections = collection(firebase, "FE130");
+    const fetchFe130Data = async () => {
       try {
-        const q119 = query(
-          FE119Collections,
+        const q130 = query(
+          FE130Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot119 = await getDocs(q119);
-        querySnapshot119.forEach((doc) => {
-          const data119 = doc.data();
-          Fe119Data.push(data119);
+        const querySnapshot130 = await getDocs(q130);
+        querySnapshot130.forEach((doc) => {
+          const data130 = doc.data();
+          Fe130Data.push(data130);
           // Use the data as needed
         });
 
-        setFE119(Fe119Data);
+        setFE130(Fe130Data);
       } catch (error) {}
     };
-    fetchFe119Data();
+    fetchFe130Data();
   }, []);
-
-  const [FE120, setFE120] = useState([]);
+  const [FE131, setFE131] = useState([]);
   useEffect(() => {
-    const Fe120Data = [];
-    const FE120Collections = collection(firebase, "FE120");
-    const fetchFe120Data = async () => {
+    const Fe131Data = [];
+    const FE131Collections = collection(firebase, "FE131");
+    const fetchFe131Data = async () => {
       try {
-        const q120 = query(
-          FE120Collections,
+        const q131 = query(
+          FE131Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot120 = await getDocs(q120);
-        querySnapshot120.forEach((doc) => {
-          const data120 = doc.data();
-          Fe120Data.push(data120);
+        const querySnapshot131 = await getDocs(q131);
+        querySnapshot131.forEach((doc) => {
+          const data131 = doc.data();
+          Fe131Data.push(data131);
           // Use the data as needed
         });
 
-        setFE120(Fe120Data);
+        setFE131(Fe131Data);
       } catch (error) {}
     };
-    fetchFe120Data();
+    fetchFe131Data();
   }, []);
-  const [FE121, setFE121] = useState([]);
+  const [FE132, setFE132] = useState([]);
   useEffect(() => {
-    const Fe121Data = [];
-    const FE121Collections = collection(firebase, "FE121");
-    const fetchFe121Data = async () => {
+    const Fe132Data = [];
+    const FE132Collections = collection(firebase, "FE132");
+    const fetchFe132Data = async () => {
       try {
-        const q121 = query(
-          FE121Collections,
+        const q132 = query(
+          FE132Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot121 = await getDocs(q121);
-        querySnapshot121.forEach((doc) => {
-          const data121 = doc.data();
-          Fe121Data.push(data121);
+        const querySnapshot132 = await getDocs(q132);
+        querySnapshot132.forEach((doc) => {
+          const data132 = doc.data();
+          Fe132Data.push(data132);
           // Use the data as needed
         });
 
-        setFE121(Fe121Data);
+        setFE132(Fe132Data);
       } catch (error) {}
     };
-    fetchFe121Data();
+    fetchFe132Data();
   }, []);
-  const [FE122, setFE122] = useState([]);
+  const [FE133, setFE133] = useState([]);
   useEffect(() => {
-    const Fe122Data = [];
-    const FE122Collections = collection(firebase, "FE122");
-    const fetchFe122Data = async () => {
+    const Fe133Data = [];
+    const FE133Collections = collection(firebase, "FE133");
+    const fetchFe133Data = async () => {
       try {
-        const q122 = query(
-          FE122Collections,
+        const q133 = query(
+          FE133Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot122 = await getDocs(q122);
-        querySnapshot122.forEach((doc) => {
-          const data122 = doc.data();
-          Fe122Data.push(data122);
+        const querySnapshot133 = await getDocs(q133);
+        querySnapshot133.forEach((doc) => {
+          const data133 = doc.data();
+          Fe133Data.push(data133);
           // Use the data as needed
         });
 
-        setFE122(Fe122Data);
+        setFE133(Fe133Data);
       } catch (error) {}
     };
-    fetchFe122Data();
+    fetchFe133Data();
   }, []);
-  const [FE123, setFE123] = useState([]);
+  const [FE134, setFE134] = useState([]);
   useEffect(() => {
-    const Fe123Data = [];
-    const FE123Collections = collection(firebase, "FE123");
-    const fetchFe123Data = async () => {
+    const Fe134Data = [];
+    const FE134Collections = collection(firebase, "FE134");
+    const fetchFe134Data = async () => {
       try {
-        const q123 = query(
-          FE123Collections,
+        const q134 = query(
+          FE134Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot123 = await getDocs(q123);
-        querySnapshot123.forEach((doc) => {
-          const data123 = doc.data();
-          Fe123Data.push(data123);
+        const querySnapshot134 = await getDocs(q134);
+        querySnapshot134.forEach((doc) => {
+          const data134 = doc.data();
+          Fe134Data.push(data134);
           // Use the data as needed
         });
 
-        setFE123(Fe123Data);
+        setFE134(Fe134Data);
       } catch (error) {}
     };
-    fetchFe123Data();
+    fetchFe134Data();
   }, []);
-  const [FE124, setFE124] = useState([]);
+  const [FE135, setFE135] = useState([]);
   useEffect(() => {
-    const Fe124Data = [];
-    const FE124Collections = collection(firebase, "FE124");
-    const fetchFe124Data = async () => {
+    const Fe135Data = [];
+    const FE135Collections = collection(firebase, "FE135");
+    const fetchFe135Data = async () => {
       try {
-        const q124 = query(
-          FE124Collections,
+        const q135 = query(
+          FE135Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot124 = await getDocs(q124);
-        querySnapshot124.forEach((doc) => {
-          const data124 = doc.data();
-          Fe124Data.push(data124);
+        const querySnapshot135 = await getDocs(q135);
+        querySnapshot135.forEach((doc) => {
+          const data135 = doc.data();
+          Fe135Data.push(data135);
           // Use the data as needed
         });
 
-        setFE124(Fe124Data);
+        setFE135(Fe135Data);
       } catch (error) {}
     };
-    fetchFe124Data();
+    fetchFe135Data();
   }, []);
   const refreshData = async () => {
-    const Fe124Data = [];
-    const FE124Collections = collection(firebase, "FE124");
-    const fetchFe124Data = async () => {
+    const Fe135Data = [];
+    const FE135Collections = collection(firebase, "FE135");
+    const fetchFe135Data = async () => {
       try {
-        const q124 = query(
-          FE124Collections,
+        const q135 = query(
+          FE135Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot124 = await getDocs(q124);
-        querySnapshot124.forEach((doc) => {
-          const data124 = doc.data();
-          Fe124Data.push(data124);
+        const querySnapshot135 = await getDocs(q135);
+        querySnapshot135.forEach((doc) => {
+          const data135 = doc.data();
+          Fe135Data.push(data135);
           // Use the data as needed
         });
 
-        setFE124(Fe124Data);
+        setFE135(Fe135Data);
       } catch (error) {}
     };
-    fetchFe124Data();
-    const Fe123Data = [];
-    const FE123Collections = collection(firebase, "FE123");
-    const fetchFe123Data = async () => {
+    fetchFe135Data();
+    const Fe134Data = [];
+    const FE134Collections = collection(firebase, "FE134");
+    const fetchFe134Data = async () => {
       try {
-        const q123 = query(
-          FE123Collections,
+        const q134 = query(
+          FE134Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot123 = await getDocs(q123);
-        querySnapshot123.forEach((doc) => {
-          const data123 = doc.data();
-          Fe123Data.push(data123);
+        const querySnapshot134 = await getDocs(q134);
+        querySnapshot134.forEach((doc) => {
+          const data134 = doc.data();
+          Fe134Data.push(data134);
           // Use the data as needed
         });
 
-        setFE123(Fe123Data);
+        setFE134(Fe134Data);
       } catch (error) {}
     };
-    fetchFe123Data();
-    const Fe122Data = [];
-    const FE122Collections = collection(firebase, "FE122");
-    const fetchFe122Data = async () => {
+    fetchFe134Data();
+    const Fe133Data = [];
+    const FE133Collections = collection(firebase, "FE133");
+    const fetchFe133Data = async () => {
       try {
-        const q122 = query(
-          FE122Collections,
+        const q133 = query(
+          FE133Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot122 = await getDocs(q122);
-        querySnapshot122.forEach((doc) => {
-          const data122 = doc.data();
-          Fe122Data.push(data122);
+        const querySnapshot133 = await getDocs(q133);
+        querySnapshot133.forEach((doc) => {
+          const data133 = doc.data();
+          Fe133Data.push(data133);
           // Use the data as needed
         });
 
-        setFE122(Fe122Data);
+        setFE133(Fe133Data);
       } catch (error) {}
     };
-    fetchFe122Data();
-    const Fe121Data = [];
-    const FE121Collections = collection(firebase, "FE121");
-    const fetchFe121Data = async () => {
+    fetchFe133Data();
+    const Fe132Data = [];
+    const FE132Collections = collection(firebase, "FE132");
+    const fetchFe132Data = async () => {
       try {
-        const q121 = query(
-          FE121Collections,
+        const q132 = query(
+          FE132Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot121 = await getDocs(q121);
-        querySnapshot121.forEach((doc) => {
-          const data121 = doc.data();
-          Fe121Data.push(data121);
+        const querySnapshot132 = await getDocs(q132);
+        querySnapshot132.forEach((doc) => {
+          const data132 = doc.data();
+          Fe132Data.push(data132);
           // Use the data as needed
         });
 
-        setFE121(Fe121Data);
+        setFE132(Fe132Data);
       } catch (error) {}
     };
-    fetchFe121Data();
-    const Fe120Data = [];
-    const FE120Collections = collection(firebase, "FE120");
-    const fetchFe120Data = async () => {
+    fetchFe132Data();
+    const Fe131Data = [];
+    const FE131Collections = collection(firebase, "FE131");
+    const fetchFe131Data = async () => {
       try {
-        const q120 = query(
-          FE120Collections,
+        const q131 = query(
+          FE131Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot120 = await getDocs(q120);
-        querySnapshot120.forEach((doc) => {
-          const data120 = doc.data();
-          Fe120Data.push(data120);
+        const querySnapshot131 = await getDocs(q131);
+        querySnapshot131.forEach((doc) => {
+          const data131 = doc.data();
+          Fe131Data.push(data131);
           // Use the data as needed
         });
 
-        setFE120(Fe120Data);
+        setFE131(Fe131Data);
       } catch (error) {}
     };
-    fetchFe120Data();
-    const Fe119Data = [];
-    const FE119Collections = collection(firebase, "FE119");
-    const fetchFe119Data = async () => {
+    fetchFe131Data();
+    const Fe130Data = [];
+    const FE130Collections = collection(firebase, "FE130");
+    const fetchFe130Data = async () => {
       try {
-        const q119 = query(
-          FE119Collections,
+        const q130 = query(
+          FE130Collections,
           orderBy("date", "desc"),
           orderBy("time", "desc"),
           limit(1)
         );
-        const querySnapshot119 = await getDocs(q119);
-        querySnapshot119.forEach((doc) => {
-          const data119 = doc.data();
-          Fe119Data.push(data119);
+        const querySnapshot130 = await getDocs(q130);
+        querySnapshot130.forEach((doc) => {
+          const data130 = doc.data();
+          Fe130Data.push(data130);
           // Use the data as needed
         });
 
-        setFE119(Fe119Data);
+        setFE130(Fe130Data);
       } catch (error) {}
     };
-    fetchFe119Data();
+    fetchFe130Data();
   };
-
   return (
     <View style={styles.container}>
       <View style={{ alignItems: "center", bottom: wp("2%") }}>
@@ -447,65 +445,17 @@ export default function FE_CIT_4th({
       </Modal>
       <ScrollView horizontal>
         <ImageBackground
-          source={require("../../assets/images/CIT_4th.png")}
+          source={require("../../assets/images/FEFDC_1st.png")}
           resizeMode="contain"
           style={styles.image}
           imageStyle={styles.image_imageStyle}
         >
-          {FE119.map((item, index) => (
-            <TouchableOpacity
-              key={index}
-              style={styles.fE21}
-              onPress={() => showModal("119")}
-            >
-              <View style={styles.fE22StackStack}>
-                <View style={styles.fE22Stack}>
-                  <View
-                    style={[
-                      styles.fE22,
-                      {
-                        backgroundColor:
-                          item.condition === "Good Condition"
-                            ? "#7FCD91"
-                            : item.condition === "Slightly Damage"
-                            ? "#FF9209"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                  <MaterialIconsIcon
-                    name="location-on"
-                    style={styles.fE24}
-                  ></MaterialIconsIcon>
-                </View>
-                <View
-                  style={[
-                    styles.fE23,
-                    {
-                      backgroundColor:
-                        item.date &&
-                        isSameMonth(
-                          parse(item.date, "MM/d/yyyy", new Date()),
-                          today
-                        ) &&
-                        isSameYear(
-                          parse(item.date, "MM/d/yyyy", new Date()),
-                          today
-                        )
-                          ? "#7FCD91"
-                          : "#FF6464",
-                    },
-                  ]}
-                ></View>
-              </View>
-            </TouchableOpacity>
-          ))}
           <View style={styles.fE1Row}>
-            {FE120.map((item, index) => (
+            {FE130.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.fE1}
-                onPress={() => showModal("120")}
+                onPress={() => showModal("130")}
               >
                 <View style={styles.fE2StackStack}>
                   <View style={styles.fE2Stack}>
@@ -549,11 +499,11 @@ export default function FE_CIT_4th({
                 </View>
               </TouchableOpacity>
             ))}
-            {FE121.map((item, index) => (
+            {FE131.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.fE5}
-                onPress={() => showModal("121")}
+                onPress={() => showModal("131")}
               >
                 <View style={styles.fE6StackStack}>
                   <View style={styles.fE6Stack}>
@@ -597,12 +547,13 @@ export default function FE_CIT_4th({
                 </View>
               </TouchableOpacity>
             ))}
-
-            {FE122.map((item, index) => (
+          </View>
+          <View style={styles.fE9Row}>
+            {FE132.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.fE9}
-                onPress={() => showModal("122")}
+                onPress={() => showModal("132")}
               >
                 <View style={styles.fE10StackStack}>
                   <View style={styles.fE10Stack}>
@@ -646,105 +597,152 @@ export default function FE_CIT_4th({
                 </View>
               </TouchableOpacity>
             ))}
-
-            <View style={styles.fE13Stack}>
-              {FE123.map((item, index) => (
-                <TouchableOpacity
-                  key={index}
-                  style={styles.fE13}
-                  onPress={() => showModal("123")}
-                >
-                  <View style={styles.fE14StackStack}>
-                    <View style={styles.fE14Stack}>
-                      <View
-                        style={[
-                          styles.fE14,
-                          {
-                            backgroundColor:
-                              item.condition === "Good Condition"
-                                ? "#7FCD91"
-                                : item.condition === "Slightly Damage"
-                                ? "#FF9209"
-                                : "#FF6464",
-                          },
-                        ]}
-                      ></View>
-                      <MaterialIconsIcon
-                        name="location-on"
-                        style={styles.fE16}
-                      ></MaterialIconsIcon>
-                    </View>
+            {FE133.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.fE13}
+                onPress={() => showModal("133")}
+              >
+                <View style={styles.fE14StackStack}>
+                  <View style={styles.fE14Stack}>
                     <View
                       style={[
-                        styles.fE15,
+                        styles.fE14,
                         {
                           backgroundColor:
-                            item.date &&
-                            isSameMonth(
-                              parse(item.date, "MM/d/yyyy", new Date()),
-                              today
-                            ) &&
-                            isSameYear(
-                              parse(item.date, "MM/d/yyyy", new Date()),
-                              today
-                            )
+                            item.condition === "Good Condition"
                               ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
                               : "#FF6464",
                         },
                       ]}
                     ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.fE16}
+                    ></MaterialIconsIcon>
                   </View>
-                </TouchableOpacity>
-              ))}
-              {FE124.map((item, index) => (
-                <TouchableOpacity
-                  key={index}
-                  style={styles.fE17}
-                  onPress={() => showModal("124")}
-                >
-                  <View style={styles.fE18StackStack}>
-                    <View style={styles.fE18Stack}>
-                      <View
-                        style={[
-                          styles.fE18,
-                          {
-                            backgroundColor:
-                              item.condition === "Good Condition"
-                                ? "#7FCD91"
-                                : item.condition === "Slightly Damage"
-                                ? "#FF9209"
-                                : "#FF6464",
-                          },
-                        ]}
-                      ></View>
-                      <MaterialIconsIcon
-                        name="location-on"
-                        style={styles.fE20}
-                      ></MaterialIconsIcon>
-                    </View>
+                  <View
+                    style={[
+                      styles.fE15,
+                      {
+                        backgroundColor:
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
+                      },
+                    ]}
+                  ></View>
+                </View>
+              </TouchableOpacity>
+            ))}
+          </View>
+          <View style={styles.fE17Row}>
+            {FE134.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.fE17}
+                onPress={() => showModal("134")}
+              >
+                <View style={styles.fE18StackStack}>
+                  <View style={styles.fE18Stack}>
                     <View
                       style={[
-                        styles.fE19,
+                        styles.fE18,
                         {
                           backgroundColor:
-                            item.date &&
-                            isSameMonth(
-                              parse(item.date, "MM/d/yyyy", new Date()),
-                              today
-                            ) &&
-                            isSameYear(
-                              parse(item.date, "MM/d/yyyy", new Date()),
-                              today
-                            )
+                            item.condition === "Good Condition"
                               ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
                               : "#FF6464",
                         },
                       ]}
                     ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.fE20}
+                    ></MaterialIconsIcon>
                   </View>
-                </TouchableOpacity>
-              ))}
-            </View>
+                  <View
+                    style={[
+                      styles.fE19,
+                      {
+                        backgroundColor:
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
+                      },
+                    ]}
+                  ></View>
+                </View>
+              </TouchableOpacity>
+            ))}
+            {FE135.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.fE21}
+                onPress={() => showModal("135")}
+              >
+                <View style={styles.fE22StackStack}>
+                  <View style={styles.fE22Stack}>
+                    <View
+                      style={[
+                        styles.fE22,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.fE24}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.fE23,
+                      {
+                        backgroundColor:
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
+                      },
+                    ]}
+                  ></View>
+                </View>
+              </TouchableOpacity>
+            ))}
           </View>
         </ImageBackground>
       </ScrollView>
@@ -886,64 +884,15 @@ const styles = StyleSheet.create({
   container: {
     alignContent: "center",
     alignItems: "center",
-    alignSelf: "center",
-    justifyContent: "center",
+
     flex: 1,
     height: wp("150%"),
   },
   image: {
-    width: 1204,
-    height: 417,
-    flexDirection: "row",
-    marginLeft: 47,
+    width: 464,
+    height: 748,
   },
   image_imageStyle: {},
-  fE21: {
-    width: 30,
-    height: 31,
-    marginLeft: 1078,
-    marginTop: 87,
-  },
-  fE22: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  fE24: {
-    top: 0,
-    position: "absolute",
-    color: "rgba(225,47,35,1)",
-    fontSize: 30,
-    left: 0,
-    zIndex: 100,
-  },
-  fE22Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  fE23: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  fE22StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
   fE1: {
     width: 30,
     height: 31,
@@ -991,8 +940,7 @@ const styles = StyleSheet.create({
   fE5: {
     width: 30,
     height: 31,
-    marginLeft: 161,
-    marginTop: 1,
+    marginLeft: 197,
   },
   fE6: {
     top: 7,
@@ -1034,11 +982,16 @@ const styles = StyleSheet.create({
     height: 33,
     marginTop: -2,
   },
+  fE1Row: {
+    height: 31,
+    flexDirection: "row",
+    marginTop: 68,
+    marginLeft: 115,
+    marginRight: 92,
+  },
   fE9: {
     width: 30,
     height: 31,
-    marginLeft: 161,
-    marginTop: 1,
   },
   fE10: {
     top: 7,
@@ -1081,11 +1034,10 @@ const styles = StyleSheet.create({
     marginTop: -2,
   },
   fE13: {
-    top: 0,
-    left: 0,
     width: 30,
     height: 31,
-    position: "absolute",
+    marginLeft: 245,
+    marginTop: 16,
   },
   fE14: {
     top: 7,
@@ -1127,12 +1079,16 @@ const styles = StyleSheet.create({
     height: 33,
     marginTop: -2,
   },
+  fE9Row: {
+    height: 47,
+    flexDirection: "row",
+    marginTop: 286,
+    marginLeft: 67,
+    marginRight: 92,
+  },
   fE17: {
-    top: 1,
-    left: 29,
     width: 30,
     height: 31,
-    position: "absolute",
   },
   fE18: {
     top: 7,
@@ -1174,18 +1130,56 @@ const styles = StyleSheet.create({
     height: 33,
     marginTop: -2,
   },
-  fE13Stack: {
-    width: 59,
-    height: 32,
-    marginLeft: 161,
-    marginTop: 2,
+  fE21: {
+    width: 30,
+    height: 31,
+    marginLeft: 218,
   },
-  fE1Row: {
-    height: 34,
+  fE22: {
+    top: 7,
+    left: 9,
+    width: 11,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+  },
+  fE24: {
+    top: 0,
+    position: "absolute",
+    color: "rgba(225,47,35,1)",
+    fontSize: 30,
+    left: 0,
+    zIndex: 100,
+  },
+  fE22Stack: {
+    top: 0,
+    left: 0,
+    width: 30,
+    height: 30,
+    position: "absolute",
+  },
+  fE23: {
+    top: 22,
+    left: 5,
+    width: 20,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+    borderWidth: 2,
+    borderColor: "rgba(69,64,64,1)",
+  },
+  fE22StackStack: {
+    width: 30,
+    height: 33,
+    marginTop: -2,
+  },
+  fE17Row: {
+    height: 31,
     flexDirection: "row",
-    flex: 1,
-    marginRight: 287,
-    marginLeft: -822,
-    marginTop: 199,
+    marginTop: 133,
+    marginLeft: 106,
+    marginRight: 80,
   },
 });

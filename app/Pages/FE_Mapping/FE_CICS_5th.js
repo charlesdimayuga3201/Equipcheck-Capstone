@@ -976,7 +976,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
   },
   modalContent: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#F5F5F5",
     elevation: 8,
     borderRadius: 10,
     alignItems: "center",
@@ -1016,7 +1016,7 @@ const styles = StyleSheet.create({
   modalButtonY: {
     width: wp("25%"),
     elevation: 2,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#EEEDED",
 
     padding: 13,
     borderRadius: 10,
@@ -1043,6 +1043,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "center",
     flex: 1,
+    height: wp("150%"),
   },
   image: {
     width: 1215,

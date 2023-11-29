@@ -21,7 +21,8 @@ import {
 import { SvgUri } from "react-native-svg";
 import { NavigationContainer } from "@react-navigation/native";
 import Mapping from "../Pages/Mapping";
-
+import { RFValue } from "react-native-responsive-fontsize";
+import Icon from "react-native-vector-icons/Ionicons";
 import AppNavigator from "./AppNavigator";
 import AppNavigator1 from "./AppNavigator1";
 import AppNavigator2 from "./AppNavigator2";
@@ -53,6 +54,18 @@ export default function Drawermenu({ sessionToken }) {
   const navigation = useNavigation();
   const [showSubMenu1, setShowSubMenu1] = useState(false);
   const [showSubMenu2, setShowSubMenu2] = useState(false);
+  const [isModalVisible3, setIsModalVisible3] = useState(false);
+  const showModal3 = () => {
+    setIsModalVisible3(true);
+  };
+
+  const hideModal3 = () => {
+    setIsModalVisible3(false);
+  };
+
+  const logout = () => {
+    navigation.navigate("Login");
+  };
 
   const handleLogout = () => {
     Alert.alert(
@@ -176,8 +189,47 @@ export default function Drawermenu({ sessionToken }) {
               >
                 <DrawerItemList {...props} />
               </DrawerContentScrollView>
+              <Modal
+                animationType="slide"
+                transparent={true}
+                visible={isModalVisible3}
+                onRequestClose={hideModal3}
+              >
+                <View style={styles.modalContainer}>
+                  <View style={styles.modalContentC}>
+                    <View style={styles.closeiconC}>
+                      <TouchableOpacity onPress={hideModal3}>
+                        <Icon
+                          name="close-circle-outline"
+                          style={styles.closeB}
+                        ></Icon>
+                      </TouchableOpacity>
+                    </View>
+                    <Text style={styles.modalText2}>Confirm Logout?</Text>
+                    <Text style={styles.modalText2}>
+                      Do you really want to logout?
+                    </Text>
+
+                    <View style={styles.line}></View>
+                    <View style={styles.buttonContainerB}>
+                      <TouchableOpacity
+                        style={styles.modalButtonC}
+                        onPress={() => {
+                          // Handle "Yes" button press here
+                          logout();
+                          hideModal3();
+
+                          // Add your update logic here
+                        }}
+                      >
+                        <Text style={styles.buttonTextB}>Logout</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </View>
+              </Modal>
               <TouchableOpacity
-                onPress={handleLogout}
+                onPress={showModal3}
                 style={{
                   flexDirection: "row",
                   alignItems: "flex-end",
@@ -334,6 +386,55 @@ export default function Drawermenu({ sessionToken }) {
   );
 }
 const styles = StyleSheet.create({
+  buttonTextB: {
+    fontWeight: "600",
+    color: "white",
+    fontSize: RFValue(12),
+  },
+  modalButtonC: {
+    width: hp("40%"),
+    top: hp("10%"),
+    // elevation: 4,
+    backgroundColor: "#FF6464",
+    padding: 20,
+    borderRadius: 5,
+
+    alignItems: "center",
+  },
+  buttonContainerB: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  modalText2: {
+    color: "#7D7C7C",
+    fontSize: RFValue(13),
+
+    textAlign: "center",
+  },
+  closeB: {
+    // color: "#45474B",
+    color: "#FF6464",
+    fontSize: RFValue(26),
+  },
+  closeiconC: {
+    // top: 2,
+    marginLeft: wp("33%"),
+    zIndex: 5,
+  },
+  modalContentC: {
+    backgroundColor: "#FFFFFF",
+    elevation: 8,
+    borderRadius: 10,
+    top: -20,
+    width: wp("40%"), // Adjust the width as needed
+    height: wp("28%"), // Adjust the height as needed
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
+  },
   subMenuItem: {
     flexDirection: "row",
     alignItems: "center",
