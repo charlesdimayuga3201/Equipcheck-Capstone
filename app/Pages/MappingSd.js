@@ -37,6 +37,10 @@ import { firebase } from "../../firebaseConfig";
 import Icon from "react-native-vector-icons/Ionicons";
 import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
 import FDC_1st from "./SD_Mapping/FDC_1st";
+import FDC_2nd from "./SD_Mapping/FDC_2nd";
+import FDC_2nd_2P from "./SD_Mapping/FDC_2nd_2P";
+import SD_CICS_1st from "./SD_Mapping/SD_CICS_1st";
+import SD_CICS_2nd from "./SD_Mapping/SD_CICS_2nd";
 
 function MappingSd(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -305,6 +309,57 @@ function MappingSd(props) {
             //Mapping Content//
 
             <FDC_1st
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "2nd Floor P1" && MselectedBuilding === "FDC" && (
+            //Mapping Content//
+
+            <FDC_2nd
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+          {MselectedFloor === "2nd Floor P2" && MselectedBuilding === "FDC" && (
+            //Mapping Content//
+
+            <FDC_2nd_2P
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "1st Floor" && MselectedBuilding === "CICS" && (
+            //Mapping Content//
+
+            <SD_CICS_1st
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "2nd Floor" && MselectedBuilding === "CICS" && (
+            //Mapping Content//
+
+            <SD_CICS_2nd
               isModalVisible={isModalVisible}
               hideModal={hideModal}
               selectedIcon={selectedIcon}

@@ -1024,66 +1024,44 @@ export default function FDC_1st({
   };
 
   return (
-    <ScrollView horizontal>
-      <View style={styles.container}>
-        <View style={{ alignItems: "center", left: wp("23%") }}>
-          <TouchableOpacity
-            onPress={refreshData}
-            style={{
-              backgroundColor: "#7FCD91",
-              padding: 10,
-              borderRadius: 5,
-              justifyContent: "center",
-              alignSelf: "center",
-            }}
-          >
-            <Icon
-              name="refresh-circle-outline"
-              style={{ color: "white", fontSize: 20 }}
-            >
-              <Text style={{ color: "white", fontSize: 20 }}>Refresh </Text>
-            </Icon>
-          </TouchableOpacity>
-        </View>
-
-        <ImageBackground
-          source={require("../../assets/images/FDC_1st.png")}
-          resizeMode="contain"
-          style={styles.image}
-          imageStyle={styles.image_imageStyle}
+    <View style={styles.container}>
+      <View style={{ alignItems: "center", bottom: wp("2%") }}>
+        <TouchableOpacity
+          onPress={refreshData}
+          style={{
+            backgroundColor: "#7FCD91",
+            padding: 10,
+            borderRadius: 5,
+            justifyContent: "center",
+            alignSelf: "center",
+          }}
         >
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={isModalVisible}
-            onRequestClose={hideModal}
+          <Icon
+            name="refresh-circle-outline"
+            style={{ color: "white", fontSize: 20 }}
           >
-            <View style={styles.modalContainer}>
-              <View style={styles.modalContent}>
-                {selectedIcon &&
-                  selectedIcon.map((item, index) => (
-                    <View
-                      key={index}
-                      style={[
-                        styles.linetop,
-                        {
-                          backgroundColor:
-                            item.date &&
-                            isSameMonth(
-                              parse(item.date, "MM/d/yyyy", new Date()),
-                              today
-                            ) &&
-                            isSameYear(
-                              parse(item.date, "MM/d/yyyy", new Date()),
-                              today
-                            )
-                              ? "#7FCD91"
-                              : "#FF6464",
-                        },
-                      ]}
-                    >
-                      <View style={styles.cont}>
-                        {item.date &&
+            <Text style={{ color: "white", fontSize: 20 }}>Refresh </Text>
+          </Icon>
+        </TouchableOpacity>
+      </View>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible}
+        onRequestClose={hideModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            {selectedIcon &&
+              selectedIcon.map((item, index) => (
+                <View
+                  key={index}
+                  style={[
+                    styles.linetop,
+                    {
+                      backgroundColor:
+                        item.date &&
                         isSameMonth(
                           parse(item.date, "MM/d/yyyy", new Date()),
                           today
@@ -1091,73 +1069,89 @@ export default function FDC_1st({
                         isSameYear(
                           parse(item.date, "MM/d/yyyy", new Date()),
                           today
-                        ) ? (
-                          <>
-                            <Icon
-                              name="checkmark-circle-outline"
-                              style={styles.check}
-                            ></Icon>
-                            <Text style={styles.inspected}>
-                              INSPECTED TODAY
-                            </Text>
-                          </>
-                        ) : (
-                          <>
-                            <Icon
-                              name="close-circle-outline"
-                              style={styles.check}
-                            ></Icon>
-                            <Text style={styles.inspected}>
-                              NOT INSPECTED TODAY
-                            </Text>
-                          </>
-                        )}
-                      </View>
-                    </View>
-                  ))}
-
-                {selectedIcon &&
-                  selectedIcon.map((item, index) => (
-                    <Text key={index} style={styles.modalText}>
-                      Fire Extinguisher ID: {item.id}
-                    </Text>
-                  ))}
-
-                {selectedIcon &&
-                  selectedIcon.map((item, index) => (
-                    <View key={index} style={styles.textcont}>
-                      <Text style={styles.modalText1}>Conditon: </Text>
-                      <Text
-                        style={[
-                          styles.modalText1,
-                          {
-                            color:
-                              item.condition === "Good Condition"
-                                ? "#7FCD91"
-                                : item.condition === "Slightly Damage"
-                                ? "#FFA33C"
-                                : "#FF6464",
-                          },
-                        ]}
-                      >
-                        {item.condition}
-                      </Text>
-                    </View>
-                  ))}
-
-                <View style={styles.line}></View>
-                <View style={styles.buttonContainer}>
-                  <TouchableOpacity
-                    style={styles.modalButtonY}
-                    onPress={hideModal}
-                  >
-                    <Text style={styles.buttonText}>Close</Text>
-                  </TouchableOpacity>
+                        )
+                          ? "#7FCD91"
+                          : "#FF6464",
+                    },
+                  ]}
+                >
+                  <View style={styles.cont}>
+                    {item.date &&
+                    isSameMonth(
+                      parse(item.date, "MM/d/yyyy", new Date()),
+                      today
+                    ) &&
+                    isSameYear(
+                      parse(item.date, "MM/d/yyyy", new Date()),
+                      today
+                    ) ? (
+                      <>
+                        <Icon
+                          name="checkmark-circle-outline"
+                          style={styles.check}
+                        ></Icon>
+                        <Text style={styles.inspected}>INSPECTED TODAY</Text>
+                      </>
+                    ) : (
+                      <>
+                        <Icon
+                          name="close-circle-outline"
+                          style={styles.check}
+                        ></Icon>
+                        <Text style={styles.inspected}>
+                          NOT INSPECTED TODAY
+                        </Text>
+                      </>
+                    )}
+                  </View>
                 </View>
-              </View>
-            </View>
-          </Modal>
+              ))}
 
+            {selectedIcon &&
+              selectedIcon.map((item, index) => (
+                <Text key={index} style={styles.modalText}>
+                  Smoke Detector ID: {item.id}
+                </Text>
+              ))}
+
+            {selectedIcon &&
+              selectedIcon.map((item, index) => (
+                <View key={index} style={styles.textcont}>
+                  <Text style={styles.modalText1}>Conditon: </Text>
+                  <Text
+                    style={[
+                      styles.modalText1,
+                      {
+                        color:
+                          item.condition === "Good Condition"
+                            ? "#7FCD91"
+                            : item.condition === "Slightly Damage"
+                            ? "#FFA33C"
+                            : "#FF6464",
+                      },
+                    ]}
+                  >
+                    {item.condition}
+                  </Text>
+                </View>
+              ))}
+
+            <View style={styles.line}></View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity style={styles.modalButtonY} onPress={hideModal}>
+                <Text style={styles.buttonText}>Close</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+      <ScrollView horizontal>
+        <ImageBackground
+          source={require("../../assets/images/FDC_1st.png")}
+          resizeMode="contain"
+          style={styles.image}
+          imageStyle={styles.image_imageStyle}
+        >
           <View style={styles.button21Row}>
             {SD1.map((item, index) => (
               <TouchableOpacity
@@ -2187,8 +2181,8 @@ export default function FDC_1st({
             ))}
           </View>
         </ImageBackground>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 const styles = StyleSheet.create({
@@ -2325,18 +2319,14 @@ const styles = StyleSheet.create({
   container: {
     alignContent: "center",
     alignItems: "center",
-    alignSelf: "center",
-    justifyContent: "center",
+
     flex: 1,
-    paddingRight: wp("50%"),
 
     height: wp("150%"),
   },
   image: {
     width: 428,
     height: 702,
-    marginTop: 49,
-    marginLeft: 403,
   },
   image_imageStyle: {},
   button21: {

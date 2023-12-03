@@ -54,6 +54,10 @@ import FE_CIT_5th from "./FE_Mapping/FE_CIT_5th";
 import FE_FDC_1st from "./FE_Mapping/FE_FDC_1st";
 import FE_RGR_1st from "./FE_Mapping/FE_RGR_1st";
 import FE_RGR_2nd from "./FE_Mapping/FE_RGR_2nd";
+import FE_RGR_3rd from "./FE_Mapping/FE_RGR_3rd";
+import FE_SSC_1st from "./FE_Mapping/FE_SSC_1st";
+import FE_SSC_2nd from "./FE_Mapping/FE_SSC_2nd";
+import FE_SSC_3rd from "./FE_Mapping/FE_SSC_3rd";
 
 function MappingFe({ navigation }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -561,6 +565,58 @@ function MappingFe({ navigation }) {
             //Mapping Content//
 
             <FE_RGR_2nd
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "3rd Floor" && MselectedBuilding === "RGR" && (
+            //Mapping Content//
+
+            <FE_RGR_3rd
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "1st Floor" && MselectedBuilding === "SSC" && (
+            //Mapping Content//
+
+            <FE_SSC_1st
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "2nd Floor" && MselectedBuilding === "SSC" && (
+            //Mapping Content//
+
+            <FE_SSC_2nd
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "3rd Floor" && MselectedBuilding === "SSC" && (
+            //Mapping Content//
+
+            <FE_SSC_3rd
               isModalVisible={isModalVisible}
               hideModal={hideModal}
               selectedIcon={selectedIcon}
