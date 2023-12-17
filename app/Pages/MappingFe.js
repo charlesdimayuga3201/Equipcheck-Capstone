@@ -646,7 +646,7 @@ const styles = StyleSheet.create({
   },
   modalContentA: {
     alignItems: "center",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#F5F5F5",
     elevation: 8,
     borderRadius: 10,
 

@@ -179,7 +179,7 @@ export default function AdminDrawermenu() {
                       left: wp("1.5%"),
                     }}
                   >
-                    Head Admin
+                    Admin
                   </Text>
                 </View>
               </ImageBackground>

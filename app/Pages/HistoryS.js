@@ -151,7 +151,7 @@ function HistoryS(props) {
 
       const q = query(
         selectedCollection,
-        where("id", "==", selectedSafetyEquipment),
+        // where("id", "==", selectedSafetyEquipment),
         orderBy("date", "desc"),
         orderBy("time", "desc")
       );
@@ -237,7 +237,7 @@ function HistoryS(props) {
 
     const q3 = query(
       selectedCollection,
-      where("id", "==", selectedSafetyEquipment),
+      // where("id", "==", selectedSafetyEquipment),
       orderBy("date", "desc"),
       orderBy("time", "desc")
     );
@@ -295,7 +295,25 @@ function HistoryS(props) {
               HISTORY EQUIPMENT INFORMATION
             </Text>
           </View>
-
+          <View style={{ alignItems: "center", marginTop: 20 }}>
+            <TouchableOpacity
+              onPress={refreshData}
+              style={{
+                backgroundColor: "#7FCD91",
+                padding: 10,
+                borderRadius: 5,
+                justifyContent: "center",
+                alignSelf: "center",
+              }}
+            >
+              <Icon
+                name="refresh-circle-outline"
+                style={{ color: "white", fontSize: 20 }}
+              >
+                <Text style={{ color: "white", fontSize: 20 }}>Refresh </Text>
+              </Icon>
+            </TouchableOpacity>
+          </View>
           {/* <View style={styles.line} /> */}
           <View
             style={{

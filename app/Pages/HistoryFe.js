@@ -151,7 +151,7 @@ function HistoryFe(props) {
 
       const q = query(
         selectedCollection,
-        where("id", "==", selectedSafetyEquipment),
+        // where("id", "==", selectedSafetyEquipment),
         orderBy("date", "desc"),
         orderBy("time", "desc")
       );
@@ -237,7 +237,7 @@ function HistoryFe(props) {
 
     const q3 = query(
       selectedCollection,
-      where("id", "==", selectedSafetyEquipment),
+      // where("id", "==", selectedSafetyEquipment),
       orderBy("date", "desc"),
       orderBy("time", "desc")
     );

@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     fontFamily: "poppins-regular",
 
     height: hp("7%"),
-    width: wp("50%"),
+    width: wp("25%"),
     fontSize: wp("1.5%"),
   },
   recStack: {
@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
     fontFamily: "poppins-regular",
 
     height: hp("7%"),
-    width: wp("50%"),
+    width: wp("25%"),
     fontSize: wp("1.5%"),
   },
   icon2Row: {

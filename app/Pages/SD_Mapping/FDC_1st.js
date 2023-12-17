@@ -1090,7 +1090,7 @@ export default function FDC_1st({
                           name="checkmark-circle-outline"
                           style={styles.check}
                         ></Icon>
-                        <Text style={styles.inspected}>INSPECTED TODAY</Text>
+                        <Text style={styles.inspected}>INSPECTED</Text>
                       </>
                     ) : (
                       <>
@@ -1098,9 +1098,7 @@ export default function FDC_1st({
                           name="close-circle-outline"
                           style={styles.check}
                         ></Icon>
-                        <Text style={styles.inspected}>
-                          NOT INSPECTED TODAY
-                        </Text>
+                        <Text style={styles.inspected}>NOT INSPECTED</Text>
                       </>
                     )}
                   </View>
@@ -2255,7 +2253,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
   },
   modalContent: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#F5F5F5",
     elevation: 8,
     borderRadius: 10,
     alignItems: "center",
@@ -2295,7 +2293,7 @@ const styles = StyleSheet.create({
   modalButtonY: {
     width: wp("25%"),
     elevation: 2,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#EEEDED",
 
     padding: 13,
     borderRadius: 10,

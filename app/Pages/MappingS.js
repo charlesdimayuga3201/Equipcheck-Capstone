@@ -37,6 +37,7 @@ import { firebase } from "../../firebaseConfig";
 import Icon from "react-native-vector-icons/Ionicons";
 import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
 import S_CIT_1st from "./S_Mapping/S_CIT_1st";
+import S_CIT_2nd from "./S_Mapping/S_CIT_2nd";
 
 function MappingS(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -315,6 +316,17 @@ function MappingS(props) {
               MselectedFloor={MselectedFloor}
             />
           )}
+          {MselectedFloor === "2nd Floor" && MselectedBuilding === "CIT" && (
+            //Mapping Content//
+            <S_CIT_2nd
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
         </View>
       </ScrollView>
     </View>
@@ -336,7 +348,7 @@ const styles = StyleSheet.create({
   },
   modalContentA: {
     alignItems: "center",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#F5F5F5",
     elevation: 8,
     borderRadius: 10,
 

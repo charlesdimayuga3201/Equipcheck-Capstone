@@ -150,7 +150,7 @@ function HistorySd(props) {
 
       const q = query(
         selectedCollection,
-        where("id", "==", selectedSafetyEquipment),
+        // where("id", "==", selectedSafetyEquipment),
         orderBy("date", "desc"),
         orderBy("time", "desc")
       );
@@ -236,7 +236,7 @@ function HistorySd(props) {
 
     const q3 = query(
       selectedCollection,
-      where("id", "==", selectedSafetyEquipment),
+      // where("id", "==", selectedSafetyEquipment),
       orderBy("date", "desc"),
       orderBy("time", "desc")
     );

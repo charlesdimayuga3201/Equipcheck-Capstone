@@ -42,7 +42,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import { format, isSameMonth, isSameYear, parse } from "date-fns";
-export default function FE_CEAFA_1st({
+export default function S_CIT_1st({
   isModalVisible,
   hideModal,
   selectedIcon,
@@ -566,484 +566,7 @@ export default function FE_CEAFA_1st({
     fetchS20Data();
   }, []);
 
-  const [S21, setS21] = useState([]);
-  useEffect(() => {
-    const S21Data = [];
-    const S21Collections = collection(firebase, "S21");
-    const fetchS21Data = async () => {
-      try {
-        const q21 = query(
-          S21Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot21 = await getDocs(q21);
-        querySnapshot21.forEach((doc) => {
-          const data21 = doc.data();
-          S21Data.push(data21);
-        });
-
-        setS21(S21Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS21Data();
-  }, []);
-  const [S22, setS22] = useState([]);
-  useEffect(() => {
-    const S22Data = [];
-    const S22Collections = collection(firebase, "S22");
-    const fetchS22Data = async () => {
-      try {
-        const q22 = query(
-          S22Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot22 = await getDocs(q22);
-        querySnapshot22.forEach((doc) => {
-          const data22 = doc.data();
-          S22Data.push(data22);
-        });
-
-        setS22(S22Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS22Data();
-  }, []);
-
-  const [S23, setS23] = useState([]);
-  useEffect(() => {
-    const S23Data = [];
-    const S23Collections = collection(firebase, "S23");
-    const fetchS23Data = async () => {
-      try {
-        const q23 = query(
-          S23Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot23 = await getDocs(q23);
-        querySnapshot23.forEach((doc) => {
-          const data23 = doc.data();
-          S23Data.push(data23);
-        });
-
-        setS23(S23Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS23Data();
-  }, []);
-  const [S24, setS24] = useState([]);
-  useEffect(() => {
-    const S24Data = [];
-    const S24Collections = collection(firebase, "S24");
-    const fetchS24Data = async () => {
-      try {
-        const q24 = query(
-          S24Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot24 = await getDocs(q24);
-        querySnapshot24.forEach((doc) => {
-          const data24 = doc.data();
-          S24Data.push(data24);
-        });
-
-        setS24(S24Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS24Data();
-  }, []);
-
-  const [S25, setS25] = useState([]);
-  useEffect(() => {
-    const S25Data = [];
-    const S25Collections = collection(firebase, "S25");
-    const fetchS25Data = async () => {
-      try {
-        const q25 = query(
-          S25Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot25 = await getDocs(q25);
-        querySnapshot25.forEach((doc) => {
-          const data25 = doc.data();
-          S25Data.push(data25);
-        });
-
-        setS25(S25Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS25Data();
-  }, []);
-
-  const [S26, setS26] = useState([]);
-  useEffect(() => {
-    const S26Data = [];
-    const S26Collections = collection(firebase, "S26");
-    const fetchS26Data = async () => {
-      try {
-        const q26 = query(
-          S26Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot26 = await getDocs(q26);
-        querySnapshot26.forEach((doc) => {
-          const data26 = doc.data();
-          S26Data.push(data26);
-        });
-
-        setS26(S26Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS26Data();
-  }, []);
-
-  const [S27, setS27] = useState([]);
-  useEffect(() => {
-    const S27Data = [];
-    const S27Collections = collection(firebase, "S27");
-    const fetchS27Data = async () => {
-      try {
-        const q27 = query(
-          S27Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot27 = await getDocs(q27);
-        querySnapshot27.forEach((doc) => {
-          const data27 = doc.data();
-          S27Data.push(data27);
-        });
-
-        setS27(S27Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS27Data();
-  }, []);
-
-  const [S28, setS28] = useState([]);
-  useEffect(() => {
-    const S28Data = [];
-    const S28Collections = collection(firebase, "S28");
-    const fetchS28Data = async () => {
-      try {
-        const q28 = query(
-          S28Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot28 = await getDocs(q28);
-        querySnapshot28.forEach((doc) => {
-          const data28 = doc.data();
-          S28Data.push(data28);
-        });
-
-        setS28(S28Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS28Data();
-  }, []);
-  const [S29, setS29] = useState([]);
-  useEffect(() => {
-    const S29Data = [];
-    const S29Collections = collection(firebase, "S29");
-    const fetchS29Data = async () => {
-      try {
-        const q29 = query(
-          S29Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot29 = await getDocs(q29);
-        querySnapshot29.forEach((doc) => {
-          const data29 = doc.data();
-          S29Data.push(data29);
-        });
-
-        setS29(S29Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS29Data();
-  }, []);
-
-  const [S30, setS30] = useState([]);
-  useEffect(() => {
-    const S30Data = [];
-    const S30Collections = collection(firebase, "S30");
-    const fetchS30Data = async () => {
-      try {
-        const q30 = query(
-          S30Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot30 = await getDocs(q30);
-        querySnapshot30.forEach((doc) => {
-          const data30 = doc.data();
-          S30Data.push(data30);
-        });
-
-        setS30(S30Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS30Data();
-  }, []);
-
   const refreshData = async () => {
-    const S30Data = [];
-    const S30Collections = collection(firebase, "S30");
-    const fetchS30Data = async () => {
-      try {
-        const q30 = query(
-          S30Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot30 = await getDocs(q30);
-        querySnapshot30.forEach((doc) => {
-          const data30 = doc.data();
-          S30Data.push(data30);
-        });
-
-        setS30(S30Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS30Data();
-    const S29Data = [];
-    const S29Collections = collection(firebase, "S29");
-    const fetchS29Data = async () => {
-      try {
-        const q29 = query(
-          S29Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot29 = await getDocs(q29);
-        querySnapshot29.forEach((doc) => {
-          const data29 = doc.data();
-          S29Data.push(data29);
-        });
-
-        setS29(S29Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS29Data();
-    const S28Data = [];
-    const S28Collections = collection(firebase, "S28");
-    const fetchS28Data = async () => {
-      try {
-        const q28 = query(
-          S28Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot28 = await getDocs(q28);
-        querySnapshot28.forEach((doc) => {
-          const data28 = doc.data();
-          S28Data.push(data28);
-        });
-
-        setS28(S28Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS28Data();
-    const S27Data = [];
-    const S27Collections = collection(firebase, "S27");
-    const fetchS27Data = async () => {
-      try {
-        const q27 = query(
-          S27Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot27 = await getDocs(q27);
-        querySnapshot27.forEach((doc) => {
-          const data27 = doc.data();
-          S27Data.push(data27);
-        });
-
-        setS27(S27Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS27Data();
-    const S26Data = [];
-    const S26Collections = collection(firebase, "S26");
-    const fetchS26Data = async () => {
-      try {
-        const q26 = query(
-          S26Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot26 = await getDocs(q26);
-        querySnapshot26.forEach((doc) => {
-          const data26 = doc.data();
-          S26Data.push(data26);
-        });
-
-        setS26(S26Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS26Data();
-    const S25Data = [];
-    const S25Collections = collection(firebase, "S25");
-    const fetchS25Data = async () => {
-      try {
-        const q25 = query(
-          S25Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot25 = await getDocs(q25);
-        querySnapshot25.forEach((doc) => {
-          const data25 = doc.data();
-          S25Data.push(data25);
-        });
-
-        setS25(S25Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS25Data();
-    const S24Data = [];
-    const S24Collections = collection(firebase, "S24");
-    const fetchS24Data = async () => {
-      try {
-        const q24 = query(
-          S24Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot24 = await getDocs(q24);
-        querySnapshot24.forEach((doc) => {
-          const data24 = doc.data();
-          S24Data.push(data24);
-        });
-
-        setS24(S24Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS24Data();
-    const S23Data = [];
-    const S23Collections = collection(firebase, "S23");
-    const fetchS23Data = async () => {
-      try {
-        const q23 = query(
-          S23Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot23 = await getDocs(q23);
-        querySnapshot23.forEach((doc) => {
-          const data23 = doc.data();
-          S23Data.push(data23);
-        });
-
-        setS23(S23Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS23Data();
-    const S22Data = [];
-    const S22Collections = collection(firebase, "S22");
-    const fetchS22Data = async () => {
-      try {
-        const q22 = query(
-          S22Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot22 = await getDocs(q22);
-        querySnapshot22.forEach((doc) => {
-          const data22 = doc.data();
-          S22Data.push(data22);
-        });
-
-        setS22(S22Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS22Data();
-    const S21Data = [];
-    const S21Collections = collection(firebase, "S21");
-    const fetchS21Data = async () => {
-      try {
-        const q21 = query(
-          S21Collections,
-          orderBy("date", "desc"),
-          orderBy("time", "desc"),
-          limit(1)
-        );
-        const querySnapshot21 = await getDocs(q21);
-        querySnapshot21.forEach((doc) => {
-          const data21 = doc.data();
-          S21Data.push(data21);
-        });
-
-        setS21(S21Data);
-      } catch (error) {
-        console.error("Error fetching FE1:", error);
-      }
-    };
-    fetchS21Data();
     const S20Data = [];
     const S20Collections = collection(firebase, "S20");
     const fetchS20Data = async () => {
@@ -1489,14 +1012,7 @@ export default function FE_CEAFA_1st({
   };
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          alignItems: "center",
-          right: 80,
-          zIndex: 10,
-          bottom: hp("2%"),
-        }}
-      >
+      <View style={{ alignItems: "center", bottom: wp("2%") }}>
         <TouchableOpacity
           onPress={refreshData}
           style={{
@@ -1505,7 +1021,6 @@ export default function FE_CEAFA_1st({
             borderRadius: 5,
             justifyContent: "center",
             alignSelf: "center",
-            left: 70,
           }}
         >
           <Icon
@@ -1516,45 +1031,23 @@ export default function FE_CEAFA_1st({
           </Icon>
         </TouchableOpacity>
       </View>
-      <ScrollView horizontal>
-        <ImageBackground
-          source={require("../../assets/images/CIT_S.png")}
-          resizeMode="contain"
-          style={styles.image}
-          imageStyle={styles.image_imageStyle}
-        >
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={isModalVisible}
-            onRequestClose={hideModal}
-          >
-            <View style={styles.modalContainer}>
-              <View style={styles.modalContent}>
-                {selectedIcon &&
-                  selectedIcon.map((item, index) => (
-                    <View
-                      key={index}
-                      style={[
-                        styles.linetop,
-                        {
-                          backgroundColor:
-                            item.date &&
-                            isSameMonth(
-                              parse(item.date, "MM/d/yyyy", new Date()),
-                              today
-                            ) &&
-                            isSameYear(
-                              parse(item.date, "MM/d/yyyy", new Date()),
-                              today
-                            )
-                              ? "#7FCD91"
-                              : "#FF6464",
-                        },
-                      ]}
-                    >
-                      <View style={styles.cont}>
-                        {item.date &&
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible}
+        onRequestClose={hideModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            {selectedIcon &&
+              selectedIcon.map((item, index) => (
+                <View
+                  key={index}
+                  style={[
+                    styles.linetop,
+                    {
+                      backgroundColor:
+                        item.date &&
                         isSameMonth(
                           parse(item.date, "MM/d/yyyy", new Date()),
                           today
@@ -1562,85 +1055,99 @@ export default function FE_CEAFA_1st({
                         isSameYear(
                           parse(item.date, "MM/d/yyyy", new Date()),
                           today
-                        ) ? (
-                          <>
-                            <Icon
-                              name="checkmark-circle-outline"
-                              style={styles.check}
-                            ></Icon>
-                            <Text style={styles.inspected}>
-                              INSPECTED TODAY
-                            </Text>
-                          </>
-                        ) : (
-                          <>
-                            <Icon
-                              name="close-circle-outline"
-                              style={styles.check}
-                            ></Icon>
-                            <Text style={styles.inspected}>
-                              NOT INSPECTED TODAY
-                            </Text>
-                          </>
-                        )}
-                      </View>
-                    </View>
-                  ))}
-
-                {selectedIcon &&
-                  selectedIcon.map((item, index) => (
-                    <Text key={index} style={styles.modalText}>
-                      Fire Extinguisher ID: {item.id}
-                    </Text>
-                  ))}
-
-                {selectedIcon &&
-                  selectedIcon.map((item, index) => (
-                    <View key={index} style={styles.textcont}>
-                      <Text style={styles.modalText1}>Conditon: </Text>
-                      <Text
-                        style={[
-                          styles.modalText1,
-                          {
-                            color:
-                              item.condition === "Good Condition"
-                                ? "#7FCD91"
-                                : item.condition === "Slightly Damage"
-                                ? "#FFA33C"
-                                : "#FF6464",
-                          },
-                        ]}
-                      >
-                        {item.condition}
-                      </Text>
-                    </View>
-                  ))}
-
-                <View style={styles.line}></View>
-                <View style={styles.buttonContainer}>
-                  <TouchableOpacity
-                    style={styles.modalButtonY}
-                    onPress={hideModal}
-                  >
-                    <Text style={styles.buttonText}>Close</Text>
-                  </TouchableOpacity>
+                        )
+                          ? "#7FCD91"
+                          : "#FF6464",
+                    },
+                  ]}
+                >
+                  <View style={styles.cont}>
+                    {item.date &&
+                    isSameMonth(
+                      parse(item.date, "MM/d/yyyy", new Date()),
+                      today
+                    ) &&
+                    isSameYear(
+                      parse(item.date, "MM/d/yyyy", new Date()),
+                      today
+                    ) ? (
+                      <>
+                        <Icon
+                          name="checkmark-circle-outline"
+                          style={styles.check}
+                        ></Icon>
+                        <Text style={styles.inspected}>INSPECTED</Text>
+                      </>
+                    ) : (
+                      <>
+                        <Icon
+                          name="close-circle-outline"
+                          style={styles.check}
+                        ></Icon>
+                        <Text style={styles.inspected}>NOT INSPECTED</Text>
+                      </>
+                    )}
+                  </View>
                 </View>
-              </View>
-            </View>
-          </Modal>
+              ))}
 
-          <View style={styles.button5Row}>
+            {selectedIcon &&
+              selectedIcon.map((item, index) => (
+                <Text key={index} style={styles.modalText}>
+                  Sprinkler ID: {item.id}
+                </Text>
+              ))}
+
+            {selectedIcon &&
+              selectedIcon.map((item, index) => (
+                <View key={index} style={styles.textcont}>
+                  <Text style={styles.modalText1}>Conditon: </Text>
+                  <Text
+                    style={[
+                      styles.modalText1,
+                      {
+                        color:
+                          item.condition === "Good Condition"
+                            ? "#7FCD91"
+                            : item.condition === "Slightly Damage"
+                            ? "#FFA33C"
+                            : "#FF6464",
+                      },
+                    ]}
+                  >
+                    {item.condition}
+                  </Text>
+                </View>
+              ))}
+
+            <View style={styles.line}></View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity style={styles.modalButtonY} onPress={hideModal}>
+                <Text style={styles.buttonText}>Close</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+      <ScrollView horizontal>
+        <ImageBackground
+          source={require("../../assets/images/SCIT_1st.png")}
+          resizeMode="contain"
+          style={styles.image}
+          imageStyle={styles.image_imageStyle}
+        >
+          <View style={styles.button4Row}>
             {S1.map((item, index) => (
               <TouchableOpacity
                 key={index}
-                style={styles.button5}
+                style={styles.button4}
                 onPress={() => showModal("1")}
               >
-                <View style={styles.b6StackStack}>
-                  <View style={styles.b6Stack}>
+                <View style={styles.b5StackStack}>
+                  <View style={styles.b5Stack}>
                     <View
                       style={[
-                        styles.b6,
+                        styles.b5,
                         {
                           backgroundColor:
                             item.condition === "Good Condition"
@@ -1653,12 +1160,12 @@ export default function FE_CEAFA_1st({
                     ></View>
                     <MaterialIconsIcon
                       name="location-on"
-                      style={styles.bbb5}
+                      style={styles.bbb4}
                     ></MaterialIconsIcon>
                   </View>
                   <View
                     style={[
-                      styles.bb5,
+                      styles.bb4,
                       {
                         backgroundColor:
                           item.date &&
@@ -1681,17 +1188,17 @@ export default function FE_CEAFA_1st({
             {S2.map((item, index) => (
               <TouchableOpacity
                 key={index}
-                style={styles.button6}
+                style={styles.button3}
                 onPress={() => showModal("2")}
               >
-                <View style={styles.b7StackStack}>
-                  <View style={styles.b7Stack}>
+                <View style={styles.b4StackStack}>
+                  <View style={styles.b4Stack}>
                     <View
                       style={[
-                        styles.b7,
+                        styles.b4,
                         {
                           backgroundColor:
-                            item.condition === "Good Condition  "
+                            item.condition === "Good Condition"
                               ? "#7FCD91"
                               : item.condition === "Slightly Damage"
                               ? "#FF9209"
@@ -1701,12 +1208,12 @@ export default function FE_CEAFA_1st({
                     ></View>
                     <MaterialIconsIcon
                       name="location-on"
-                      style={styles.bbb6}
+                      style={styles.bbb3}
                     ></MaterialIconsIcon>
                   </View>
                   <View
                     style={[
-                      styles.bb6,
+                      styles.bb3,
                       {
                         backgroundColor:
                           item.date &&
@@ -1777,442 +1284,8 @@ export default function FE_CEAFA_1st({
             {S4.map((item, index) => (
               <TouchableOpacity
                 key={index}
-                style={styles.button12}
-                onPress={() => showModal("4")}
-              >
-                <View style={styles.b13StackStack}>
-                  <View style={styles.b13Stack}>
-                    <View
-                      style={[
-                        styles.b13,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb12}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb12,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S5.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button13}
-                onPress={() => showModal("5")}
-              >
-                <View style={styles.b14StackStack}>
-                  <View style={styles.b14Stack}>
-                    <View
-                      style={[
-                        styles.b14,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb13}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb13,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S6.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button14}
-                onPress={() => showModal("6")}
-              >
-                <View style={styles.b15StackStack}>
-                  <View style={styles.b15Stack}>
-                    <View
-                      style={[
-                        styles.b15,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb14}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb14,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S7.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button19}
-                onPress={() => showModal("7")}
-              >
-                <View style={styles.b20StackStack}>
-                  <View style={styles.b20Stack}>
-                    <View
-                      style={[
-                        styles.b20,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb19}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb19,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S8.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button24}
-                onPress={() => showModal("8")}
-              >
-                <View style={styles.b25StackStack}>
-                  <View style={styles.b25Stack}>
-                    <View
-                      style={[
-                        styles.b25,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb24}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb24,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S9.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button25}
-                onPress={() => showModal("9")}
-              >
-                <View style={styles.b26StackStack}>
-                  <View style={styles.b26Stack}>
-                    <View
-                      style={[
-                        styles.b26,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb25}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb25,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S10.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button30}
-                onPress={() => showModal("10")}
-              >
-                <View style={styles.b31StackStack}>
-                  <View style={styles.b31Stack}>
-                    <View
-                      style={[
-                        styles.b31,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb30}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb30,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-          </View>
-          <View style={styles.button4Row}>
-            {S11.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button4}
-                onPress={() => showModal("11")}
-              >
-                <View style={styles.b5StackStack}>
-                  <View style={styles.b5Stack}>
-                    <View
-                      style={[
-                        styles.b5,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb4}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb4,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S12.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button3}
-                onPress={() => showModal("12")}
-              >
-                <View style={styles.b4StackStack}>
-                  <View style={styles.b4Stack}>
-                    <View
-                      style={[
-                        styles.b4,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb3}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb3,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S13.map((item, index) => (
-              <TouchableOpacity
-                key={index}
                 style={styles.button8}
-                onPress={() => showModal("13")}
+                onPress={() => showModal("4")}
               >
                 <View style={styles.b9StackStack}>
                   <View style={styles.b9Stack}>
@@ -2256,11 +1329,11 @@ export default function FE_CEAFA_1st({
                 </View>
               </TouchableOpacity>
             ))}
-            {S14.map((item, index) => (
+            {S5.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.button11}
-                onPress={() => showModal("14")}
+                onPress={() => showModal("5")}
               >
                 <View style={styles.b12StackStack}>
                   <View style={styles.b12Stack}>
@@ -2304,17 +1377,17 @@ export default function FE_CEAFA_1st({
                 </View>
               </TouchableOpacity>
             ))}
-            {S15.map((item, index) => (
+            {S6.map((item, index) => (
               <TouchableOpacity
                 key={index}
-                style={styles.button16}
-                onPress={() => showModal("15")}
+                style={styles.button12}
+                onPress={() => showModal("6")}
               >
-                <View style={styles.b17StackStack}>
-                  <View style={styles.b17Stack}>
+                <View style={styles.b13StackStack}>
+                  <View style={styles.b13Stack}>
                     <View
                       style={[
-                        styles.b17,
+                        styles.b13,
                         {
                           backgroundColor:
                             item.condition === "Good Condition"
@@ -2327,12 +1400,12 @@ export default function FE_CEAFA_1st({
                     ></View>
                     <MaterialIconsIcon
                       name="location-on"
-                      style={styles.bbb16}
+                      style={styles.bbb12}
                     ></MaterialIconsIcon>
                   </View>
                   <View
                     style={[
-                      styles.bb16,
+                      styles.bb12,
                       {
                         backgroundColor:
                           item.date &&
@@ -2352,12 +1425,11 @@ export default function FE_CEAFA_1st({
                 </View>
               </TouchableOpacity>
             ))}
-
-            {S16.map((item, index) => (
+            {S7.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.button15}
-                onPress={() => showModal("16")}
+                onPress={() => showModal("7")}
               >
                 <View style={styles.b16StackStack}>
                   <View style={styles.b16Stack}>
@@ -2401,11 +1473,107 @@ export default function FE_CEAFA_1st({
                 </View>
               </TouchableOpacity>
             ))}
-            {S17.map((item, index) => (
+            {S8.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.button16}
+                onPress={() => showModal("8")}
+              >
+                <View style={styles.b17StackStack}>
+                  <View style={styles.b17Stack}>
+                    <View
+                      style={[
+                        styles.b17,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.bbb16}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.bb16,
+                      {
+                        backgroundColor:
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
+                      },
+                    ]}
+                  ></View>
+                </View>
+              </TouchableOpacity>
+            ))}
+            {S9.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.button19}
+                onPress={() => showModal("9")}
+              >
+                <View style={styles.b20StackStack}>
+                  <View style={styles.b20Stack}>
+                    <View
+                      style={[
+                        styles.b20,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.bbb19}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.bb19,
+                      {
+                        backgroundColor:
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
+                      },
+                    ]}
+                  ></View>
+                </View>
+              </TouchableOpacity>
+            ))}
+            {S10.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.button20}
-                onPress={() => showModal("17")}
+                onPress={() => showModal("10")}
               >
                 <View style={styles.b21StackStack}>
                   <View style={styles.b21Stack}>
@@ -2449,157 +1617,13 @@ export default function FE_CEAFA_1st({
                 </View>
               </TouchableOpacity>
             ))}
-            {S18.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button23}
-                onPress={() => showModal("18")}
-              >
-                <View style={styles.b24StackStack}>
-                  <View style={styles.b24Stack}>
-                    <View
-                      style={[
-                        styles.b24,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb23}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb23,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S19.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button26}
-                onPress={() => showModal("19")}
-              >
-                <View style={styles.b27StackStack}>
-                  <View style={styles.b27Stack}>
-                    <View
-                      style={[
-                        styles.b27,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb26}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb26,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S20.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button29}
-                onPress={() => showModal("20")}
-              >
-                <View style={styles.b30StackStack}>
-                  <View style={styles.b30Stack}>
-                    <View
-                      style={[
-                        styles.b30,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb29}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb29,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
           </View>
           <View style={styles.button1Row}>
-            {S21.map((item, index) => (
+            {S11.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.button1}
-                onPress={() => showModal("21")}
+                onPress={() => showModal("11")}
               >
                 <View style={styles.b1StackStack}>
                   <View style={styles.b1Stack}>
@@ -2643,11 +1667,11 @@ export default function FE_CEAFA_1st({
                 </View>
               </TouchableOpacity>
             ))}
-            {S22.map((item, index) => (
+            {S12.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.button2}
-                onPress={() => showModal("22")}
+                onPress={() => showModal("12")}
               >
                 <View style={styles.b3StackStack}>
                   <View style={styles.b3Stack}>
@@ -2691,11 +1715,107 @@ export default function FE_CEAFA_1st({
                 </View>
               </TouchableOpacity>
             ))}
-            {S23.map((item, index) => (
+            {S13.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.button5}
+                onPress={() => showModal("13")}
+              >
+                <View style={styles.b6StackStack}>
+                  <View style={styles.b6Stack}>
+                    <View
+                      style={[
+                        styles.b6,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.bbb5}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.bb5,
+                      {
+                        backgroundColor:
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
+                      },
+                    ]}
+                  ></View>
+                </View>
+              </TouchableOpacity>
+            ))}
+            {S14.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.button6}
+                onPress={() => showModal("14")}
+              >
+                <View style={styles.b7StackStack}>
+                  <View style={styles.b7Stack}>
+                    <View
+                      style={[
+                        styles.b7,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.bbb6}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.bb6,
+                      {
+                        backgroundColor:
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
+                      },
+                    ]}
+                  ></View>
+                </View>
+              </TouchableOpacity>
+            ))}
+            {S15.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.button9}
-                onPress={() => showModal("23")}
+                onPress={() => showModal("15")}
               >
                 <View style={styles.b10StackStack}>
                   <View style={styles.b10Stack}>
@@ -2739,11 +1859,11 @@ export default function FE_CEAFA_1st({
                 </View>
               </TouchableOpacity>
             ))}
-            {S24.map((item, index) => (
+            {S16.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.button10}
-                onPress={() => showModal("24")}
+                onPress={() => showModal("16")}
               >
                 <View style={styles.b11StackStack}>
                   <View style={styles.b11Stack}>
@@ -2787,11 +1907,107 @@ export default function FE_CEAFA_1st({
                 </View>
               </TouchableOpacity>
             ))}
-            {S25.map((item, index) => (
+            {S17.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.button13}
+                onPress={() => showModal("17")}
+              >
+                <View style={styles.b14StackStack}>
+                  <View style={styles.b14Stack}>
+                    <View
+                      style={[
+                        styles.b14,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.bbb13}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.bb13,
+                      {
+                        backgroundColor:
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
+                      },
+                    ]}
+                  ></View>
+                </View>
+              </TouchableOpacity>
+            ))}
+            {S18.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                style={styles.button14}
+                onPress={() => showModal("18")}
+              >
+                <View style={styles.b15StackStack}>
+                  <View style={styles.b15Stack}>
+                    <View
+                      style={[
+                        styles.b15,
+                        {
+                          backgroundColor:
+                            item.condition === "Good Condition"
+                              ? "#7FCD91"
+                              : item.condition === "Slightly Damage"
+                              ? "#FF9209"
+                              : "#FF6464",
+                        },
+                      ]}
+                    ></View>
+                    <MaterialIconsIcon
+                      name="location-on"
+                      style={styles.bbb14}
+                    ></MaterialIconsIcon>
+                  </View>
+                  <View
+                    style={[
+                      styles.bb14,
+                      {
+                        backgroundColor:
+                          item.date &&
+                          isSameMonth(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          ) &&
+                          isSameYear(
+                            parse(item.date, "MM/d/yyyy", new Date()),
+                            today
+                          )
+                            ? "#7FCD91"
+                            : "#FF6464",
+                      },
+                    ]}
+                  ></View>
+                </View>
+              </TouchableOpacity>
+            ))}
+            {S19.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.button17}
-                onPress={() => showModal("25")}
+                onPress={() => showModal("19")}
               >
                 <View style={styles.b18StackStack}>
                   <View style={styles.b18Stack}>
@@ -2835,11 +2051,11 @@ export default function FE_CEAFA_1st({
                 </View>
               </TouchableOpacity>
             ))}
-            {S26.map((item, index) => (
+            {S20.map((item, index) => (
               <TouchableOpacity
                 key={index}
                 style={styles.button18}
-                onPress={() => showModal("26")}
+                onPress={() => showModal("20")}
               >
                 <View style={styles.b19StackStack}>
                   <View style={styles.b19Stack}>
@@ -2864,198 +2080,6 @@ export default function FE_CEAFA_1st({
                   <View
                     style={[
                       styles.bb18,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S27.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button21}
-                onPress={() => showModal("27")}
-              >
-                <View style={styles.b22StackStack}>
-                  <View style={styles.b22Stack}>
-                    <View
-                      style={[
-                        styles.b22,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb21}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb21,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S28.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button22}
-                onPress={() => showModal("28")}
-              >
-                <View style={styles.b23StackStack}>
-                  <View style={styles.b23Stack}>
-                    <View
-                      style={[
-                        styles.b23,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb22}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb22,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S29.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button27}
-                onPress={() => showModal("29")}
-              >
-                <View style={styles.b28StackStack}>
-                  <View style={styles.b28Stack}>
-                    <View
-                      style={[
-                        styles.b28,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb27}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb27,
-                      {
-                        backgroundColor:
-                          item.date &&
-                          isSameMonth(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          ) &&
-                          isSameYear(
-                            parse(item.date, "MM/d/yyyy", new Date()),
-                            today
-                          )
-                            ? "#7FCD91"
-                            : "#FF6464",
-                      },
-                    ]}
-                  ></View>
-                </View>
-              </TouchableOpacity>
-            ))}
-            {S30.map((item, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.button28}
-                onPress={() => showModal("30")}
-              >
-                <View style={styles.b29StackStack}>
-                  <View style={styles.b29Stack}>
-                    <View
-                      style={[
-                        styles.b29,
-                        {
-                          backgroundColor:
-                            item.condition === "Good Condition"
-                              ? "#7FCD91"
-                              : item.condition === "Slightly Damage"
-                              ? "#FF9209"
-                              : "#FF6464",
-                        },
-                      ]}
-                    ></View>
-                    <MaterialIconsIcon
-                      name="location-on"
-                      style={styles.bbb28}
-                    ></MaterialIconsIcon>
-                  </View>
-                  <View
-                    style={[
-                      styles.bb28,
                       {
                         backgroundColor:
                           item.date &&
@@ -3152,7 +2176,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
   },
   modalContent: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#F5F5F5",
     elevation: 8,
     borderRadius: 10,
     alignItems: "center",
@@ -3192,7 +2216,7 @@ const styles = StyleSheet.create({
   modalButtonY: {
     width: wp("25%"),
     elevation: 2,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#EEEDED",
 
     padding: 13,
     borderRadius: 10,
@@ -3216,474 +2240,16 @@ const styles = StyleSheet.create({
   container: {
     alignContent: "center",
     alignItems: "center",
-    alignSelf: "center",
-    justifyContent: "center",
+
     flex: 1,
-    backgroundColor: "rgba(255,255,255,1)",
+
+    height: wp("150%"),
   },
   image: {
-    width: 1139,
-    height: 393,
-
-    marginLeft: 71,
+    width: 1123,
+    height: 473,
   },
   image_imageStyle: {},
-  button5: {
-    width: 30,
-    height: 31,
-  },
-  b6: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb5: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b6Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb5: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b6StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button6: {
-    width: 30,
-    height: 31,
-    marginLeft: 60,
-  },
-  b7: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb6: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b7Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb6: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b7StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button7: {
-    width: 30,
-    height: 31,
-    marginLeft: 55,
-  },
-  b8: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb7: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b8Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb7: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b8StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button12: {
-    width: 30,
-    height: 31,
-    marginLeft: 61,
-  },
-  b13: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb12: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b13Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb12: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b13StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button13: {
-    width: 30,
-    height: 31,
-    marginLeft: 57,
-  },
-  b14: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb13: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b14Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb13: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b14StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button14: {
-    width: 30,
-    height: 31,
-    marginLeft: 59,
-  },
-  b15: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb14: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b15Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb14: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b15StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button19: {
-    width: 30,
-    height: 31,
-    marginLeft: 55,
-  },
-  b20: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb19: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b20Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb19: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b20StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button24: {
-    width: 30,
-    height: 31,
-    marginLeft: 61,
-  },
-  b25: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb24: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b25Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb24: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b25StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button25: {
-    width: 30,
-    height: 31,
-    marginLeft: 53,
-  },
-  b26: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb25: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b26Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb25: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b26StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button30: {
-    width: 30,
-    height: 31,
-    marginLeft: 61,
-  },
-  b31: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb30: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b31Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb30: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b31StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button5Row: {
-    height: 31,
-    flexDirection: "row",
-    marginTop: 54,
-    marginLeft: 158,
-    marginRight: 159,
-  },
   button4: {
     width: 30,
     height: 31,
@@ -3698,12 +2264,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(99,196,99,1)",
   },
   bbb4: {
-    zIndex: 10,
     top: 0,
     position: "absolute",
     color: "rgba(53,114,172,1)",
     fontSize: 30,
     left: 0,
+    zIndex: 100,
   },
   b5Stack: {
     top: 0,
@@ -3731,7 +2297,7 @@ const styles = StyleSheet.create({
   button3: {
     width: 30,
     height: 31,
-    marginLeft: 59,
+    marginLeft: 61,
   },
   b4: {
     top: 7,
@@ -3743,12 +2309,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(99,196,99,1)",
   },
   bbb3: {
-    zIndex: 10,
     top: 0,
     position: "absolute",
     color: "rgba(53,114,172,1)",
     fontSize: 30,
     left: 0,
+    zIndex: 100,
   },
   b4Stack: {
     top: 0,
@@ -3773,10 +2339,55 @@ const styles = StyleSheet.create({
     height: 33,
     marginTop: -2,
   },
+  button7: {
+    width: 30,
+    height: 31,
+    marginLeft: 57,
+  },
+  b8: {
+    top: 7,
+    left: 9,
+    width: 11,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+  },
+  bbb7: {
+    top: 0,
+    position: "absolute",
+    color: "rgba(53,114,172,1)",
+    fontSize: 30,
+    left: 0,
+    zIndex: 100,
+  },
+  b8Stack: {
+    top: 0,
+    left: 0,
+    width: 30,
+    height: 30,
+    position: "absolute",
+  },
+  bb7: {
+    top: 22,
+    left: 5,
+    width: 20,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+    borderWidth: 2,
+    borderColor: "rgba(69,64,64,1)",
+  },
+  b8StackStack: {
+    width: 30,
+    height: 33,
+    marginTop: -2,
+  },
   button8: {
     width: 30,
     height: 31,
-    marginLeft: 55,
+    marginLeft: 61,
   },
   b9: {
     top: 7,
@@ -3788,12 +2399,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(99,196,99,1)",
   },
   bbb8: {
-    zIndex: 10,
     top: 0,
     position: "absolute",
     color: "rgba(53,114,172,1)",
     fontSize: 30,
     left: 0,
+    zIndex: 100,
   },
   b9Stack: {
     top: 0,
@@ -3821,7 +2432,7 @@ const styles = StyleSheet.create({
   button11: {
     width: 30,
     height: 31,
-    marginLeft: 61,
+    marginLeft: 59,
   },
   b12: {
     top: 7,
@@ -3833,12 +2444,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(99,196,99,1)",
   },
   bbb11: {
-    zIndex: 10,
     top: 0,
     position: "absolute",
     color: "rgba(53,114,172,1)",
     fontSize: 30,
     left: 0,
+    zIndex: 100,
   },
   b12Stack: {
     top: 0,
@@ -3863,12 +2474,12 @@ const styles = StyleSheet.create({
     height: 33,
     marginTop: -2,
   },
-  button16: {
+  button12: {
     width: 30,
     height: 31,
-    marginLeft: 57,
+    marginLeft: 59,
   },
-  b17: {
+  b13: {
     top: 7,
     left: 9,
     width: 11,
@@ -3877,22 +2488,22 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "rgba(99,196,99,1)",
   },
-  bbb16: {
-    zIndex: 10,
+  bbb12: {
     top: 0,
     position: "absolute",
     color: "rgba(53,114,172,1)",
     fontSize: 30,
     left: 0,
+    zIndex: 100,
   },
-  b17Stack: {
+  b13Stack: {
     top: 0,
     left: 0,
     width: 30,
     height: 30,
     position: "absolute",
   },
-  bb16: {
+  bb12: {
     top: 22,
     left: 5,
     width: 20,
@@ -3903,7 +2514,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "rgba(69,64,64,1)",
   },
-  b17StackStack: {
+  b13StackStack: {
     width: 30,
     height: 33,
     marginTop: -2,
@@ -3911,7 +2522,7 @@ const styles = StyleSheet.create({
   button15: {
     width: 30,
     height: 31,
-    marginLeft: 59,
+    marginLeft: 55,
   },
   b16: {
     top: 7,
@@ -3923,12 +2534,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(99,196,99,1)",
   },
   bbb15: {
-    zIndex: 10,
     top: 0,
     position: "absolute",
     color: "rgba(53,114,172,1)",
     fontSize: 30,
     left: 0,
+    zIndex: 100,
   },
   b16Stack: {
     top: 0,
@@ -3953,10 +2564,100 @@ const styles = StyleSheet.create({
     height: 33,
     marginTop: -2,
   },
+  button16: {
+    width: 30,
+    height: 31,
+    marginLeft: 61,
+  },
+  b17: {
+    top: 7,
+    left: 9,
+    width: 11,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+  },
+  bbb16: {
+    top: 0,
+    position: "absolute",
+    color: "rgba(53,114,172,1)",
+    fontSize: 30,
+    left: 0,
+    zIndex: 100,
+  },
+  b17Stack: {
+    top: 0,
+    left: 0,
+    width: 30,
+    height: 30,
+    position: "absolute",
+  },
+  bb16: {
+    top: 22,
+    left: 5,
+    width: 20,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+    borderWidth: 2,
+    borderColor: "rgba(69,64,64,1)",
+  },
+  b17StackStack: {
+    width: 30,
+    height: 33,
+    marginTop: -2,
+  },
+  button19: {
+    width: 30,
+    height: 31,
+    marginLeft: 56,
+  },
+  b20: {
+    top: 7,
+    left: 9,
+    width: 11,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+  },
+  bbb19: {
+    top: 0,
+    position: "absolute",
+    color: "rgba(53,114,172,1)",
+    fontSize: 30,
+    left: 0,
+    zIndex: 100,
+  },
+  b20Stack: {
+    top: 0,
+    left: 0,
+    width: 30,
+    height: 30,
+    position: "absolute",
+  },
+  bb19: {
+    top: 22,
+    left: 5,
+    width: 20,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+    borderWidth: 2,
+    borderColor: "rgba(69,64,64,1)",
+  },
+  b20StackStack: {
+    width: 30,
+    height: 33,
+    marginTop: -2,
+  },
   button20: {
     width: 30,
     height: 31,
-    marginLeft: 55,
+    marginLeft: 61,
   },
   b21: {
     top: 7,
@@ -3968,12 +2669,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(99,196,99,1)",
   },
   bbb20: {
-    zIndex: 10,
     top: 0,
     position: "absolute",
     color: "rgba(53,114,172,1)",
     fontSize: 30,
     left: 0,
+    zIndex: 100,
   },
   b21Stack: {
     top: 0,
@@ -3998,152 +2699,16 @@ const styles = StyleSheet.create({
     height: 33,
     marginTop: -2,
   },
-  button23: {
-    width: 30,
-    height: 31,
-    marginLeft: 61,
-  },
-  b24: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb23: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b24Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb23: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b24StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button26: {
-    width: 30,
-    height: 31,
-    marginLeft: 53,
-  },
-  b27: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb26: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b27Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb26: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b27StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button29: {
-    width: 30,
-    height: 31,
-    marginLeft: 61,
-  },
-  b30: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb29: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b30Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb29: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b30StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
   button4Row: {
     height: 31,
     flexDirection: "row",
-    marginTop: 14,
-    marginLeft: 159,
-    marginRight: 159,
+    marginTop: 85,
+    marginLeft: 146,
+    marginRight: 147,
   },
   button1: {
     width: 30,
     height: 31,
-    marginTop: 2,
   },
   b1: {
     top: 7,
@@ -4155,12 +2720,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(99,196,99,1)",
   },
   bbb1: {
-    zIndex: 10,
     top: 0,
     position: "absolute",
     color: "rgba(53,114,172,1)",
     fontSize: 30,
     left: 0,
+    zIndex: 100,
   },
   b1Stack: {
     top: 0,
@@ -4189,6 +2754,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 31,
     marginLeft: 61,
+    marginTop: 1,
   },
   b3: {
     top: 7,
@@ -4200,12 +2766,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(99,196,99,1)",
   },
   bbb2: {
-    zIndex: 10,
     top: 0,
     position: "absolute",
     color: "rgba(53,114,172,1)",
     fontSize: 30,
     left: 0,
+    zIndex: 100,
   },
   b3Stack: {
     top: 0,
@@ -4230,10 +2796,103 @@ const styles = StyleSheet.create({
     height: 33,
     marginTop: -2,
   },
+  button5: {
+    width: 30,
+    height: 31,
+    marginLeft: 59,
+    marginTop: 1,
+  },
+  b6: {
+    top: 7,
+    left: 9,
+    width: 11,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+  },
+  bbb5: {
+    top: 0,
+    position: "absolute",
+    color: "rgba(53,114,172,1)",
+    fontSize: 30,
+    left: 0,
+    zIndex: 100,
+  },
+  b6Stack: {
+    top: 0,
+    left: 0,
+    width: 30,
+    height: 30,
+    position: "absolute",
+  },
+  bb5: {
+    top: 22,
+    left: 5,
+    width: 20,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+    borderWidth: 2,
+    borderColor: "rgba(69,64,64,1)",
+  },
+  b6StackStack: {
+    width: 30,
+    height: 33,
+    marginTop: -2,
+  },
+  button6: {
+    width: 30,
+    height: 31,
+    marginLeft: 61,
+    marginTop: 1,
+  },
+  b7: {
+    top: 7,
+    left: 9,
+    width: 11,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+  },
+  bbb6: {
+    top: 0,
+    position: "absolute",
+    color: "rgba(53,114,172,1)",
+    fontSize: 30,
+    left: 0,
+    zIndex: 100,
+  },
+  b7Stack: {
+    top: 0,
+    left: 0,
+    width: 30,
+    height: 30,
+    position: "absolute",
+  },
+  bb6: {
+    top: 22,
+    left: 5,
+    width: 20,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+    borderWidth: 2,
+    borderColor: "rgba(69,64,64,1)",
+  },
+  b7StackStack: {
+    width: 30,
+    height: 33,
+    marginTop: -2,
+  },
   button9: {
     width: 30,
     height: 31,
-    marginLeft: 54,
+    marginLeft: 56,
+    marginTop: 1,
   },
   b10: {
     top: 7,
@@ -4245,12 +2904,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(99,196,99,1)",
   },
   bbb9: {
-    zIndex: 10,
     top: 0,
     position: "absolute",
     color: "rgba(53,114,172,1)",
     fontSize: 30,
     left: 0,
+    zIndex: 100,
   },
   b10Stack: {
     top: 0,
@@ -4278,8 +2937,7 @@ const styles = StyleSheet.create({
   button10: {
     width: 30,
     height: 31,
-    marginLeft: 61,
-    marginTop: 2,
+    marginLeft: 60,
   },
   b11: {
     top: 7,
@@ -4291,12 +2949,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(99,196,99,1)",
   },
   bbb10: {
-    zIndex: 10,
     top: 0,
     position: "absolute",
     color: "rgba(53,114,172,1)",
     fontSize: 30,
     left: 0,
+    zIndex: 100,
   },
   b11Stack: {
     top: 0,
@@ -4321,6 +2979,98 @@ const styles = StyleSheet.create({
     height: 33,
     marginTop: -2,
   },
+  button13: {
+    width: 30,
+    height: 31,
+    marginLeft: 55,
+    marginTop: 1,
+  },
+  b14: {
+    top: 7,
+    left: 9,
+    width: 11,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+  },
+  bbb13: {
+    top: 0,
+    position: "absolute",
+    color: "rgba(53,114,172,1)",
+    fontSize: 30,
+    left: 0,
+    zIndex: 100,
+  },
+  b14Stack: {
+    top: 0,
+    left: 0,
+    width: 30,
+    height: 30,
+    position: "absolute",
+  },
+  bb13: {
+    top: 22,
+    left: 5,
+    width: 20,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+    borderWidth: 2,
+    borderColor: "rgba(69,64,64,1)",
+  },
+  b14StackStack: {
+    width: 30,
+    height: 33,
+    marginTop: -2,
+  },
+  button14: {
+    width: 30,
+    height: 31,
+    marginLeft: 61,
+    marginTop: 1,
+  },
+  b15: {
+    top: 7,
+    left: 9,
+    width: 11,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+  },
+  bbb14: {
+    top: 0,
+    position: "absolute",
+    color: "rgba(53,114,172,1)",
+    fontSize: 30,
+    left: 0,
+    zIndex: 100,
+  },
+  b15Stack: {
+    top: 0,
+    left: 0,
+    width: 30,
+    height: 30,
+    position: "absolute",
+  },
+  bb14: {
+    top: 22,
+    left: 5,
+    width: 20,
+    height: 11,
+    position: "absolute",
+    borderRadius: 10,
+    backgroundColor: "rgba(99,196,99,1)",
+    borderWidth: 2,
+    borderColor: "rgba(69,64,64,1)",
+  },
+  b15StackStack: {
+    width: 30,
+    height: 33,
+    marginTop: -2,
+  },
   button17: {
     width: 30,
     height: 31,
@@ -4336,12 +3086,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(99,196,99,1)",
   },
   bbb17: {
-    zIndex: 10,
     top: 0,
     position: "absolute",
     color: "rgba(53,114,172,1)",
     fontSize: 30,
     left: 0,
+    zIndex: 100,
   },
   b18Stack: {
     top: 0,
@@ -4369,8 +3119,8 @@ const styles = StyleSheet.create({
   button18: {
     width: 30,
     height: 31,
-    marginLeft: 60,
-    marginTop: 2,
+    marginLeft: 61,
+    marginTop: 1,
   },
   b19: {
     top: 7,
@@ -4382,12 +3132,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(99,196,99,1)",
   },
   bbb18: {
-    zIndex: 10,
     top: 0,
     position: "absolute",
     color: "rgba(53,114,172,1)",
     fontSize: 30,
     left: 0,
+    zIndex: 100,
   },
   b19Stack: {
     top: 0,
@@ -4412,192 +3162,11 @@ const styles = StyleSheet.create({
     height: 33,
     marginTop: -2,
   },
-  button21: {
-    width: 30,
-    height: 31,
-    marginLeft: 55,
-    marginTop: 2,
-  },
-  b22: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb21: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b22Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb21: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b22StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button22: {
-    width: 30,
-    height: 31,
-    marginLeft: 61,
-  },
-  b23: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb22: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b23Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb22: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b23StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button27: {
-    width: 30,
-    height: 31,
-    marginLeft: 53,
-  },
-  b28: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb27: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b28Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb27: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b28StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
-  button28: {
-    width: 30,
-    height: 31,
-    marginLeft: 61,
-  },
-  b29: {
-    top: 7,
-    left: 9,
-    width: 11,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-  },
-  bbb28: {
-    zIndex: 10,
-    top: 0,
-    position: "absolute",
-    color: "rgba(53,114,172,1)",
-    fontSize: 30,
-    left: 0,
-  },
-  b29Stack: {
-    top: 0,
-    left: 0,
-    width: 30,
-    height: 30,
-    position: "absolute",
-  },
-  bb28: {
-    top: 22,
-    left: 5,
-    width: 20,
-    height: 11,
-    position: "absolute",
-    borderRadius: 10,
-    backgroundColor: "rgba(99,196,99,1)",
-    borderWidth: 2,
-    borderColor: "rgba(69,64,64,1)",
-  },
-  b29StackStack: {
-    width: 30,
-    height: 33,
-    marginTop: -2,
-  },
   button1Row: {
-    height: 33,
+    height: 32,
     flexDirection: "row",
-    marginTop: 13,
-    marginLeft: 158,
-    marginRight: 159,
+    marginTop: 42,
+    marginLeft: 146,
+    marginRight: 147,
   },
 });

@@ -41,6 +41,14 @@ import FDC_2nd from "./SD_Mapping/FDC_2nd";
 import FDC_2nd_2P from "./SD_Mapping/FDC_2nd_2P";
 import SD_CICS_1st from "./SD_Mapping/SD_CICS_1st";
 import SD_CICS_2nd from "./SD_Mapping/SD_CICS_2nd";
+import SD_CICS_3rd from "./SD_Mapping/SD_CICS_3rd";
+import SD_CICS_4th from "./SD_Mapping/SD_CICS_4th";
+import SD_CICS_5th from "./SD_Mapping/SD_CICS_5th";
+import SD_CIT_1st from "./SD_Mapping/SD_CIT_1st";
+import SD_CIT_2nd from "./SD_Mapping/SD_CIT_2nd";
+import SD_CIT_3rd from "./SD_Mapping/SD_CIT_3rd";
+import SD_CIT_4th from "./SD_Mapping/SD_CIT_4th";
+import SD_CIT_5th from "./SD_Mapping/SD_CIT_5th";
 
 function MappingSd(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -157,7 +165,7 @@ function MappingSd(props) {
         try {
           const q = query(
             fireExtinguisherCollection,
-
+            // where("id", "==", selectedSafetyEquipment),
             orderBy("date", "desc"),
             orderBy("time", "desc"),
             limit(1)
@@ -317,7 +325,6 @@ function MappingSd(props) {
               MselectedFloor={MselectedFloor}
             />
           )}
-
           {MselectedFloor === "2nd Floor P1" && MselectedBuilding === "FDC" && (
             //Mapping Content//
 
@@ -342,7 +349,6 @@ function MappingSd(props) {
               MselectedFloor={MselectedFloor}
             />
           )}
-
           {MselectedFloor === "1st Floor" && MselectedBuilding === "CICS" && (
             //Mapping Content//
 
@@ -355,11 +361,108 @@ function MappingSd(props) {
               MselectedFloor={MselectedFloor}
             />
           )}
-
           {MselectedFloor === "2nd Floor" && MselectedBuilding === "CICS" && (
             //Mapping Content//
 
             <SD_CICS_2nd
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+          {MselectedFloor === "3rd Floor" && MselectedBuilding === "CICS" && (
+            //Mapping Content//
+
+            <SD_CICS_3rd
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+          {MselectedFloor === "4th Floor" && MselectedBuilding === "CICS" && (
+            //Mapping Content//
+
+            <SD_CICS_4th
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+          {MselectedFloor === "5th Floor" && MselectedBuilding === "CICS" && (
+            //Mapping Content//
+
+            <SD_CICS_5th
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+          {MselectedFloor === "1st Floor" && MselectedBuilding === "CIT" && (
+            //Mapping Content//
+
+            <SD_CIT_1st
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+          {MselectedFloor === "2nd Floor" && MselectedBuilding === "CIT" && (
+            //Mapping Content//
+
+            <SD_CIT_2nd
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+          {MselectedFloor === "3rd Floor" && MselectedBuilding === "CIT" && (
+            //Mapping Content//
+
+            <SD_CIT_3rd
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "4th Floor" && MselectedBuilding === "CIT" && (
+            //Mapping Content//
+
+            <SD_CIT_4th
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "5th Floor" && MselectedBuilding === "CIT" && (
+            //Mapping Content//
+
+            <SD_CIT_5th
               isModalVisible={isModalVisible}
               hideModal={hideModal}
               selectedIcon={selectedIcon}
@@ -389,7 +492,7 @@ const styles = StyleSheet.create({
   },
   modalContentA: {
     alignItems: "center",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#F5F5F5",
     elevation: 8,
     borderRadius: 10,
 
