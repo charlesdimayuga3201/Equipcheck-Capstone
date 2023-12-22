@@ -38,6 +38,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
 import S_CIT_1st from "./S_Mapping/S_CIT_1st";
 import S_CIT_2nd from "./S_Mapping/S_CIT_2nd";
+import S_CIT_3rd from "./S_Mapping/S_CIT_3rd";
 
 function MappingS(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -319,6 +320,18 @@ function MappingS(props) {
           {MselectedFloor === "2nd Floor" && MselectedBuilding === "CIT" && (
             //Mapping Content//
             <S_CIT_2nd
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "3rd Floor" && MselectedBuilding === "CIT" && (
+            //Mapping Content//
+            <S_CIT_3rd
               isModalVisible={isModalVisible}
               hideModal={hideModal}
               selectedIcon={selectedIcon}
