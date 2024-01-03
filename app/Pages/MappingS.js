@@ -41,6 +41,7 @@ import S_CIT_2nd from "./S_Mapping/S_CIT_2nd";
 import S_CIT_3rd from "./S_Mapping/S_CIT_3rd";
 import S_CIT_4th from "./S_Mapping/S_CIT_4th";
 import S_CIT_5th from "./S_Mapping/S_CIT_5th";
+import S_FDC_1st from "./S_Mapping/S_FDC_1st";
 
 function MappingS(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -358,6 +359,18 @@ function MappingS(props) {
           {MselectedFloor === "5th Floor" && MselectedBuilding === "CIT" && (
             //Mapping Content//
             <S_CIT_5th
+              isModalVisible={isModalVisible}
+              hideModal={hideModal}
+              selectedIcon={selectedIcon}
+              showModal={showModal}
+              MselectedBuilding={MselectedBuilding}
+              MselectedFloor={MselectedFloor}
+            />
+          )}
+
+          {MselectedFloor === "1st Floor P1" && MselectedBuilding === "FDC" && (
+            //Mapping Content//
+            <S_FDC_1st
               isModalVisible={isModalVisible}
               hideModal={hideModal}
               selectedIcon={selectedIcon}
