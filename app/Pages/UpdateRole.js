@@ -369,7 +369,7 @@ export default function UpdateRole() {
         ></Image>
       </View>
 
-      <Modal
+      {/* <Modal
         animationType="slide"
         transparent={true}
         visible={isModalVisible}
@@ -436,19 +436,6 @@ export default function UpdateRole() {
                 <View style={styles.line}></View>
               </View>
               <View style={styles.column}>
-                {/* <ButtonGroup
-                  buttons={["Staff", "Head Admin"]}
-                  selectedIndex={selectedIndex}
-                  onPress={(value) => {
-                    setSelectedIndex(value);
-                  }}
-                  // containerStyle={{ marginBottom: 20 }}
-                  containerStyle={{ width: hp("24%"), marginBottom: 20 }}
-                  textStyle={{
-                    color: "black",
-                    fontSize: RFValue(8),
-                  }}
-                /> */}
                 <Text>Staff</Text>
               </View>
             </View>
@@ -467,9 +454,109 @@ export default function UpdateRole() {
             </View>
           </View>
         </View>
-      </Modal>
-
+      </Modal> */}
+      {/* <ButtonGroup
+                  buttons={["Staff", "Head Admin"]}
+                  selectedIndex={selectedIndex}
+                  onPress={(value) => {
+                    setSelectedIndex(value);
+                  }}
+                  // containerStyle={{ marginBottom: 20 }}
+                  containerStyle={{ width: hp("24%"), marginBottom: 20 }}
+                  textStyle={{
+                    color: "black",
+                    fontSize: RFValue(8),
+                  }}
+                /> */}
       {/* Modal for edit user */}
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible}
+        onRequestClose={hideModal}
+      >
+        <View style={styles.modalContainerS}>
+          <View style={styles.modalContentS}>
+            {/* <View style={styles.lineG}></View> */}
+            <View style={styles.closeiconS}>
+              <TouchableOpacity onPress={hideModal}>
+                <Icon name="close-circle-outline" style={styles.closeS}></Icon>
+              </TouchableOpacity>
+            </View>
+            {/* <Text style={styles.modalTextS}>Add Users</Text> */}
+            {/* <Text style={styles.modalText1}>Current Password</Text> */}
+            <View style={styles.username_input}>
+              <View style={styles.rect2}>
+                <View style={styles.rec}>
+                  <TextInput
+                    secureTextEntry={true}
+                    placeholder="Enter First Name"
+                    style={styles.username}
+                    value={firstname}
+                    onChangeText={(text) => setFirstName(text)}
+                  ></TextInput>
+                </View>
+              </View>
+            </View>
+            {/* <Text style={styles.modalText2}>New Password</Text> */}
+            <View style={styles.username_input}>
+              <View style={styles.rect2}>
+                <View style={styles.rec}>
+                  <TextInput
+                    placeholder="Enter Last Name"
+                    secureTextEntry={true}
+                    style={styles.username}
+                    value={lastname}
+                    onChangeText={(text) => setLastName(text)}
+                  ></TextInput>
+                </View>
+              </View>
+            </View>
+            {/* <Text style={styles.modalText2}>Confirm Password</Text> */}
+            <View style={styles.username_input}>
+              <View style={styles.rect2}>
+                <View style={styles.rec}>
+                  <TextInput
+                    placeholder="New User Email"
+                    secureTextEntry={true}
+                    style={styles.username}
+                    value={newUserEmail}
+                    onChangeText={(text) => setNewUserEmail(text)}
+                  ></TextInput>
+                </View>
+              </View>
+            </View>
+
+            <View style={styles.username_input}>
+              <View style={styles.rect2}>
+                <View style={styles.rec}>
+                  <TextInput
+                    placeholder="Enter Password"
+                    secureTextEntry={true}
+                    style={styles.username}
+                    value={newPassword}
+                    onChangeText={(text) => setPassword(text)}
+                  ></TextInput>
+                </View>
+              </View>
+            </View>
+
+            <View style={styles.line}></View>
+            <View style={styles.buttonContainer1}>
+              <TouchableOpacity
+                style={styles.modalButtonY1}
+                onPress={() => {
+                  addUser();
+                  // Handle "Yes" button press here
+                }}
+              >
+                <Text style={styles.buttonTextU}>Add User</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
       <Modal
         animationType="slide"
         transparent={true}
@@ -759,6 +846,106 @@ export default function UpdateRole() {
   );
 }
 const styles = StyleSheet.create({
+  closeiconS: {
+    // top: 2,
+    position: "absolute",
+    top: hp("1%"),
+    right: wp("1%"),
+    zIndex: 5,
+  },
+  modalTextS: {
+    color: "#454545",
+    fontWeight: "500",
+    fontSize: RFValue(14),
+    bottom: hp("10%"),
+    // marginBottom: 10,
+  },
+  closeS: {
+    // color: "#45474B",
+    color: "#FF6464",
+    fontSize: wp("3%"),
+  },
+  modalContainerS: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
+  },
+  modalContentS: {
+    backgroundColor: "#FFFFFF",
+    elevation: 8,
+    borderRadius: 10,
+    alignItems: "center",
+    top: hp("2%"),
+    width: wp("40%"), // Adjust the width as needed
+    height: hp("80%"), // Adjust the height as needed
+  },
+  buttonTextU: {
+    color: "white",
+    fontWeight: "600",
+    // fontFamily: "poppins-bold",
+    alignSelf: "center",
+    justifyContent: "center",
+    fontSize: 20,
+  },
+  modalButtonY1: {
+    top: hp("14%"),
+    width: wp("30%"),
+    elevation: 4,
+    backgroundColor: "#7FCD91",
+    padding: 10,
+    borderRadius: 2,
+    marginHorizontal: 30,
+    alignItems: "center",
+    borderRadius: 40,
+  },
+  buttonContainer1: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  rect2: {
+    width: wp("60%"),
+    height: hp("6%"),
+    marginTop: hp("0.8%"),
+  },
+  rec: {
+    // top: hp("1.5%"),
+
+    width: wp("30%"),
+    height: hp("7%"),
+    position: "absolute",
+    backgroundColor: "rgba(247,251,255,1)",
+    borderRadius: wp("2%"),
+    borderWidth: wp("0.2%"),
+    borderColor: "rgba(212,215,227,1)",
+    alignSelf: "center",
+    left: wp("3%"),
+  },
+  username: {
+    // top: wp("2%"),
+    left: wp("1.5%"),
+    position: "absolute",
+    fontFamily: "poppins-regular",
+    color: "#121212",
+    height: hp("7%"),
+    width: wp("50%"),
+    fontSize: wp("1.5%"),
+  },
+  username_input: {
+    top: hp("10%"),
+    width: wp("50%"),
+    height: hp("10%"),
+    marginTop: hp("2%"),
+    marginLeft: wp("15%"),
+    alignSelf: "center",
+  },
+  closeicon: {
+    // top: 2,
+    position: "absolute",
+    top: hp("1%"),
+    right: wp("1%"),
+    zIndex: 5,
+  },
   activityIndicator: {
     position: "absolute",
     top: 0,

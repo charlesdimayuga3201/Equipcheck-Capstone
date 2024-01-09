@@ -519,132 +519,132 @@ export default function ViewAllFe() {
             </View>
           </View>
 
-          <View style={styles.heightS}>
-            <View style={styles.container3}>
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>CEAFA: {CEAFA.length}</Text>
-              </View>
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>{CEAFAGC.length}</Text>
-              </View>
-
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>{CEAFASD.length}</Text>
-              </View>
-
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>{CEAFANW.length}</Text>
-              </View>
+          {/* <View style={styles.heightS}> */}
+          <View style={styles.container3}>
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>CEAFA: {CEAFA.length}</Text>
+            </View>
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>{CEAFAGC.length}</Text>
             </View>
 
-            <View style={styles.container2}>
-              <View style={styles.column}>
-                <Text style={styles.datafont}>CICS: {CICS.length}</Text>
-              </View>
-
-              <View style={styles.column}>
-                <Text style={styles.datafont}>{CICSGC.length}</Text>
-              </View>
-
-              <View style={styles.column}>
-                <Text style={styles.datafont}>{CICSSD.length}</Text>
-              </View>
-
-              <View style={styles.column}>
-                <Text style={styles.datafont}>{CICSNW.length}</Text>
-              </View>
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>{CEAFASD.length}</Text>
             </View>
 
-            <View style={styles.container3}>
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>CIT: {CIT.length}</Text>
-              </View>
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>{CITGC.length}</Text>
-              </View>
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>{CEAFANW.length}</Text>
+            </View>
+          </View>
 
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>{CITSD.length}</Text>
-              </View>
-
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>{CITNW.length}</Text>
-              </View>
+          <View style={styles.container2}>
+            <View style={styles.column}>
+              <Text style={styles.datafont}>CICS: {CICS.length}</Text>
             </View>
 
-            <View style={styles.container2}>
-              <View style={styles.column}>
-                <Text style={styles.datafont}>RGR: {RGR.length}</Text>
-              </View>
-
-              <View style={styles.column}>
-                <Text style={styles.datafont}>{RGRGC.length}</Text>
-              </View>
-
-              <View style={styles.column}>
-                <Text style={styles.datafont}>{RGRSD.length}</Text>
-              </View>
-
-              <View style={styles.column}>
-                <Text style={styles.datafont}>{RGRNW.length}</Text>
-              </View>
+            <View style={styles.column}>
+              <Text style={styles.datafont}>{CICSGC.length}</Text>
             </View>
 
-            <View style={styles.container3}>
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>SSC: {SSC.length}</Text>
-              </View>
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>{SSCGC.length}</Text>
-              </View>
-
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>{SSCSD.length}</Text>
-              </View>
-
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>{SSCNW.length}</Text>
-              </View>
+            <View style={styles.column}>
+              <Text style={styles.datafont}>{CICSSD.length}</Text>
             </View>
 
-            <View style={styles.container2}>
-              <View style={styles.column}>
-                <Text style={styles.datafont}>FDC: {FDC.length}</Text>
-              </View>
+            <View style={styles.column}>
+              <Text style={styles.datafont}>{CICSNW.length}</Text>
+            </View>
+          </View>
 
-              <View style={styles.column}>
-                <Text style={styles.datafont}>{FDCGC.length}</Text>
-              </View>
-
-              <View style={styles.column}>
-                <Text style={styles.datafont}>{FDCSD.length}</Text>
-              </View>
-
-              <View style={styles.column}>
-                <Text style={styles.datafont}>{FDCNW.length}</Text>
-              </View>
+          <View style={styles.container3}>
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>CIT: {CIT.length}</Text>
+            </View>
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>{CITGC.length}</Text>
             </View>
 
-            <View style={styles.container3}>
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>
-                  Total: {latestDocuments.length}
-                </Text>
-              </View>
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>{goodConditon.length}</Text>
-              </View>
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>{CITSD.length}</Text>
+            </View>
 
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>{slightDamage.length}</Text>
-              </View>
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>{CITNW.length}</Text>
+            </View>
+          </View>
 
-              <View style={styles.column1}>
-                <Text style={styles.datafont}>{notWorking.length}</Text>
-              </View>
+          <View style={styles.container2}>
+            <View style={styles.column}>
+              <Text style={styles.datafont}>RGR: {RGR.length}</Text>
+            </View>
+
+            <View style={styles.column}>
+              <Text style={styles.datafont}>{RGRGC.length}</Text>
+            </View>
+
+            <View style={styles.column}>
+              <Text style={styles.datafont}>{RGRSD.length}</Text>
+            </View>
+
+            <View style={styles.column}>
+              <Text style={styles.datafont}>{RGRNW.length}</Text>
+            </View>
+          </View>
+
+          <View style={styles.container3}>
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>SSC: {SSC.length}</Text>
+            </View>
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>{SSCGC.length}</Text>
+            </View>
+
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>{SSCSD.length}</Text>
+            </View>
+
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>{SSCNW.length}</Text>
+            </View>
+          </View>
+
+          <View style={styles.container2}>
+            <View style={styles.column}>
+              <Text style={styles.datafont}>FDC: {FDC.length}</Text>
+            </View>
+
+            <View style={styles.column}>
+              <Text style={styles.datafont}>{FDCGC.length}</Text>
+            </View>
+
+            <View style={styles.column}>
+              <Text style={styles.datafont}>{FDCSD.length}</Text>
+            </View>
+
+            <View style={styles.column}>
+              <Text style={styles.datafont}>{FDCNW.length}</Text>
+            </View>
+          </View>
+
+          <View style={styles.container3}>
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>
+                Total: {latestDocuments.length}
+              </Text>
+            </View>
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>{goodConditon.length}</Text>
+            </View>
+
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>{slightDamage.length}</Text>
+            </View>
+
+            <View style={styles.column1}>
+              <Text style={styles.datafont}>{notWorking.length}</Text>
             </View>
           </View>
         </View>
+        {/* </View> */}
       </ScrollView>
     </View>
   );
@@ -718,7 +718,7 @@ const styles = StyleSheet.create({
   scrollViewContent: {
     flexGrow: 1,
 
-    height: wp("165%"),
+    height: wp("225%"),
     // Additional styling for the content inside ScrollView
   },
   rowEven: {
