@@ -216,7 +216,7 @@ export default function UpdateRole() {
         userEmail: newUserEmail,
         role: selectedIndex === 0 ? "Staff" : "Head Admin",
         uid: user.uid,
-        status: "Active",
+        status: "Actived",
         userID: user.uid,
         // Add additional fields if needed
       });
@@ -490,7 +490,6 @@ export default function UpdateRole() {
               <View style={styles.rect2}>
                 <View style={styles.rec}>
                   <TextInput
-                    secureTextEntry={true}
                     placeholder="Enter First Name"
                     style={styles.username}
                     value={firstname}
@@ -505,7 +504,6 @@ export default function UpdateRole() {
                 <View style={styles.rec}>
                   <TextInput
                     placeholder="Enter Last Name"
-                    secureTextEntry={true}
                     style={styles.username}
                     value={lastname}
                     onChangeText={(text) => setLastName(text)}
@@ -519,7 +517,6 @@ export default function UpdateRole() {
                 <View style={styles.rec}>
                   <TextInput
                     placeholder="New User Email"
-                    secureTextEntry={true}
                     style={styles.username}
                     value={newUserEmail}
                     onChangeText={(text) => setNewUserEmail(text)}
