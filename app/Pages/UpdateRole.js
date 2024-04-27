@@ -216,7 +216,7 @@ export default function UpdateRole() {
         userEmail: newUserEmail,
         role: selectedIndex === 0 ? "Staff" : "Head Admin",
         uid: user.uid,
-        status: "Actived",
+        status: "Activated",
         userID: user.uid,
         // Add additional fields if needed
       });
@@ -365,8 +365,7 @@ export default function UpdateRole() {
         <Image
           source={require("../assets/images/updateroles.png")}
           resizeMode="contain"
-          style={styles.image}
-        ></Image>
+          style={styles.image}></Image>
       </View>
 
       {/* <Modal
@@ -474,8 +473,7 @@ export default function UpdateRole() {
         animationType="slide"
         transparent={true}
         visible={isModalVisible}
-        onRequestClose={hideModal}
-      >
+        onRequestClose={hideModal}>
         <View style={styles.modalContainerS}>
           <View style={styles.modalContentS}>
             {/* <View style={styles.lineG}></View> */}
@@ -493,8 +491,7 @@ export default function UpdateRole() {
                     placeholder="Enter First Name"
                     style={styles.username}
                     value={firstname}
-                    onChangeText={(text) => setFirstName(text)}
-                  ></TextInput>
+                    onChangeText={(text) => setFirstName(text)}></TextInput>
                 </View>
               </View>
             </View>
@@ -506,8 +503,7 @@ export default function UpdateRole() {
                     placeholder="Enter Last Name"
                     style={styles.username}
                     value={lastname}
-                    onChangeText={(text) => setLastName(text)}
-                  ></TextInput>
+                    onChangeText={(text) => setLastName(text)}></TextInput>
                 </View>
               </View>
             </View>
@@ -519,8 +515,7 @@ export default function UpdateRole() {
                     placeholder="New User Email"
                     style={styles.username}
                     value={newUserEmail}
-                    onChangeText={(text) => setNewUserEmail(text)}
-                  ></TextInput>
+                    onChangeText={(text) => setNewUserEmail(text)}></TextInput>
                 </View>
               </View>
             </View>
@@ -533,8 +528,7 @@ export default function UpdateRole() {
                     secureTextEntry={true}
                     style={styles.username}
                     value={newPassword}
-                    onChangeText={(text) => setPassword(text)}
-                  ></TextInput>
+                    onChangeText={(text) => setPassword(text)}></TextInput>
                 </View>
               </View>
             </View>
@@ -546,8 +540,7 @@ export default function UpdateRole() {
                 onPress={() => {
                   addUser();
                   // Handle "Yes" button press here
-                }}
-              >
+                }}>
                 <Text style={styles.buttonTextU}>Add User</Text>
               </TouchableOpacity>
             </View>
@@ -558,8 +551,7 @@ export default function UpdateRole() {
         animationType="slide"
         transparent={true}
         visible={isModalVisible1}
-        onRequestClose={hideModal1}
-      >
+        onRequestClose={hideModal1}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContentB}>
             <View style={styles.closeiconB}>
@@ -591,8 +583,7 @@ export default function UpdateRole() {
                   // Handle "Yes" button press here
                   editRole();
                   // Add your update logic here
-                }}
-              >
+                }}>
                 <Text style={styles.buttonTextB}>Change Role</Text>
               </TouchableOpacity>
             </View>
@@ -604,8 +595,7 @@ export default function UpdateRole() {
         animationType="slide"
         transparent={true}
         visible={isModalVisible2}
-        onRequestClose={hideModal2}
-      >
+        onRequestClose={hideModal2}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContentC}>
             <View style={styles.closeiconC}>
@@ -628,8 +618,7 @@ export default function UpdateRole() {
                   hideModal2();
                   refreshData();
                   // Add your update logic here
-                }}
-              >
+                }}>
                 <Text style={styles.buttonTextB}>Deactivate User</Text>
               </TouchableOpacity>
             </View>
@@ -641,8 +630,7 @@ export default function UpdateRole() {
         animationType="slide"
         transparent={true}
         visible={isModalVisible3}
-        onRequestClose={hideModal3}
-      >
+        onRequestClose={hideModal3}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContentC}>
             <View style={styles.closeiconC}>
@@ -665,8 +653,7 @@ export default function UpdateRole() {
                   hideModal3();
                   refreshData();
                   // Add your update logic here
-                }}
-              >
+                }}>
                 <Text style={styles.buttonTextB}>Activate User</Text>
               </TouchableOpacity>
             </View>
@@ -677,8 +664,7 @@ export default function UpdateRole() {
       <ScrollView
         ref={scrollViewRef}
         style={{ height: scrollViewHeight }}
-        contentContainerStyle={styles.scrollViewContent}
-      >
+        contentContainerStyle={styles.scrollViewContent}>
         {isRefreshing && (
           <ActivityIndicator
             size="large"
@@ -698,8 +684,7 @@ export default function UpdateRole() {
                 fontWeight: "700",
                 marginLeft: 40,
                 marginTop: 30,
-              }}
-            >
+              }}>
               {" "}
               ALL USERS AND ROLES
             </Text>
@@ -712,8 +697,7 @@ export default function UpdateRole() {
               // paddingLeft: 50,
               flexDirection: "row",
               justifyContent: "space-evenly",
-            }}
-          >
+            }}>
             {/* <TouchableOpacity
             style={{
               backgroundColor: "#ED474A",
@@ -734,12 +718,10 @@ export default function UpdateRole() {
                 // Handle "Yes" button press here
                 showModal
                 // Add your update logic here
-              }
-            >
+              }>
               <Icon
                 name="person-add-outline"
-                style={{ color: "white", fontSize: 20 }}
-              >
+                style={{ color: "white", fontSize: 20 }}>
                 <Text style={{ color: "white", fontSize: 20 }}> Add User</Text>
               </Icon>
             </TouchableOpacity>
@@ -777,8 +759,7 @@ export default function UpdateRole() {
               style={[
                 styles.container3,
                 index % 2 === 0 ? styles.rowEven : styles.rowOdd, // Alternating colors
-              ]}
-            >
+              ]}>
               <View style={styles.column1}>
                 <Text style={styles.datafont1}>{user.FirstName}</Text>
               </View>
@@ -807,8 +788,7 @@ export default function UpdateRole() {
                         style={styles.datafont2}
                         onPress={() =>
                           showModal2(user.userEmail, user.role, user.userID)
-                        }
-                      >
+                        }>
                         --
                       </Text>
                     </TouchableOpacity>
@@ -817,8 +797,7 @@ export default function UpdateRole() {
                       <TouchableOpacity
                         onPress={() =>
                           showModal2(user.userEmail, user.role, user.userID)
-                        }
-                      >
+                        }>
                         <Text style={styles.datafont2}>Change Status</Text>
                       </TouchableOpacity>
                     </>
@@ -827,8 +806,7 @@ export default function UpdateRole() {
                       <TouchableOpacity
                         onPress={() =>
                           showModal3(user.userEmail, user.role, user.userID)
-                        }
-                      >
+                        }>
                         <Text style={styles.datafont2}>Change Status</Text>
                       </TouchableOpacity>
                     </>
